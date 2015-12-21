@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MTLoginViewController.h"
+#import "MTMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight)];
+
+    MTAccountInfo * myInfo = [MTAccountMgr getLoginInfo];
+    
+    if([myInfo.loginState boolValue] == YES)
+    {
+        self.window.rootViewController = [[MTMainViewController alloc] init];
+    }else{
+        self.window.rootViewController = [[MTLoginViewController alloc] init];
+    }
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

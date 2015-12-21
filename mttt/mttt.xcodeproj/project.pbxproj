@@ -20,6 +20,11 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		68FCD3911C283D6E00228CBB /* MTAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FCD3901C283D6E00228CBB /* MTAccountInfo.m */; };
+		68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FCD3931C283DBF00228CBB /* MTAccountMgr.m */; };
+		68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FCD3981C28415000228CBB /* MTMainViewController.m */; };
+		68FCD39C1C28418600228CBB /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FCD39B1C28418600228CBB /* MTLoginViewController.m */; };
+		68FCD39F1C28493700228CBB /* LoginTrangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FCD39E1C28493700228CBB /* LoginTrangleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,16 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		68FCD38F1C283D6E00228CBB /* MTAccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAccountInfo.h; sourceTree = "<group>"; };
+		68FCD3901C283D6E00228CBB /* MTAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAccountInfo.m; sourceTree = "<group>"; };
+		68FCD3921C283DBF00228CBB /* MTAccountMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAccountMgr.h; sourceTree = "<group>"; };
+		68FCD3931C283DBF00228CBB /* MTAccountMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAccountMgr.m; sourceTree = "<group>"; };
+		68FCD3971C28415000228CBB /* MTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainViewController.h; sourceTree = "<group>"; };
+		68FCD3981C28415000228CBB /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
+		68FCD39A1C28418600228CBB /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
+		68FCD39B1C28418600228CBB /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
+		68FCD39D1C28493700228CBB /* LoginTrangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTrangleView.h; sourceTree = "<group>"; };
+		68FCD39E1C28493700228CBB /* LoginTrangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTrangleView.m; sourceTree = "<group>"; };
 		AE1767FAEC292B87F6ACBACC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95DDCC2A56CA0C68B2A7B8C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +211,8 @@
 		685CD2511C278EED008F0A8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				68FCD39D1C28493700228CBB /* LoginTrangleView.h */,
+				68FCD39E1C28493700228CBB /* LoginTrangleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +220,8 @@
 		685CD2521C278EF2008F0A8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				68FCD3961C28413400228CBB /* MainController */,
+				68FCD3951C28412600228CBB /* LoginController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,8 +236,38 @@
 		685CD2541C278F24008F0A8A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				68FCD38E1C283D3A00228CBB /* MTAccountManager */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		68FCD38E1C283D3A00228CBB /* MTAccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				68FCD38F1C283D6E00228CBB /* MTAccountInfo.h */,
+				68FCD3901C283D6E00228CBB /* MTAccountInfo.m */,
+				68FCD3921C283DBF00228CBB /* MTAccountMgr.h */,
+				68FCD3931C283DBF00228CBB /* MTAccountMgr.m */,
+			);
+			path = MTAccountManager;
+			sourceTree = "<group>";
+		};
+		68FCD3951C28412600228CBB /* LoginController */ = {
+			isa = PBXGroup;
+			children = (
+				68FCD39A1C28418600228CBB /* MTLoginViewController.h */,
+				68FCD39B1C28418600228CBB /* MTLoginViewController.m */,
+			);
+			path = LoginController;
+			sourceTree = "<group>";
+		};
+		68FCD3961C28413400228CBB /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				68FCD3971C28415000228CBB /* MTMainViewController.h */,
+				68FCD3981C28415000228CBB /* MTMainViewController.m */,
+			);
+			path = MainController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,12 +393,17 @@
 			files = (
 				685CD24C1C278E2E008F0A8A /* NSObject-Description.m in Sources */,
 				685CD2271C278AD5008F0A8A /* ViewController.m in Sources */,
+				68FCD39F1C28493700228CBB /* LoginTrangleView.m in Sources */,
 				685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */,
+				68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */,
+				68FCD39C1C28418600228CBB /* MTLoginViewController.m in Sources */,
 				685CD2241C278AD5008F0A8A /* AppDelegate.m in Sources */,
 				685CD24B1C278E2E008F0A8A /* ConstraintUtilities-Description.m in Sources */,
 				685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */,
 				685CD2211C278AD5008F0A8A /* main.m in Sources */,
 				685CD24D1C278E2E008F0A8A /* ConstraintUtilities-Install.m in Sources */,
+				68FCD3911C283D6E00228CBB /* MTAccountInfo.m in Sources */,
+				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
