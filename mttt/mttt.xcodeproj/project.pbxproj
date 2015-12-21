@@ -49,6 +49,7 @@
 		685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject-Nametag.m"; sourceTree = "<group>"; };
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
+		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
 		AE1767FAEC292B87F6ACBACC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95DDCC2A56CA0C68B2A7B8C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +104,11 @@
 		685CD21E1C278AD5008F0A8A /* mttt */ = {
 			isa = PBXGroup;
 			children = (
+				685CD2521C278EF2008F0A8A /* Controllers */,
+				685CD2511C278EED008F0A8A /* Views */,
 				685CD2361C278E0B008F0A8A /* UICommon */,
+				685CD2531C278F0B008F0A8A /* Storage */,
+				685CD2541C278F24008F0A8A /* Managers */,
 				685CD2221C278AD5008F0A8A /* AppDelegate.h */,
 				685CD2231C278AD5008F0A8A /* AppDelegate.m */,
 				685CD2251C278AD5008F0A8A /* ViewController.h */,
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				685CD2201C278AD5008F0A8A /* main.m */,
+				685CD2551C278F6F008F0A8A /* mtttPCH.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -185,6 +191,34 @@
 				685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */,
 			);
 			path = "Constraint Matching";
+			sourceTree = "<group>";
+		};
+		685CD2511C278EED008F0A8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		685CD2521C278EF2008F0A8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		685CD2531C278F0B008F0A8A /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		685CD2541C278F24008F0A8A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +461,8 @@
 			baseConfigurationReference = D95DDCC2A56CA0C68B2A7B8C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = testAB.mttt;
@@ -439,6 +475,8 @@
 			baseConfigurationReference = 5BAE9CF27CE537966CB247D4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = testAB.mttt;
