@@ -26,6 +26,7 @@
     CGContextClosePath(context);
     
     [[UIColor whiteColor] setFill];
+    [[UIColor whiteColor] setStroke];
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 

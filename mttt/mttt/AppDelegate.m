@@ -33,9 +33,10 @@
     
 //    self.window.rootViewController = [[MTMainTabViewController alloc] init];
     
-    
-    
     [self.window makeKeyAndVisible];
+    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     return YES;
 }
 

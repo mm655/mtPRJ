@@ -10,6 +10,7 @@
 #define mtttPCH_pch
 
 #import <AFNetworking.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 #import <UIImageView+WebCache.h>
 #import <UIButton+WebCache.h>
 #import <MagicalRecord/MagicalRecord.h>
@@ -24,7 +25,7 @@
 
 #define SCWidth [UIScreen mainScreen].bounds.size.width
 #define SCHeight [UIScreen mainScreen].bounds.size.height
-#define MTRGBColor(R,G,B) [UIColor colorWithRed:R / 255.0f green:G / 255.0f blue:B / 255.0f alpha:1.0f];
+#define MTRGBColor(R,G,B) [UIColor colorWithRed:R / 255.0f green:G / 255.0f blue:B / 255.0f alpha:1.0f]
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

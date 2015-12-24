@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2954C1AA1C6DEE5C39E9835A268809CA</key>
+		<key>110655BEE7CCC2B514187532559DFA49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B3B4AF3F082EFC3F6658569BEDC7FC7</key>
+		<key>55DBDD8B7D446F1D618F303A9FB53209</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54AB3ECEB9A8FBA15D4F73CBE326692</key>
+		<key>9C93B945B1FC8DA3333F6CBD02AE58A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7670E9580164908431C4D2BD4EC4787</key>
+		<key>A7ED6EECD80AFD347DEFC8CBA340A33B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D54AB3ECEB9A8FBA15D4F73CBE326692</key>
 		<dict>
 			<key>primary</key>
 			<true/>
