@@ -1,22 +1,22 @@
 //
-//  MTMainViewController.m
+//  MTSettingViewController.m
 //  mttt
 //
-//  Created by 张勐 on 15/12/21.
+//  Created by 张勐 on 15/12/24.
 //  Copyright © 2015年 ZhangMeng. All rights reserved.
 //
 
-#import "MTMainViewController.h"
+#import "MTSettingViewController.h"
 
-@interface MTMainViewController ()
+@interface MTSettingViewController ()
 
 @end
 
-@implementation MTMainViewController
+@implementation MTSettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor purpleColor];
+    self.view.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
 

@@ -9,6 +9,8 @@
 #import "MTLoginViewController.h"
 #import "MTMainViewController.h"
 #import "LoginTrangleView.h"
+#import "MTNetworkLogin.h"
+#import "MTNetworkRegist.h"
 
 @interface MTLoginViewController ()
 
@@ -36,18 +38,27 @@
 {
 //    [[UIApplication sharedApplication].delegate window].rootViewController = [[MTMainViewController alloc] init];
 //    [[[UIApplication sharedApplication].delegate window] makeKeyAndVisible];
-    UIView * tv = [self.view viewWithTag:101115];
-    tv.x += 30;
-    UIButton * bV = [self.view viewWithTag:101116];
+//    UIView * tv = [self.view viewWithTag:101115];
+//    tv.x += 30;
+//    UIButton * bV = [self.view viewWithTag:101116];
+//    
+//    if(tv.x > SCWidth / 2)
+//    {
+//        UIView * aV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+//        [bV addSubview:aV];
+//        aV.backgroundColor = [UIColor redColor];
+//    }
+//    [self.view setNeedsDisplay];
     
-    if(tv.x > SCWidth / 2)
-    {
-        UIView * aV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-        [bV addSubview:aV];
-        aV.backgroundColor = [UIColor redColor];
-    }
-    [self.view setNeedsDisplay];
+    MTNetworkLogin * login = [[MTNetworkLogin alloc] init];
+    [login loginWithUserName:@"kimi" andPassWord:@"1234" rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        ;
+    }];
     
+//    MTNetworkRegist * regist = [MTNetworkRegist new];
+//    [regist registWithEmail:@"kimizhang655@126.com" userName:@"kimi" passWord:@"1234" interests:nil rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+//        ;
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {

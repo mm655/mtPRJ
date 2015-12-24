@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MTLoginViewController.h"
 #import "MTMainViewController.h"
+#import "MTMainTabViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,10 @@
     }else{
         self.window.rootViewController = [[MTLoginViewController alloc] init];
     }
+    
+//    self.window.rootViewController = [[MTMainTabViewController alloc] init];
+    
+    
     
     [self.window makeKeyAndVisible];
     return YES;
