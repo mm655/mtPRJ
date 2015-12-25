@@ -31,7 +31,7 @@
         self.window.rootViewController = [[MTLoginViewController alloc] init];
     }
     
-//    self.window.rootViewController = [[MTMainTabViewController alloc] init];
+    self.window.rootViewController = [[MTMainTabViewController alloc] init];
     
     [self.window makeKeyAndVisible];
     

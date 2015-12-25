@@ -26,6 +26,11 @@
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
 		68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */; };
+		6891C47E1C2D25E200805C8E /* MTMainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C47D1C2D25E200805C8E /* MTMainNavViewController.m */; };
+		6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4801C2D28A600805C8E /* MTFindNavViewController.m */; };
+		6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4831C2D28D200805C8E /* MTMsgNavViewController.m */; };
+		6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */; };
+		6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */; };
 		68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */; };
 		68CC1AC11C2BCFFF001104FC /* MTNetworkHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC01C2BCFFF001104FC /* MTNetworkHttpSession.m */; };
 		68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC31C2BD954001104FC /* MTNetworkLogin.m */; };
@@ -78,6 +83,16 @@
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
 		68912D791C2CEC34006DA0E6 /* MTRegistConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegistConfirmViewController.h; sourceTree = "<group>"; };
 		68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegistConfirmViewController.m; sourceTree = "<group>"; };
+		6891C47C1C2D25E200805C8E /* MTMainNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainNavViewController.h; sourceTree = "<group>"; };
+		6891C47D1C2D25E200805C8E /* MTMainNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainNavViewController.m; sourceTree = "<group>"; };
+		6891C47F1C2D28A600805C8E /* MTFindNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFindNavViewController.h; sourceTree = "<group>"; };
+		6891C4801C2D28A600805C8E /* MTFindNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFindNavViewController.m; sourceTree = "<group>"; };
+		6891C4821C2D28D200805C8E /* MTMsgNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMsgNavViewController.h; sourceTree = "<group>"; };
+		6891C4831C2D28D200805C8E /* MTMsgNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMsgNavViewController.m; sourceTree = "<group>"; };
+		6891C4851C2D28F100805C8E /* MTSettingNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingNavViewController.h; sourceTree = "<group>"; };
+		6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingNavViewController.m; sourceTree = "<group>"; };
+		6891C4881C2D2E2800805C8E /* MTMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainTableViewCell.h; sourceTree = "<group>"; };
+		6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainTableViewCell.m; sourceTree = "<group>"; };
 		68CC1ABC1C2BCE9D001104FC /* MTNetworkBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkBase.h; sourceTree = "<group>"; };
 		68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkBase.m; sourceTree = "<group>"; };
 		68CC1ABF1C2BCFFF001104FC /* MTNetworkHttpSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkHttpSession.h; sourceTree = "<group>"; };
@@ -136,6 +151,8 @@
 			children = (
 				680251D91C2BA1E700ECEF64 /* MTFindViewController.h */,
 				680251DA1C2BA1E700ECEF64 /* MTFindViewController.m */,
+				6891C47F1C2D28A600805C8E /* MTFindNavViewController.h */,
+				6891C4801C2D28A600805C8E /* MTFindNavViewController.m */,
 			);
 			name = FindController;
 			sourceTree = "<group>";
@@ -154,6 +171,8 @@
 			children = (
 				680251DC1C2BA1FE00ECEF64 /* MTMsgViewController.h */,
 				680251DD1C2BA1FE00ECEF64 /* MTMsgViewController.m */,
+				6891C4821C2D28D200805C8E /* MTMsgNavViewController.h */,
+				6891C4831C2D28D200805C8E /* MTMsgNavViewController.m */,
 			);
 			name = MsgController;
 			sourceTree = "<group>";
@@ -163,6 +182,8 @@
 			children = (
 				680251D31C2BA1C100ECEF64 /* MTSettingViewController.h */,
 				680251D41C2BA1C100ECEF64 /* MTSettingViewController.m */,
+				6891C4851C2D28F100805C8E /* MTSettingNavViewController.h */,
+				6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */,
 			);
 			name = SettingController;
 			sourceTree = "<group>";
@@ -385,6 +406,10 @@
 			children = (
 				68FCD3971C28415000228CBB /* MTMainViewController.h */,
 				68FCD3981C28415000228CBB /* MTMainViewController.m */,
+				6891C47C1C2D25E200805C8E /* MTMainNavViewController.h */,
+				6891C47D1C2D25E200805C8E /* MTMainNavViewController.m */,
+				6891C4881C2D2E2800805C8E /* MTMainTableViewCell.h */,
+				6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -524,13 +549,18 @@
 				68FCD39C1C28418600228CBB /* MTLoginViewController.m in Sources */,
 				685CD2241C278AD5008F0A8A /* AppDelegate.m in Sources */,
 				685CD24B1C278E2E008F0A8A /* ConstraintUtilities-Description.m in Sources */,
+				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
 				685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */,
+				6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */,
 				680251D81C2BA1DB00ECEF64 /* MTShotViewController.m in Sources */,
+				6891C47E1C2D25E200805C8E /* MTMainNavViewController.m in Sources */,
 				685CD2211C278AD5008F0A8A /* main.m in Sources */,
 				685CD24D1C278E2E008F0A8A /* ConstraintUtilities-Install.m in Sources */,
 				680251D21C2B9FC300ECEF64 /* MTMainTabViewController.m in Sources */,
 				68FCD3911C283D6E00228CBB /* MTAccountInfo.m in Sources */,
+				6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */,
 				68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */,
+				6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */,
 				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
 				68CC1AC71C2BDCF2001104FC /* MTNetworkResponseBasePack.m in Sources */,
