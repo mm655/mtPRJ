@@ -25,6 +25,7 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */; };
 		68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */; };
 		68CC1AC11C2BCFFF001104FC /* MTNetworkHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC01C2BCFFF001104FC /* MTNetworkHttpSession.m */; };
 		68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC31C2BD954001104FC /* MTNetworkLogin.m */; };
@@ -75,6 +76,8 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		68912D791C2CEC34006DA0E6 /* MTRegistConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegistConfirmViewController.h; sourceTree = "<group>"; };
+		68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegistConfirmViewController.m; sourceTree = "<group>"; };
 		68CC1ABC1C2BCE9D001104FC /* MTNetworkBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkBase.h; sourceTree = "<group>"; };
 		68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkBase.m; sourceTree = "<group>"; };
 		68CC1ABF1C2BCFFF001104FC /* MTNetworkHttpSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkHttpSession.h; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 			children = (
 				68FCD39A1C28418600228CBB /* MTLoginViewController.h */,
 				68FCD39B1C28418600228CBB /* MTLoginViewController.m */,
+				68912D791C2CEC34006DA0E6 /* MTRegistConfirmViewController.h */,
+				68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
 				68CC1AC71C2BDCF2001104FC /* MTNetworkResponseBasePack.m in Sources */,
+				68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

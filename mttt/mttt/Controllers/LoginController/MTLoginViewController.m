@@ -12,6 +12,7 @@
 #import "MTNetworkLogin.h"
 #import "MTNetworkRegist.h"
 #import "LoginTrangleView.h"
+#import "MTRegistConfirmViewController.h"
 
 #define LoginUITag 10892
 #define RegistUITag 10992
@@ -162,6 +163,7 @@ typedef NS_ENUM(NSInteger,MTLRState)
     _RLConfirmButton.top = _backLine2.bottom + 25;
     [_RLConfirmButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"登陆" attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont systemFontOfSize:20.0f]}] forState:UIControlStateNormal];
     _RLConfirmButton.hidden = YES;
+    [_RLConfirmButton addTarget:self action:@selector(rlConfirmButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_RLConfirmButton];
     
     
@@ -267,11 +269,16 @@ typedef NS_ENUM(NSInteger,MTLRState)
     }
     _RLConfirmButton.hidden = NO;
     [_RLConfirmButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"注册" attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont systemFontOfSize:20.0f]}] forState:UIControlStateNormal];
-
-    
-    
 }
 
+-(void) rlConfirmButtonClick : (UIButton *) button
+{
+    MTRegistConfirmViewController * registConfirm = [MTRegistConfirmViewController new];
+    UINavigationController * navC = [[UINavigationController alloc] initWithRootViewController:registConfirm];
+    [self presentViewController:navC animated:YES completion:^{
+        ;
+    }];
+}
 
 
 /*
