@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface MTShotViewController : UIViewController
+{
+    UIView * _preViewView;
+    AVCaptureSession * _captureSession;
+    AVCaptureStillImageOutput * _stillImageOutput;
+    AVCaptureDeviceInput * _deviceInput;
+    AVCaptureVideoPreviewLayer * _previewLayer;
+}
 
 @end
