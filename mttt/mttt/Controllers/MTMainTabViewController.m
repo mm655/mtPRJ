@@ -16,6 +16,7 @@
 #import "MTSettingNavViewController.h"
 #import "MTMsgNavViewController.h"
 #import "MTFindNavViewController.h"
+#import "MTShotViewController.h"
 
 @interface MTMainTabViewController () <UITabBarControllerDelegate>
 
@@ -28,6 +29,8 @@
 @property (strong, nonatomic) MTMsgNavViewController * mtMsgNavViewController;
 @property (strong, nonatomic) MTSettingViewController * mtSettingViewController;
 @property (strong, nonatomic) MTSettingNavViewController * mtSettingNavViewController;
+
+//@property (strong, nonatomic) MTShotViewController * mtShotViewController;
 
 @property (strong, nonatomic) UIView * tabBackDarkView;
 @end
@@ -94,6 +97,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+
     // Dispose of any resources that can be recreated.
 }
 
@@ -101,6 +105,10 @@
 {
     if([viewController isMemberOfClass:[MTShotViewController class]])
     {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self presentViewController:[MTShotViewController new] animated:YES completion:^{
+            }];
+        });
         return NO;
     }
     

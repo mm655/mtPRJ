@@ -25,6 +25,10 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		687FDA031C2EA35B00333CF2 /* ImageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA021C2EA35B00333CF2 /* ImageEditViewController.m */; };
+		687FDA061C2EA76C00333CF2 /* MTFilterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA051C2EA76C00333CF2 /* MTFilterFlowLayout.m */; };
+		687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA0B1C2EA92900333CF2 /* MTFilterCollectionView.m */; };
+		687FDA0F1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA0E1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m */; };
 		68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */; };
 		6891C47E1C2D25E200805C8E /* MTMainNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C47D1C2D25E200805C8E /* MTMainNavViewController.m */; };
 		6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4801C2D28A600805C8E /* MTFindNavViewController.m */; };
@@ -82,6 +86,14 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		687FDA011C2EA35B00333CF2 /* ImageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditViewController.h; sourceTree = "<group>"; };
+		687FDA021C2EA35B00333CF2 /* ImageEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditViewController.m; sourceTree = "<group>"; };
+		687FDA041C2EA76C00333CF2 /* MTFilterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterFlowLayout.h; sourceTree = "<group>"; };
+		687FDA051C2EA76C00333CF2 /* MTFilterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterFlowLayout.m; sourceTree = "<group>"; };
+		687FDA0A1C2EA92900333CF2 /* MTFilterCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterCollectionView.h; sourceTree = "<group>"; };
+		687FDA0B1C2EA92900333CF2 /* MTFilterCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterCollectionView.m; sourceTree = "<group>"; };
+		687FDA0D1C2EAA0200333CF2 /* MTfilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTfilterCollectionViewCell.h; sourceTree = "<group>"; };
+		687FDA0E1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTfilterCollectionViewCell.m; sourceTree = "<group>"; };
 		68912D791C2CEC34006DA0E6 /* MTRegistConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegistConfirmViewController.h; sourceTree = "<group>"; };
 		68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegistConfirmViewController.m; sourceTree = "<group>"; };
 		6891C47C1C2D25E200805C8E /* MTMainNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainNavViewController.h; sourceTree = "<group>"; };
@@ -165,6 +177,14 @@
 			children = (
 				680251D61C2BA1DB00ECEF64 /* MTShotViewController.h */,
 				680251D71C2BA1DB00ECEF64 /* MTShotViewController.m */,
+				687FDA011C2EA35B00333CF2 /* ImageEditViewController.h */,
+				687FDA021C2EA35B00333CF2 /* ImageEditViewController.m */,
+				687FDA041C2EA76C00333CF2 /* MTFilterFlowLayout.h */,
+				687FDA051C2EA76C00333CF2 /* MTFilterFlowLayout.m */,
+				687FDA0A1C2EA92900333CF2 /* MTFilterCollectionView.h */,
+				687FDA0B1C2EA92900333CF2 /* MTFilterCollectionView.m */,
+				687FDA0D1C2EAA0200333CF2 /* MTfilterCollectionViewCell.h */,
+				687FDA0E1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m */,
 			);
 			name = ShotController;
 			sourceTree = "<group>";
@@ -549,6 +569,7 @@
 				68FCD39F1C28493700228CBB /* LoginTrangleView.m in Sources */,
 				685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */,
 				68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */,
+				687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */,
 				680251DE1C2BA1FE00ECEF64 /* MTMsgViewController.m in Sources */,
 				68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */,
 				68FCD39C1C28418600228CBB /* MTLoginViewController.m in Sources */,
@@ -562,12 +583,15 @@
 				685CD2211C278AD5008F0A8A /* main.m in Sources */,
 				685CD24D1C278E2E008F0A8A /* ConstraintUtilities-Install.m in Sources */,
 				68C12E581C2D5D49005D6524 /* MTMsgTableViewCell.m in Sources */,
+				687FDA061C2EA76C00333CF2 /* MTFilterFlowLayout.m in Sources */,
+				687FDA0F1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m in Sources */,
 				680251D21C2B9FC300ECEF64 /* MTMainTabViewController.m in Sources */,
 				68FCD3911C283D6E00228CBB /* MTAccountInfo.m in Sources */,
 				6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */,
 				68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */,
 				6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */,
 				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,
+				687FDA031C2EA35B00333CF2 /* ImageEditViewController.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
 				68CC1AC71C2BDCF2001104FC /* MTNetworkResponseBasePack.m in Sources */,
 				68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */,
@@ -681,12 +705,14 @@
 			baseConfigurationReference = D95DDCC2A56CA0C68B2A7B8C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shenlin Zhan (58H2PDY64K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = testAB.mttt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.mttt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4bd74f4f-3c5b-4494-b36b-9d5e532f206d";
 			};
 			name = Debug;
 		};
@@ -695,12 +721,14 @@
 			baseConfigurationReference = 5BAE9CF27CE537966CB247D4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shenlin Zhan (58H2PDY64K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = testAB.mttt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.motu.mttt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4bd74f4f-3c5b-4494-b36b-9d5e532f206d";
 			};
 			name = Release;
 		};

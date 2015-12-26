@@ -16,6 +16,9 @@
     AVCaptureStillImageOutput * _stillImageOutput;
     AVCaptureDeviceInput * _deviceInput;
     AVCaptureVideoPreviewLayer * _previewLayer;
+    AVCaptureConnection * _connection;
+    
+    UIButton * _alaButton;
 }
 
 @end
