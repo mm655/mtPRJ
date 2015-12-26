@@ -7,9 +7,12 @@
 //
 
 #import "MTMsgViewController.h"
+#import "MTMsgTableViewCell.h"
 
-@interface MTMsgViewController ()
-
+@interface MTMsgViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    UITableView * _mainTableView;
+}
 @end
 
 @implementation MTMsgViewController
@@ -18,12 +21,44 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"消息";
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
+    _mainTableView.delegate   = self;
+    _mainTableView.dataSource = self;
+    [self.view addSubview:_mainTableView];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView registerClass:[MTMsgTableViewCell class] forCellReuseIdentifier:@"MsgCell"];
+    return 1;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 50;
+}
+
+-(BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 64;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MTMsgTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MsgCell"];
+    return cell;
 }
 
 /*

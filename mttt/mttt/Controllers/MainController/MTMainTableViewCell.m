@@ -90,10 +90,6 @@
     _jubaoButton.y = _pingField.y;
     [self addSubview:_jubaoButton];
     
-    
-    
-    
-    
     return self;
 }
 
