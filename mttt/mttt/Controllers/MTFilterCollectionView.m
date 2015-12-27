@@ -34,7 +34,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MTfilterCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTFilterCell" forIndexPath:indexPath   ];
-    cell.imageNum = @(1);
+    cell.imageNum = @(indexPath.row);
 //    [cell setNeedsDisplay];
     return cell;
 }

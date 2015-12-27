@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MTfilterCollectionViewCell : UICollectionViewCell
+{
+    NSArray * _filterNameArray;
+}
 @property (strong, nonatomic) NSNumber * imageNum;
 
 @property (strong, nonatomic) UIImageView * mainImageView;
 @property (strong, nonatomic) UILabel * filterNameLabel;
+
+//@property (strong, nonatomic)
 @end

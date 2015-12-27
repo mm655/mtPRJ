@@ -53,9 +53,7 @@
 #pragma mark- Default Filters
 
 
-@interface CLDefaultEmptyFilter : CLFilterBase
 
-@end
 
 @implementation CLDefaultEmptyFilter
 
@@ -120,6 +118,7 @@
 
 + (UIImage*)filteredImage:(UIImage*)image withFilterName:(NSString*)filterName
 {
+    NSLog(@"filter name : %@",filterName);
     if([filterName isEqualToString:@"CLDefaultEmptyFilter"]){
         return image;
     }
@@ -154,68 +153,53 @@
 @end
 
 
-
-@interface CLDefaultLinearFilter : CLDefaultEmptyFilter
-@end
 @implementation CLDefaultLinearFilter
 @end
 
-@interface CLDefaultVignetteFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultVignetteFilter
 @end
 
-@interface CLDefaultInstantFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultInstantFilter
 @end
 
-@interface CLDefaultProcessFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultProcessFilter
 @end
 
-@interface CLDefaultTransferFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultTransferFilter
 @end
 
-@interface CLDefaultSepiaFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultSepiaFilter
 @end
 
-@interface CLDefaultChromeFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultChromeFilter
 @end
 
-@interface CLDefaultFadeFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultFadeFilter
 @end
 
-@interface CLDefaultCurveFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultCurveFilter
 @end
 
-@interface CLDefaultTonalFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultTonalFilter
 @end
 
-@interface CLDefaultNoirFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultNoirFilter
 @end
 
-@interface CLDefaultMonoFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultMonoFilter
 @end
 
-@interface CLDefaultInvertFilter : CLDefaultEmptyFilter
-@end
+
 @implementation CLDefaultInvertFilter
 @end
