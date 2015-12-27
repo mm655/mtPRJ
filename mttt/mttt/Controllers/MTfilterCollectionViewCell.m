@@ -70,49 +70,134 @@
     UIImage * resultImage;
     switch (curNum) {
         case 0:
+            if(_fdImage0)
+            {
+                resultImage = _fdImage0;
+                break;
+            }
             resultImage = [CLDefaultEmptyFilter applyFilter:orgImage];
+            _fdImage0 = resultImage;
             break;
         case 1:
+            if(_fdImage1)
+            {
+                resultImage = _fdImage1;
+                break;
+            }
             resultImage = [CLDefaultLinearFilter applyFilter:orgImage];
+            _fdImage1 = resultImage;
             break;
         case 2:
+            if(_fdImage2)
+            {
+                resultImage = _fdImage2;
+                break;
+            }
             resultImage = [CLDefaultVignetteFilter applyFilter:orgImage];
+            _fdImage2 = resultImage;
             break;
         case 3:
+            if(_fdImage3)
+            {
+                resultImage = _fdImage3;
+                break;
+            }
             resultImage = [CLDefaultInstantFilter applyFilter:orgImage];
+            _fdImage3 = resultImage;
             break;
         case 4:
+            if(_fdImage4)
+            {
+                resultImage = _fdImage4;
+                break;
+            }
             resultImage = [CLDefaultProcessFilter applyFilter:orgImage];
+            _fdImage4 = resultImage;
             break;
         case 5:
+            if(_fdImage5)
+            {
+                resultImage = _fdImage5;
+                break;
+            }
             resultImage = [CLDefaultTransferFilter applyFilter:orgImage];
+            _fdImage5 = resultImage;
             break;
         case 6:
+            if(_fdImage6)
+            {
+                resultImage = _fdImage6;
+                break;
+            }
             resultImage = [CLDefaultSepiaFilter applyFilter:orgImage];
+            _fdImage6 = resultImage;
             break;
         case 7:
+            if(_fdImage7)
+            {
+                resultImage = _fdImage7;
+                break;
+            }
             resultImage = [CLDefaultChromeFilter applyFilter:orgImage];
+            _fdImage7 = resultImage;
             break;
         case 8:
+            if(_fdImage8)
+            {
+                resultImage = _fdImage8;
+                break;
+            }
             resultImage = [CLDefaultFadeFilter applyFilter:orgImage];
+            _fdImage8 = resultImage;
             break;
         case 9:
+            if(_fdImage9)
+            {
+                resultImage = _fdImage9;
+                break;
+            }
             resultImage = [CLDefaultCurveFilter applyFilter:orgImage];
+            _fdImage9 = resultImage;
             break;
         case 10:
+            if(_fdImage10)
+            {
+                resultImage = _fdImage10;
+                break;
+            }
             resultImage = [CLDefaultTonalFilter applyFilter:orgImage];
+            _fdImage10 = resultImage;
             break;
         case 11:
+            if(_fdImage11)
+            {
+                resultImage = _fdImage11;
+                break;
+            }
             resultImage = [CLDefaultNoirFilter applyFilter:orgImage];
+            _fdImage11 = resultImage;
             break;
         case 12:
+            if(_fdImage12)
+            {
+                resultImage = _fdImage12;
+                break;
+            }
             resultImage = [CLDefaultMonoFilter applyFilter:orgImage];
+            _fdImage12 = resultImage;
             break;
         case 13:
+            if(_fdImage13)
+            {
+                resultImage = _fdImage13;
+                break;
+            }
             resultImage = [CLDefaultInvertFilter applyFilter:orgImage];
+            _fdImage13 = resultImage;
             break;
         default:
             resultImage = [CLDefaultEmptyFilter applyFilter:orgImage];
+//            _fdImage0 = resultImage;
             break;
     }
     

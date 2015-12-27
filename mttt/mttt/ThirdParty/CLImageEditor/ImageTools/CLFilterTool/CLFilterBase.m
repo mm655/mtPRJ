@@ -118,7 +118,7 @@
 
 + (UIImage*)filteredImage:(UIImage*)image withFilterName:(NSString*)filterName
 {
-    NSLog(@"filter name : %@",filterName);
+//    NSLog(@"filter name : %@",filterName);
     if([filterName isEqualToString:@"CLDefaultEmptyFilter"]){
         return image;
     }

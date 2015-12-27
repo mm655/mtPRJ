@@ -6,24 +6,7 @@
 
 #import "CLBlurTool.h"
 
-typedef NS_ENUM(NSUInteger, CLBlurType)
-{
-    kCLBlurTypeNormal = 0,
-    kCLBlurTypeCircle,
-    kCLBlurTypeBand,
-};
 
-
-@interface CLBlurCircle : UIView
-@property (nonatomic, strong) UIColor *color;
-@end
-
-@interface CLBlurBand : UIView
-@property (nonatomic, strong) UIColor *color;
-@property (nonatomic, assign) CGFloat rotation;
-@property (nonatomic, assign) CGFloat scale;
-@property (nonatomic, assign) CGFloat offset;
-@end
 
 
 
@@ -34,20 +17,7 @@ typedef NS_ENUM(NSUInteger, CLBlurType)
 
 @implementation CLBlurTool
 {
-    UIImage *_originalImage;
-    UIImage *_thumnailImage;
-    UIImage *_blurImage;
-    
-    UISlider *_blurSlider;
-    UIScrollView *_menuScroll;
-    
-    UIView *_handlerView;
-    
-    CLBlurCircle *_circleView;
-    CLBlurBand *_bandView;
-    CGRect _bandImageRect;
-    
-    CLBlurType _blurType;
+
 }
 
 #pragma mark-
@@ -305,9 +275,9 @@ typedef NS_ENUM(NSUInteger, CLBlurType)
     UIImage *mask = [CLImageEditorTheme imageNamed:[NSString stringWithFormat:@"%@/circle.png", [self class]]];
     UIGraphicsBeginImageContext(image.size);
     {
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext() , [[UIColor whiteColor] CGColor]);
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, image.size.width, image.size.height));
-        [mask drawInRect:frame];
+//        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext() , [[UIColor whiteColor] CGColor]);
+//        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, image.size.width, image.size.height));
+        [mask drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
         mask = UIGraphicsGetImageFromCurrentImageContext();
     }
     UIGraphicsEndImageContext();
@@ -319,33 +289,37 @@ typedef NS_ENUM(NSUInteger, CLBlurType)
 {
     UIImage *mask = [CLImageEditorTheme imageNamed:[NSString stringWithFormat:@"%@/band.png", [self class]]];
     
+    NSLog(@"%@",NSStringFromCGSize(image.size));
     UIGraphicsBeginImageContext(image.size);
     {
-        CGContextRef context =  UIGraphicsGetCurrentContext();
-        
-        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
-        CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
-        
-        CGContextSaveGState(context);
-        CGFloat ratio = image.size.width / _originalImage.size.width;
-        CGFloat Tx = (_bandImageRect.size.width/2  + _bandImageRect.origin.x)*ratio;
-        CGFloat Ty = (_bandImageRect.size.height/2 + _bandImageRect.origin.y)*ratio;
-        
-        CGContextTranslateCTM(context, Tx, Ty);
-        CGContextRotateCTM(context, _bandView.rotation);
-        CGContextTranslateCTM(context, 0, _bandView.offset*image.size.width/_handlerView.width);
-        CGContextScaleCTM(context, 1, _bandView.scale);
-        CGContextTranslateCTM(context, -Tx, -Ty);
-        
+//        CGContextRef context =  UIGraphicsGetCurrentContext();
+//        
+//        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+//        CGContextFillRect(context, CGRectMake(0, 0, image.size.width, image.size.height));
+//        
+//        CGContextSaveGState(context);
+//        CGFloat ratio = image.size.width / _originalImage.size.width;
+//        CGFloat Tx = (_bandImageRect.size.width/2  + _bandImageRect.origin.x)*ratio;
+//        CGFloat Ty = (_bandImageRect.size.height/2 + _bandImageRect.origin.y)*ratio;
+//        
+//        CGContextTranslateCTM(context, Tx, Ty);
+//        CGContextRotateCTM(context, _bandView.rotation);
+//        CGContextTranslateCTM(context, 0, _bandView.offset*image.size.width/_handlerView.width);
+//        CGContextScaleCTM(context, 1, _bandView.scale);
+//        CGContextTranslateCTM(context, -Tx, -Ty);
+//        
         CGRect rct = _bandImageRect;
-        rct.size.width  *= ratio;
-        rct.size.height *= ratio;
-        rct.origin.x    *= ratio;
-        rct.origin.y    *= ratio;
+//        rct.size.width  *= ratio;
+//        rct.size.height *= ratio;
+//        rct.origin.x    *= ratio;
+//        rct.origin.y    *= ratio;
+        
+        rct = CGRectMake(0, 0, image.size.width, image.size.height);
+        
         
         [mask drawInRect:rct];
         
-        CGContextRestoreGState(context);
+//        CGContextRestoreGState(context);
         
         mask = UIGraphicsGetImageFromCurrentImageContext();
     }

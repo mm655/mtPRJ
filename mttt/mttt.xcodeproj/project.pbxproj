@@ -72,6 +72,7 @@
 		6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4831C2D28D200805C8E /* MTMsgNavViewController.m */; };
 		6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */; };
 		6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */; };
+		68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C7061C2FB506003FE4BB /* MTTestViewController.m */; };
 		68C12E581C2D5D49005D6524 /* MTMsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C12E571C2D5D49005D6524 /* MTMsgTableViewCell.m */; };
 		68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */; };
 		68CC1AC11C2BCFFF001104FC /* MTNetworkHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC01C2BCFFF001104FC /* MTNetworkHttpSession.m */; };
@@ -216,6 +217,8 @@
 		6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingNavViewController.m; sourceTree = "<group>"; };
 		6891C4881C2D2E2800805C8E /* MTMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainTableViewCell.h; sourceTree = "<group>"; };
 		6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainTableViewCell.m; sourceTree = "<group>"; };
+		68A0C7051C2FB506003FE4BB /* MTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestViewController.h; sourceTree = "<group>"; };
+		68A0C7061C2FB506003FE4BB /* MTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestViewController.m; sourceTree = "<group>"; };
 		68C12E561C2D5D49005D6524 /* MTMsgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMsgTableViewCell.h; sourceTree = "<group>"; };
 		68C12E571C2D5D49005D6524 /* MTMsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMsgTableViewCell.m; sourceTree = "<group>"; };
 		68CC1ABC1C2BCE9D001104FC /* MTNetworkBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkBase.h; sourceTree = "<group>"; };
@@ -353,6 +356,7 @@
 		685CD21E1C278AD5008F0A8A /* mttt */ = {
 			isa = PBXGroup;
 			children = (
+				68A0C7041C2FB4F6003FE4BB /* Test */,
 				687FDA101C2EC53900333CF2 /* ThirdParty */,
 				68CC1ABB1C2BCE8C001104FC /* Network */,
 				685CD2521C278EF2008F0A8A /* Controllers */,
@@ -682,6 +686,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		68A0C7041C2FB4F6003FE4BB /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				68A0C7051C2FB506003FE4BB /* MTTestViewController.h */,
+				68A0C7061C2FB506003FE4BB /* MTTestViewController.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		68CC1ABB1C2BCE8C001104FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,6 +918,7 @@
 				687FDA861C2EC55100333CF2 /* CLToolbarMenuItem.m in Sources */,
 				687FDA8B1C2EC55100333CF2 /* UIImage+Utility.m in Sources */,
 				687FDA7E1C2EC55100333CF2 /* CLImageToolBase.m in Sources */,
+				68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */,
 				687FDA811C2EC55100333CF2 /* CLToneCurveTool.m in Sources */,
 				687FDA8A1C2EC55100333CF2 /* UIDevice+SystemVersion.m in Sources */,
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
