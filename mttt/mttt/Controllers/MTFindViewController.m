@@ -12,6 +12,8 @@
 #import "MTNearbyCollectionViewCell.h"
 #import "MTUserTableView.h"
 #import "MTUserTableViewCell.h"
+#import "MTTableHeaderRefreshView.h"
+#import "MTPull2RefreshState.h"
 
 
 @interface MTFindViewController () <UICollectionViewDataSource, UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
@@ -19,6 +21,9 @@
 @property (strong, nonatomic) UIView * whiteLineView;
 @property (strong, nonatomic) MTNearbyCollectionView * nearByCollectionView;
 @property (strong, nonatomic) MTUserTableView * userTableView;
+
+@property (assign, nonatomic) MTPull2RefreshState nearbyState;
+@property (assign, nonatomic) MTPull2RefreshState userState;
 
 @end
 
@@ -61,12 +66,13 @@
     self.nearByCollectionView = nearView;
     
     MTUserTableView * tableView;
-    tableView = [[MTUserTableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStylePlain];
-    tableView.contentOffset = CGPointMake(0, 64);
+    tableView = [[MTUserTableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
+    tableView.contentOffset = CGPointMake(0, 0);
     tableView.backgroundColor = [UIColor redColor];
     self.userTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
+    
 //    [self.view insertSubview:tableView belowSubview:self.userTableView];
     [self.view addSubview:tableView];
     
@@ -131,10 +137,45 @@
     
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    MTTableHeaderRefreshView * tV = [[MTTableHeaderRefreshView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, 44)];
+    tV.backgroundColor = MTGray;
+    return tV;
+}
+
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 64;
 }
+#pragma mark end
+
+#pragma mark scrollView delegate
+
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if(scrollView.contentOffset.y < 0)
+    {
+        targetContentOffset->y = 0;
+        [[NSNotificationCenter defaultCenter] postNotificationName:MTStartRefreshing object:nil];
+    }else if(scrollView.contentOffset.y > 44){
+        if(targetContentOffset->y < 44)
+        {
+            targetContentOffset->y = 44;
+        }
+    }else{
+        targetContentOffset->y = 44;
+    }
+    
+//    NSLog(@"scroll view will end dragging");
+//    NSLog(@"cur offset : %f   target offset : %f",scrollView.contentOffset.y,targetContentOffset->y);
+}
+
 
 
 

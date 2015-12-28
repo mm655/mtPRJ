@@ -109,7 +109,6 @@ static CGFloat const mtUserTableMargin = 2;
     mySpeak.backgroundColor = [UIColor clearColor];
     mySpeak.tag = 10006;
     
-    
     UIButton * focusButton = [[UIButton alloc] init];
     [self addSubview:focusButton];
     PREPCONSTRAINTS(focusButton);
@@ -121,7 +120,6 @@ static CGFloat const mtUserTableMargin = 2;
     focusButton.layer.masksToBounds = YES;
     focusButton.backgroundColor = [UIColor colorWithRed:0x2c/255.0f green:0xce/255.0f blue:0x75/255.0f alpha:1.0f];
     focusButton.tag = 10007;
-    
 }
 
 -(void) leftButtonClick
