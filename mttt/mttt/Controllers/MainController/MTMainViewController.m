@@ -12,6 +12,8 @@
 @interface MTMainViewController () <UITableViewDelegate,UITableViewDataSource>
 {
     UITableView * _mainTableView;
+    NSMutableArray * _mainItemArray;
+    UIView * _nothingShadowView;
 }
 @end
 
@@ -25,7 +27,37 @@
     _mainTableView.backgroundColor = [UIColor orangeColor];
     _mainTableView.delegate   = self;
     _mainTableView.dataSource = self;
+    _mainItemArray = [[MTAccountMgr getMainPageItemArray] mutableCopy];
     [self.view addSubview:_mainTableView];
+    
+    if(_mainItemArray == nil || _mainItemArray.count == 0)
+    {
+        _nothingShadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
+        _nothingShadowView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_nothingShadowView];
+        
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCWidth)];
+        imageView.image = [UIImage imageNamed:@"mainZCImage"];
+        [_nothingShadowView addSubview:imageView];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        UIButton * enterFindButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 64 + SCWidth + 15, SCWidth - 20, 54)];
+        enterFindButton.layer.masksToBounds = YES;
+        enterFindButton.layer.cornerRadius = 10;
+        enterFindButton.backgroundColor = MTGreen;
+        
+        [enterFindButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"发现和关注有趣的用户" attributes:@{NSForegroundColorAttributeName : MTWhite, NSFontAttributeName : [UIFont systemFontOfSize:18.0f]}] forState:UIControlStateNormal];
+        [_nothingShadowView addSubview:enterFindButton];
+        [enterFindButton addTarget:self action:@selector(enterFindButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +99,12 @@
         cell.backgroundColor = [UIColor greenColor];
     }
     return cell;
+}
+
+
+-(void)enterFindButtonClick
+{
+    [self.navigationController.tabBarController setSelectedIndex:1];
 }
 
 /*

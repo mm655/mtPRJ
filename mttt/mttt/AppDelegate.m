@@ -27,10 +27,15 @@
     
     if([myInfo.loginState boolValue] == YES)
     {
-        self.window.rootViewController = [[MTMainViewController alloc] init];
+        self.window.rootViewController = [[MTMainTabViewController alloc] init];
     }else{
         self.window.rootViewController = [[MTLoginViewController alloc] init];
     }
+    
+   
+//    NSArray * ta = [[NSArray alloc] init];
+   
+//    [NSKeyedArchiver arch]
     
 //    self.window.rootViewController = [[MTMainTabViewController alloc] init];
     

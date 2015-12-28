@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MTUserInfoPack.h"
 #import "UserInfo+CoreDataProperties.h"
+#import "MTStorageManagerBase.h"
 
-@interface MTUserInfoStorageManager : NSObject
+@interface MTUserInfoStorageManager : MTStorageManagerBase
 
 +(void) setNewUserInfo : (MTUserInfoPack *) userInfo;
 

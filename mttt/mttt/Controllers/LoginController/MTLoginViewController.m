@@ -14,7 +14,8 @@
 #import "LoginTrangleView.h"
 #import "MTRegistConfirmViewController.h"
 #import "MTNetworkLogin.h"
-
+#import "MTUserInfoPack.h"
+#import "MTMainTabViewController.h"
 
 #define LoginUITag 10892
 #define RegistUITag 10992
@@ -284,14 +285,36 @@ typedef NS_ENUM(NSInteger,MTLRState)
             return;
         }
         MTNetworkLogin * login = [MTNetworkLogin new];
+//        [SVProgressHUD showWithStatus:@"登陆中..."];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [login loginWithUserName:_userNameField.text andPassWord:_passWordField.text rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            if(resultType == MTNetworkResultTypeSuccess)
+            {
+                MTUserInfoPack * pack = (MTUserInfoPack *)addInfo;
+                MTAccountInfo * info = [MTAccountMgr getLoginInfo];
+                if(info == nil)
+                {
+                    info = [MTAccountInfo new];
+                }
+                info.userName = pack.userName;
+                info.userID = pack.userID;
+                info.loginState = @(1);
+                [MTAccountMgr setAccountInfo:info];
+                
+//                MTAccountInfo * aInfo = [MTAccountMgr getLoginInfo];
+                
+                
+                
+                [[UIApplication sharedApplication].delegate window].rootViewController = [MTMainTabViewController new];
+                [[[UIApplication sharedApplication].delegate window] makeKeyAndVisible];
+            }else{
+                [SVProgressHUD showErrorWithStatus:(NSString *) addInfo];
+            }
             ;
         }];
         
     }
-    
-    
-    
     
     MTRegistConfirmViewController * registConfirm = [MTRegistConfirmViewController new];
     UINavigationController * navC = [[UINavigationController alloc] initWithRootViewController:registConfirm];

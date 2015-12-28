@@ -16,4 +16,13 @@
 +(void) loginWithUserName : (NSString *) userName andUserID : (NSNumber *) userID;
 
 +(void) logout;
+
++(void) setAccountInfo : (MTAccountInfo *) info;
+
++(NSArray *) getMainPageItemArray;
++(void) setMainPageItemArray : (NSArray *) array;
+
++(BOOL) isLogin;
++(NSString *) userName;
+
 @end

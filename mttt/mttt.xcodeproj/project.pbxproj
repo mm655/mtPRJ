@@ -25,6 +25,9 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		687F5F511C310C8100B97BE6 /* MTStorageManagerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F501C310C8100B97BE6 /* MTStorageManagerBase.m */; };
+		687F5F5C1C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F591C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m */; };
+		687F5F5D1C3117C900B97BE6 /* MTTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F5B1C3117C900B97BE6 /* MTTestEntity.m */; };
 		687FDA031C2EA35B00333CF2 /* ImageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA021C2EA35B00333CF2 /* ImageEditViewController.m */; };
 		687FDA061C2EA76C00333CF2 /* MTFilterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA051C2EA76C00333CF2 /* MTFilterFlowLayout.m */; };
 		687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA0B1C2EA92900333CF2 /* MTFilterCollectionView.m */; };
@@ -131,6 +134,12 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		687F5F4F1C310C8100B97BE6 /* MTStorageManagerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStorageManagerBase.h; sourceTree = "<group>"; };
+		687F5F501C310C8100B97BE6 /* MTStorageManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStorageManagerBase.m; sourceTree = "<group>"; };
+		687F5F581C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTTestEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		687F5F591C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTTestEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
+		687F5F5A1C3117C900B97BE6 /* MTTestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestEntity.h; sourceTree = "<group>"; };
+		687F5F5B1C3117C900B97BE6 /* MTTestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestEntity.m; sourceTree = "<group>"; };
 		687FDA011C2EA35B00333CF2 /* ImageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditViewController.h; sourceTree = "<group>"; };
 		687FDA021C2EA35B00333CF2 /* ImageEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditViewController.m; sourceTree = "<group>"; };
 		687FDA041C2EA76C00333CF2 /* MTFilterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterFlowLayout.h; sourceTree = "<group>"; };
@@ -495,6 +504,10 @@
 			isa = PBXGroup;
 			children = (
 				68BB64F21C30DD9700E7DA04 /* StorageManagers */,
+				687F5F581C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.h */,
+				687F5F591C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m */,
+				687F5F5A1C3117C900B97BE6 /* MTTestEntity.h */,
+				687F5F5B1C3117C900B97BE6 /* MTTestEntity.m */,
 				68BB64EC1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.h */,
 				68BB64ED1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m */,
 				68BB64EE1C30DD6500E7DA04 /* UserInfo.h */,
@@ -735,6 +748,8 @@
 			children = (
 				68BB64F31C30DDAF00E7DA04 /* MTUserInfoStorageManager.h */,
 				68BB64F41C30DDAF00E7DA04 /* MTUserInfoStorageManager.m */,
+				687F5F4F1C310C8100B97BE6 /* MTStorageManagerBase.h */,
+				687F5F501C310C8100B97BE6 /* MTStorageManagerBase.m */,
 			);
 			path = StorageManagers;
 			sourceTree = "<group>";
@@ -999,12 +1014,15 @@
 				687FDA741C2EC55100333CF2 /* CLGloomEffect.m in Sources */,
 				687FDA7D1C2EC55100333CF2 /* CLFilterTool.m in Sources */,
 				6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */,
+				687F5F511C310C8100B97BE6 /* MTStorageManagerBase.m in Sources */,
 				68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */,
 				6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */,
 				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,
 				687FDA031C2EA35B00333CF2 /* ImageEditViewController.m in Sources */,
+				687F5F5C1C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m in Sources */,
 				687FDA711C2EC55100333CF2 /* CLClippingTool.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
+				687F5F5D1C3117C900B97BE6 /* MTTestEntity.m in Sources */,
 				68CC1AC71C2BDCF2001104FC /* MTNetworkResponseBasePack.m in Sources */,
 				68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */,
 				687FDA721C2EC55100333CF2 /* CLContrastTool.m in Sources */,

@@ -101,6 +101,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    [super setSelectedIndex:selectedIndex];
+    _tabBackDarkView.left = SCWidth / 5;
+}
+
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController NS_AVAILABLE_IOS(3_0)
 {
     if([viewController isMemberOfClass:[MTShotViewController class]])

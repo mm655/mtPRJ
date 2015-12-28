@@ -23,6 +23,8 @@
 #import "MTNetworkResponseBasePack.h"
 #import <MBProgressHUD.h>
 #import <SVProgressHUD.h>
+#import "MTAccountMgr.h"
+#import "MTAccountInfo.h"
 
 
 #define SCWidth [UIScreen mainScreen].bounds.size.width

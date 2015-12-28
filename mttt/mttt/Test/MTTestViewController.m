@@ -9,6 +9,8 @@
 #import "MTTestViewController.h"
 #import "CLBlurTool.h"
 #import "MTNetworkLogin.h"
+#import "MTTestEntity+CoreDataProperties.h"
+
 
 @interface MTTestViewController ()
 
@@ -76,17 +78,23 @@
 
 -(void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"userID == %@",@(1)];
+    MTTestEntity * ttt = [MTTestEntity MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_rootSavingContext]].firstObject;
+    if(ttt)
+    {
+        NSArray * aaa = [NSKeyedUnarchiver unarchiveObjectWithData:ttt.testA];
+        NSLog(@"already have array : %@",aaa);
+        return;
+    }
     
-    MTNetworkLogin * login = [MTNetworkLogin new];
-    
-    [login loginWithUserName:@"mengzhang655@gmail.com" andPassWord:@"1234" rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
-        ;
-    }];
-    
+    NSArray * tArray = @[@"1",@"2",@"3"];
+    MTTestEntity * entity = [MTTestEntity MR_createEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
+    entity.userID = @(1);
+    entity.testA = [NSKeyedArchiver archivedDataWithRootObject:tArray];
+    [[NSManagedObjectContext MR_rootSavingContext] save:nil];
     
     return;
-    
     
     UIImage * image = [UIImage imageNamed:@"login_pic1"];
     UIImage *mask = [CLImageEditorTheme imageNamed:[NSString stringWithFormat:@"%@/band.png", [self class]]];

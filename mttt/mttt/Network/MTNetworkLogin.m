@@ -31,25 +31,14 @@
             
             MTNetworkLoginResultPack * resultPack = [[MTNetworkLoginResultPack alloc] initWithDictionary:pack.result error:nil];
             
-            
-//            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-//                ;
-//            }];
-//            static BOOL a = NO;
-//            if(!a)
-//            {
-//                [MagicalRecord cleanUp];
-//                a = YES;
-//            }
-//            [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:resultPack.userInfo.userName];
+            [MagicalRecord cleanUp];
+            [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:resultPack.userInfo.userName];
             
             [MTUserInfoStorageManager setNewUserInfo:resultPack.userInfo];
-            block(MTNetworkResultTypeSuccess,nil);
-//            NSLog(@"result we get is : %@",resultPack);
+            block(MTNetworkResultTypeSuccess,resultPack.userInfo);
         }else{
             block(MTNetworkResultTypeError,pack.message);
         }
-        
         
     } failure:^(NSString *failString) {
         NSLog(@"error : %@",failString);

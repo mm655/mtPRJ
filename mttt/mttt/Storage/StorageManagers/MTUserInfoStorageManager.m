@@ -14,47 +14,26 @@
 +(void)setNewUserInfo:(MTUserInfoPack *)userInfo
 {
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"userID == %@",userInfo.userID];
-    UserInfo * info = [UserInfo MR_findAllWithPredicate:predicate].firstObject;
     
+    UserInfo * info = [UserInfo MR_findAllWithPredicate:predicate inContext:[self sharedContext]].firstObject;
+    
+//    UserInfo * info = [UserInfo MR_findAllWithPredicate:predicate].firstObject;
+    [info MR_inContext:[self sharedContext]];
     if(info == nil)
     {
-        info = [UserInfo MR_createEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
+        info = [UserInfo MR_createEntityInContext:[self sharedContext]];
     }
     
     [self setSInfo:info withPackInfo:userInfo];
     
-    if([NSManagedObjectContext MR_rootSavingContext].hasChanges)
+    NSError * error;
+    if([[self sharedContext] save:&error])
     {
-        NSLog(@"has change");
+//        NSLog(@"save success");
     }else{
-        NSLog(@"has no change");
+        NSLog(@"save error info is : %@",error.localizedDescription);
+        exit(1);
     }
-    
-    
-//    [[NSManagedObjectContext MR_defaultContext] save:nil];
-    if( [[NSManagedObjectContext MR_rootSavingContext] save:nil])
-    {
-        NSLog(@"save success");
-    }else{
-        NSLog(@"save error");
-    }
-   
-    
-    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-        NSError * error;
-        [localContext MR_saveToPersistentStoreAndWait];
-        [localContext save:&error];
-        if(error)
-        {
-            NSLog(@"%@",error.localizedDescription);
-            exit(1);
-        }
-        ;
-    }];
-    
-//    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-//        ;
-//    }];
 }
 
 +(MTUserInfoPack *)getUserInfoByID:(NSNumber *)userID
