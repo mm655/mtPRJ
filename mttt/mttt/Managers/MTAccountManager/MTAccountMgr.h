@@ -22,6 +22,14 @@
 +(NSArray *) getMainPageItemArray;
 +(void) setMainPageItemArray : (NSArray *) array;
 
++(NSArray *) getUserItemArray;
++(void) setUserItemArray : (NSArray *) array;
+
++(NSArray *) getNearbyItemArray;
++(void) setNearbyItemArray : (NSArray *) array;
+
+
+
 +(BOOL) isLogin;
 +(NSString *) userName;
 
