@@ -32,14 +32,15 @@
         self.window.rootViewController = [[MTLoginViewController alloc] init];
     }
     
-    self.window.rootViewController = [[MTMainTabViewController alloc] init];
+//    self.window.rootViewController = [[MTMainTabViewController alloc] init];
     
-    self.window.rootViewController = [MTTestViewController new];
+//    self.window.rootViewController = [MTTestViewController new];
     
     [self.window makeKeyAndVisible];
     
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"defaulaaat"];
     return YES;
 }
 

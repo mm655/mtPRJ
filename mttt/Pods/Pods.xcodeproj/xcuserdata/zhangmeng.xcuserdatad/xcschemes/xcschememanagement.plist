@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MagicalRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -30,6 +35,11 @@
 			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD-0.8.1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,12 +57,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>110655BEE7CCC2B514187532559DFA49</key>
+		<key>55DBDD8B7D446F1D618F303A9FB53209</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55DBDD8B7D446F1D618F303A9FB53209</key>
+		<key>79889814C8DE7D8722DEB45903AE54FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F63DA4E482E97C431AB3A518F1EC874</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C93B945B1FC8DA3333F6CBD02AE58A1</key>
+		<key>CB57216E080158264F0C9ACD41193AE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7ED6EECD80AFD347DEFC8CBA340A33B</key>
+		<key>D4D43F519E4EC70FFF08F40B12C1BF5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D54AB3ECEB9A8FBA15D4F73CBE326692</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE2F1D7B9D9FCEA148517E4657B243F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString <Optional> * message;
 @property (strong, nonatomic) NSNumber <Optional> * status;
+@property (strong, nonatomic) NSDictionary <Optional> * result;
 
 @end

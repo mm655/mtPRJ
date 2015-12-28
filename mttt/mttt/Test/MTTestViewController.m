@@ -8,7 +8,7 @@
 
 #import "MTTestViewController.h"
 #import "CLBlurTool.h"
-
+#import "MTNetworkLogin.h"
 
 @interface MTTestViewController ()
 
@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     
-//    return;
+    return;
     UIImageView * orgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
     orgImageView.image = [UIImage imageNamed:@"login_pic2"];
     [self.view addSubview:orgImageView];
@@ -77,6 +77,16 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    MTNetworkLogin * login = [MTNetworkLogin new];
+    
+    [login loginWithUserName:@"mengzhang655@gmail.com" andPassWord:@"1234" rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        ;
+    }];
+    
+    
+    return;
+    
     
     UIImage * image = [UIImage imageNamed:@"login_pic1"];
     UIImage *mask = [CLImageEditorTheme imageNamed:[NSString stringWithFormat:@"%@/band.png", [self class]]];

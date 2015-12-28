@@ -73,6 +73,13 @@
 		6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */; };
 		6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */; };
 		68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C7061C2FB506003FE4BB /* MTTestViewController.m */; };
+		68A0C70B1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */; };
+		68BB64E51C30D98200E7DA04 /* MTNetworkLoginResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */; };
+		68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E71C30DAF400E7DA04 /* MTUserInfoPack.m */; };
+		68BB64EB1C30DCE100E7DA04 /* MTMainModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E91C30DCE100E7DA04 /* MTMainModel.xcdatamodeld */; };
+		68BB64F01C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64ED1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m */; };
+		68BB64F11C30DD6500E7DA04 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64EF1C30DD6500E7DA04 /* UserInfo.m */; };
+		68BB64F51C30DDAF00E7DA04 /* MTUserInfoStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64F41C30DDAF00E7DA04 /* MTUserInfoStorageManager.m */; };
 		68C12E581C2D5D49005D6524 /* MTMsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C12E571C2D5D49005D6524 /* MTMsgTableViewCell.m */; };
 		68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1ABD1C2BCE9D001104FC /* MTNetworkBase.m */; };
 		68CC1AC11C2BCFFF001104FC /* MTNetworkHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CC1AC01C2BCFFF001104FC /* MTNetworkHttpSession.m */; };
@@ -219,6 +226,19 @@
 		6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainTableViewCell.m; sourceTree = "<group>"; };
 		68A0C7051C2FB506003FE4BB /* MTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestViewController.h; sourceTree = "<group>"; };
 		68A0C7061C2FB506003FE4BB /* MTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestViewController.m; sourceTree = "<group>"; };
+		68A0C7091C2FDBF8003FE4BB /* MTNetworkUpLoadPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkUpLoadPic.h; sourceTree = "<group>"; };
+		68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkUpLoadPic.m; sourceTree = "<group>"; };
+		68BB64E31C30D98200E7DA04 /* MTNetworkLoginResultPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkLoginResultPack.h; sourceTree = "<group>"; };
+		68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkLoginResultPack.m; sourceTree = "<group>"; };
+		68BB64E61C30DAF400E7DA04 /* MTUserInfoPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserInfoPack.h; sourceTree = "<group>"; };
+		68BB64E71C30DAF400E7DA04 /* MTUserInfoPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserInfoPack.m; sourceTree = "<group>"; };
+		68BB64EA1C30DCE100E7DA04 /* MTMainModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MTMainModel.xcdatamodel; sourceTree = "<group>"; };
+		68BB64EC1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		68BB64ED1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		68BB64EE1C30DD6500E7DA04 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		68BB64EF1C30DD6500E7DA04 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		68BB64F31C30DDAF00E7DA04 /* MTUserInfoStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserInfoStorageManager.h; sourceTree = "<group>"; };
+		68BB64F41C30DDAF00E7DA04 /* MTUserInfoStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserInfoStorageManager.m; sourceTree = "<group>"; };
 		68C12E561C2D5D49005D6524 /* MTMsgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMsgTableViewCell.h; sourceTree = "<group>"; };
 		68C12E571C2D5D49005D6524 /* MTMsgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMsgTableViewCell.m; sourceTree = "<group>"; };
 		68CC1ABC1C2BCE9D001104FC /* MTNetworkBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkBase.h; sourceTree = "<group>"; };
@@ -474,6 +494,12 @@
 		685CD2531C278F0B008F0A8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				68BB64F21C30DD9700E7DA04 /* StorageManagers */,
+				68BB64EC1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.h */,
+				68BB64ED1C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m */,
+				68BB64EE1C30DD6500E7DA04 /* UserInfo.h */,
+				68BB64EF1C30DD6500E7DA04 /* UserInfo.m */,
+				68BB64E91C30DCE100E7DA04 /* MTMainModel.xcdatamodeld */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -695,9 +721,28 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
+		68A0C7081C2FDBDB003FE4BB /* UpLoadPic */ = {
+			isa = PBXGroup;
+			children = (
+				68A0C7091C2FDBF8003FE4BB /* MTNetworkUpLoadPic.h */,
+				68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */,
+			);
+			name = UpLoadPic;
+			sourceTree = "<group>";
+		};
+		68BB64F21C30DD9700E7DA04 /* StorageManagers */ = {
+			isa = PBXGroup;
+			children = (
+				68BB64F31C30DDAF00E7DA04 /* MTUserInfoStorageManager.h */,
+				68BB64F41C30DDAF00E7DA04 /* MTUserInfoStorageManager.m */,
+			);
+			path = StorageManagers;
+			sourceTree = "<group>";
+		};
 		68CC1ABB1C2BCE8C001104FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				68A0C7081C2FDBDB003FE4BB /* UpLoadPic */,
 				68CC1AC91C2BDFED001104FC /* Regist */,
 				68CC1AC81C2BDF8D001104FC /* Login */,
 				68CC1ABC1C2BCE9D001104FC /* MTNetworkBase.h */,
@@ -715,6 +760,10 @@
 			children = (
 				68CC1AC21C2BD954001104FC /* MTNetworkLogin.h */,
 				68CC1AC31C2BD954001104FC /* MTNetworkLogin.m */,
+				68BB64E31C30D98200E7DA04 /* MTNetworkLoginResultPack.h */,
+				68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */,
+				68BB64E61C30DAF400E7DA04 /* MTUserInfoPack.h */,
+				68BB64E71C30DAF400E7DA04 /* MTUserInfoPack.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -891,6 +940,7 @@
 				685CD24C1C278E2E008F0A8A /* NSObject-Description.m in Sources */,
 				685CD2271C278AD5008F0A8A /* ViewController.m in Sources */,
 				687FDA821C2EC55100333CF2 /* CLCircleView.m in Sources */,
+				68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */,
 				680251DB1C2BA1E700ECEF64 /* MTFindViewController.m in Sources */,
 				680251D51C2BA1C100ECEF64 /* MTSettingViewController.m in Sources */,
 				687FDA831C2EC55100333CF2 /* CLColorPickerView.m in Sources */,
@@ -904,13 +954,16 @@
 				687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */,
 				687FDA701C2EC55100333CF2 /* CLBrightnessTool.m in Sources */,
 				687FDA801C2EC55100333CF2 /* CLSaturationTool.m in Sources */,
+				68BB64F01C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m in Sources */,
 				687FDA851C2EC55100333CF2 /* CLImageToolInfo+Private.m in Sources */,
 				687FDA6D1C2EC55100333CF2 /* CLImageToolInfo.m in Sources */,
 				680251DE1C2BA1FE00ECEF64 /* MTMsgViewController.m in Sources */,
 				687FDA841C2EC55100333CF2 /* CLImageEditorTheme+Private.m in Sources */,
 				687FDA6B1C2EC55100333CF2 /* CLImageEditor.m in Sources */,
+				68BB64F11C30DD6500E7DA04 /* UserInfo.m in Sources */,
 				68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */,
 				687FDA731C2EC55100333CF2 /* CLBloomEffect.m in Sources */,
+				68A0C70B1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m in Sources */,
 				68FCD39C1C28418600228CBB /* MTLoginViewController.m in Sources */,
 				687FDA791C2EC55100333CF2 /* CLSpotEffect.m in Sources */,
 				685CD2241C278AD5008F0A8A /* AppDelegate.m in Sources */,
@@ -920,11 +973,14 @@
 				687FDA7E1C2EC55100333CF2 /* CLImageToolBase.m in Sources */,
 				68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */,
 				687FDA811C2EC55100333CF2 /* CLToneCurveTool.m in Sources */,
+				68BB64F51C30DDAF00E7DA04 /* MTUserInfoStorageManager.m in Sources */,
 				687FDA8A1C2EC55100333CF2 /* UIDevice+SystemVersion.m in Sources */,
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
 				687FDA7A1C2EC55100333CF2 /* CLEffectBase.m in Sources */,
 				685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */,
 				687FDA891C2EC55100333CF2 /* CLSplineInterpolator.m in Sources */,
+				68BB64E51C30D98200E7DA04 /* MTNetworkLoginResultPack.m in Sources */,
+				68BB64EB1C30DCE100E7DA04 /* MTMainModel.xcdatamodeld in Sources */,
 				6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */,
 				680251D81C2BA1DB00ECEF64 /* MTShotViewController.m in Sources */,
 				687FDA771C2EC55100333CF2 /* CLPixellateEffect.m in Sources */,
@@ -1124,6 +1180,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		68BB64E91C30DCE100E7DA04 /* MTMainModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				68BB64EA1C30DCE100E7DA04 /* MTMainModel.xcdatamodel */,
+			);
+			currentVersion = 68BB64EA1C30DCE100E7DA04 /* MTMainModel.xcdatamodel */;
+			path = MTMainModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 685CD2141C278AD5008F0A8A /* Project object */;
 }

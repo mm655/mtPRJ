@@ -34,7 +34,9 @@
 
 +(void)logout
 {
-    MTAccountInfo * myInfo = [[MTAccountInfo alloc] init];
+//    MTAccountInfo * myInfo = [[MTAccountInfo alloc] init];
+    MTAccountInfo * myInfo = [self getLoginInfo];
+    myInfo.loginState = @(0);
     [NSKeyedArchiver archiveRootObject:myInfo toFile:[self getArchivePath]];
 }
 

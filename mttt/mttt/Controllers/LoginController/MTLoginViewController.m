@@ -13,6 +13,8 @@
 #import "MTNetworkRegist.h"
 #import "LoginTrangleView.h"
 #import "MTRegistConfirmViewController.h"
+#import "MTNetworkLogin.h"
+
 
 #define LoginUITag 10892
 #define RegistUITag 10992
@@ -273,6 +275,24 @@ typedef NS_ENUM(NSInteger,MTLRState)
 
 -(void) rlConfirmButtonClick : (UIButton *) button
 {
+    if(_curState == MTLRStateLoginState1 || _curState == MTLRStateLoginState2)
+    {
+        //login here
+        if(_userNameField.text.length == 0 || _passWordField.text.length == 0)
+        {
+            [SVProgressHUD showErrorWithStatus:@"请输入用户名和密码"];
+            return;
+        }
+        MTNetworkLogin * login = [MTNetworkLogin new];
+        [login loginWithUserName:_userNameField.text andPassWord:_passWordField.text rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+            ;
+        }];
+        
+    }
+    
+    
+    
+    
     MTRegistConfirmViewController * registConfirm = [MTRegistConfirmViewController new];
     UINavigationController * navC = [[UINavigationController alloc] initWithRootViewController:registConfirm];
     [self presentViewController:navC animated:YES completion:^{

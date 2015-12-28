@@ -21,6 +21,8 @@
 #import <ViewUtils.h>
 #import "MTNetworkHttpSession.h"
 #import "MTNetworkResponseBasePack.h"
+#import <MBProgressHUD.h>
+#import <SVProgressHUD.h>
 
 
 #define SCWidth [UIScreen mainScreen].bounds.size.width
