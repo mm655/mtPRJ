@@ -16,6 +16,7 @@
 #import "MTNetworkLogin.h"
 #import "MTUserInfoPack.h"
 #import "MTMainTabViewController.h"
+#import "MTFindPassViewController.h"
 
 #define LoginUITag 10892
 #define RegistUITag 10992
@@ -47,6 +48,8 @@ typedef NS_ENUM(NSInteger,MTLRState)
     
     UIButton * _registNext1;
     UIButton * _RLConfirmButton;
+    
+    UIButton * _findButton;
     
 }
 @end
@@ -123,7 +126,10 @@ typedef NS_ENUM(NSInteger,MTLRState)
     _registNext1.right = _emailField.right - 4;
     _registNext1.tag = RegistUITag;
     [_registNext1 addTarget:self action:@selector(registNextStep1) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_registNext1];
+//    [self.view addSubview:_registNext1];
+    
+    
+    
     
     _userNameField = [[UITextField alloc] initWithFrame:_emailField.frame];
     UILabel * uNLLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 54)];
@@ -136,6 +142,7 @@ typedef NS_ENUM(NSInteger,MTLRState)
     _userNameField.tag = LoginUITag;
     _userNameField.alpha = 0.0f;
     [self.view addSubview:_userNameField];
+    [self.view addSubview:_registNext1];
     
     _passWordField = [[UITextField alloc] initWithFrame:_emailField.frame];
     UILabel * pWLLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 54)];
@@ -149,6 +156,15 @@ typedef NS_ENUM(NSInteger,MTLRState)
     _passWordField.tag = LoginUITag;
     [self.view addSubview:_passWordField];
     _passWordField.alpha = 0.0f;
+    
+    _findButton = [[UIButton alloc] initWithFrame:_registNext1.frame];
+    [_findButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"忘记密码" attributes:@{NSForegroundColorAttributeName : MTRGBColor(9, 109, 187),NSFontAttributeName : [UIFont systemFontOfSize:14.0f]}] forState:UIControlStateNormal];
+    _findButton.y = _passWordField.y;
+    _findButton.width += 15;
+    _findButton.left -= 10;
+    _findButton.hidden = YES;
+    [self.view addSubview:_findButton];
+    [_findButton addTarget:self action:@selector(findButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     _backLine2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCWidth - 10, 1)];
     _backLine2.top = ceilf(_passWordField.bottom + 1);
@@ -190,8 +206,12 @@ typedef NS_ENUM(NSInteger,MTLRState)
             
             if(_curState != MTLRStateRegistState2 && _curState != MTLRStateRegistState1)
             {
+                _emailField.text = @"";
+                _userNameField.text = @"";
+                _passWordField.text = @"";
                 _RLConfirmButton.hidden = YES;
                 _curState = MTLRStateRegistState1;
+                _findButton.hidden = YES;
                 for(UIView * tmpView in [self.view subviews])
                 {
                     if(tmpView.tag == RegistUITag)
@@ -217,6 +237,10 @@ typedef NS_ENUM(NSInteger,MTLRState)
             if(_curState != MTLRStateLoginState1 && _curState != MTLRStateLoginState2)
             {
                 _RLConfirmButton.hidden = NO;
+                _emailField.text = @"";
+                _userNameField.text = @"";
+                _passWordField.text = @"";
+                _findButton.hidden = NO;
                 [_RLConfirmButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"登陆" attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont systemFontOfSize:20.0f]}] forState:UIControlStateNormal];
 
                 _curState = MTLRStateLoginState1;
@@ -259,6 +283,12 @@ typedef NS_ENUM(NSInteger,MTLRState)
 
 -(void) registNextStep1
 {
+    if(_emailField.text.length == 0)
+    {
+        [SVProgressHUD showErrorWithStatus:@"请输入注册邮箱"];
+        return;
+    }
+    
     _curState = MTLRStateRegistState2;
     for(UIView * tmpView in [self.view subviews])
     {
@@ -304,8 +334,6 @@ typedef NS_ENUM(NSInteger,MTLRState)
                 
 //                MTAccountInfo * aInfo = [MTAccountMgr getLoginInfo];
                 
-                
-                
                 [[UIApplication sharedApplication].delegate window].rootViewController = [MTMainTabViewController new];
                 [[[UIApplication sharedApplication].delegate window] makeKeyAndVisible];
             }else{
@@ -313,16 +341,31 @@ typedef NS_ENUM(NSInteger,MTLRState)
             }
             ;
         }];
+    }else{
+        if(_emailField.text.length == 0 || _userNameField.text.length == 0 || _passWordField.text.length == 0)
+        {
+            [SVProgressHUD showErrorWithStatus:@"请填写完整信息"];
+            return;
+        }
         
+        MTRegistConfirmViewController * registConfirm = [MTRegistConfirmViewController new];
+        registConfirm.emailAddress = _emailField.text;
+        registConfirm.userName = _userNameField.text;
+        registConfirm.passWord = _passWordField.text;
+        UINavigationController * navC = [[UINavigationController alloc] initWithRootViewController:registConfirm];
+        [self presentViewController:navC animated:YES completion:^{
+            ;
+        }];
     }
-    
-    MTRegistConfirmViewController * registConfirm = [MTRegistConfirmViewController new];
-    UINavigationController * navC = [[UINavigationController alloc] initWithRootViewController:registConfirm];
-    [self presentViewController:navC animated:YES completion:^{
-        ;
-    }];
 }
 
+
+-(void) findButtonClick
+{
+    NSLog(@"find button click");
+    MTFindPassViewController * findC = [MTFindPassViewController new];
+    [self presentViewController:findC animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

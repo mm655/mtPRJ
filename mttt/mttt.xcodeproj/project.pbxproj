@@ -86,6 +86,8 @@
 		68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C7061C2FB506003FE4BB /* MTTestViewController.m */; };
 		68A0C70B1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */; };
 		68A26E9E1C3271760050A93D /* MTDescriptionEidtorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A26E9D1C3271760050A93D /* MTDescriptionEidtorViewController.m */; };
+		68A26EA11C3295F90050A93D /* MTFindPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A26EA01C3295F90050A93D /* MTFindPassViewController.m */; };
+		68A26EA51C3299E00050A93D /* MTNetworkFindPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A26EA41C3299E00050A93D /* MTNetworkFindPass.m */; };
 		68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B36E091C315C81009A6A3E /* MTTableHeaderRefreshView.m */; };
 		68BB64E51C30D98200E7DA04 /* MTNetworkLoginResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */; };
 		68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E71C30DAF400E7DA04 /* MTUserInfoPack.m */; };
@@ -265,6 +267,10 @@
 		68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkUpLoadPic.m; sourceTree = "<group>"; };
 		68A26E9C1C3271760050A93D /* MTDescriptionEidtorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDescriptionEidtorViewController.h; sourceTree = "<group>"; };
 		68A26E9D1C3271760050A93D /* MTDescriptionEidtorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDescriptionEidtorViewController.m; sourceTree = "<group>"; };
+		68A26E9F1C3295F90050A93D /* MTFindPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFindPassViewController.h; sourceTree = "<group>"; };
+		68A26EA01C3295F90050A93D /* MTFindPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFindPassViewController.m; sourceTree = "<group>"; };
+		68A26EA31C3299E00050A93D /* MTNetworkFindPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkFindPass.h; sourceTree = "<group>"; };
+		68A26EA41C3299E00050A93D /* MTNetworkFindPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkFindPass.m; sourceTree = "<group>"; };
 		68B36E081C315C81009A6A3E /* MTTableHeaderRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTableHeaderRefreshView.h; sourceTree = "<group>"; };
 		68B36E091C315C81009A6A3E /* MTTableHeaderRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTableHeaderRefreshView.m; sourceTree = "<group>"; };
 		68BB64E31C30D98200E7DA04 /* MTNetworkLoginResultPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkLoginResultPack.h; sourceTree = "<group>"; };
@@ -809,6 +815,15 @@
 			name = UpLoadPic;
 			sourceTree = "<group>";
 		};
+		68A26EA21C3299C60050A93D /* FindPass */ = {
+			isa = PBXGroup;
+			children = (
+				68A26EA31C3299E00050A93D /* MTNetworkFindPass.h */,
+				68A26EA41C3299E00050A93D /* MTNetworkFindPass.m */,
+			);
+			name = FindPass;
+			sourceTree = "<group>";
+		};
 		68BB64F21C30DD9700E7DA04 /* StorageManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +838,7 @@
 		68CC1ABB1C2BCE8C001104FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				68A26EA21C3299C60050A93D /* FindPass */,
 				68A0C7081C2FDBDB003FE4BB /* UpLoadPic */,
 				68CC1AC91C2BDFED001104FC /* Regist */,
 				68CC1AC81C2BDF8D001104FC /* Login */,
@@ -876,6 +892,8 @@
 				68FCD39B1C28418600228CBB /* MTLoginViewController.m */,
 				68912D791C2CEC34006DA0E6 /* MTRegistConfirmViewController.h */,
 				68912D7A1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m */,
+				68A26E9F1C3295F90050A93D /* MTFindPassViewController.h */,
+				68A26EA01C3295F90050A93D /* MTFindPassViewController.m */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -1097,6 +1115,7 @@
 				687F5F5C1C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m in Sources */,
 				687FDA711C2EC55100333CF2 /* CLClippingTool.m in Sources */,
 				685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */,
+				68A26EA11C3295F90050A93D /* MTFindPassViewController.m in Sources */,
 				687F5F5D1C3117C900B97BE6 /* MTTestEntity.m in Sources */,
 				68CC1AC71C2BDCF2001104FC /* MTNetworkResponseBasePack.m in Sources */,
 				68912D7B1C2CEC34006DA0E6 /* MTRegistConfirmViewController.m in Sources */,
@@ -1105,6 +1124,7 @@
 				687FDA6C1C2EC55100333CF2 /* CLImageEditorTheme.m in Sources */,
 				687FDA7B1C2EC55100333CF2 /* CLEffectTool.m in Sources */,
 				687FDA781C2EC55100333CF2 /* CLPosterizeEffect.m in Sources */,
+				68A26EA51C3299E00050A93D /* MTNetworkFindPass.m in Sources */,
 				687FDA7F1C2EC55100333CF2 /* CLRotateTool.m in Sources */,
 				689EF7351C3232EA00397C92 /* MTBlurProcessor.m in Sources */,
 			);

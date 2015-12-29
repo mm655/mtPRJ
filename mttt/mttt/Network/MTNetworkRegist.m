@@ -17,9 +17,15 @@
         ;
     } success:^(NSObject *responseObj) {
         MTNetworkResponseBasePack * rB = [[MTNetworkResponseBasePack alloc] initWithDictionary:(NSDictionary *)responseObj error:nil];
-        NSLog(@"rS : %@",rB);
+        
+        if([rB.status boolValue] == YES)
+        {
+            block(MTNetworkResultTypeSuccess,rB.message);
+        }else{
+            block(MTNetworkResultTypeError,rB.message);
+        }
     } failure:^(NSString *failString) {
-        NSLog(@"failure : %@",failString);
+        block(MTNetworkResultTypeNetFail,failString);
     }];
 }
 

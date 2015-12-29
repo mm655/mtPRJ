@@ -10,4 +10,8 @@
 
 @interface MTRegistConfirmViewController : UIViewController
 
+@property (strong, nonatomic) NSString * emailAddress;
+@property (strong, nonatomic) NSString * userName;
+@property (strong, nonatomic) NSString * passWord;
+
 @end

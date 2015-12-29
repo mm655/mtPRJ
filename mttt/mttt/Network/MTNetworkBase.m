@@ -12,7 +12,7 @@ NSString * const MTNetworkBaseURL = @"http://motuapi.duapp.com/";
 NSString * const MTNetworkLoginURL = @"user/login";
 NSString * const MTNetworkRegistURL = @"user/regist";
 NSString * const MTUpPicture = @"picture/addPicture";
-
+NSString * const MTFindPass = @"user/findPWD";
 
 @implementation MTNetworkBase
 

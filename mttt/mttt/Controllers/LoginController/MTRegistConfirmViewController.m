@@ -7,12 +7,16 @@
 //
 
 #import "MTRegistConfirmViewController.h"
+#import "MTNetworkRegist.h"
+
 
 @interface MTRegistConfirmViewController ()
 {
     UITextField * _emailField;
     UITextField * _userNameField;
     UITextField * _passWordField;
+    
+//    UIButton * _findPassButton;
 }
 
 @end
@@ -52,7 +56,7 @@
     _emailField.leftView = eFLLabel;
     _emailField.leftViewMode = UITextFieldViewModeAlways;
     _emailField.backgroundColor = [UIColor clearColor];
-    _emailField.text = @"kimizhang655@126.com";
+    _emailField.text = self.emailAddress;
     _emailField.userInteractionEnabled = NO;
     [self.view addSubview:_emailField];
     
@@ -67,7 +71,7 @@
     _userNameField.leftView = uNLLabel;
     _userNameField.leftViewMode = UITextFieldViewModeAlways;
     _userNameField.backgroundColor = [UIColor clearColor];
-    _userNameField.text = @"日了狗了";
+    _userNameField.text = self.userName;
     _userNameField.userInteractionEnabled = NO;
     [self.view addSubview:_userNameField];
     
@@ -82,7 +86,7 @@
     _passWordField.leftView = pWLLabel;
     _passWordField.leftViewMode = UITextFieldViewModeAlways;
     _passWordField.backgroundColor = [UIColor clearColor];
-    _passWordField.text = @"123456";
+    _passWordField.text = self.passWord;
     [self.view addSubview:_passWordField];
     
     UIView * lineView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCWidth - 10, 1)];
@@ -103,11 +107,20 @@
     lineView3.top = _passWordField.bottom + 1;
     [self.view addSubview:lineView3];
     
+    UIButton * registConfirmButton = [[UIButton alloc] initWithFrame:CGRectMake(SCWidth - 20, 44, SCWidth - 20, 44)];
+    registConfirmButton.backgroundColor = MTGreen;
+    registConfirmButton.x = SCWidth / 2;
+    registConfirmButton.top = lineView3.bottom + 15;
+    registConfirmButton.layer.masksToBounds = YES;
+    registConfirmButton.layer.cornerRadius = 6;
+    [registConfirmButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"注 册" attributes:@{NSForegroundColorAttributeName : MTWhite, NSFontAttributeName : [UIFont systemFontOfSize:20.0f]}] forState:UIControlStateNormal];
+    [registConfirmButton addTarget:self action:@selector(registButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:registConfirmButton];
     
-    
-//    self.navigationController.navigationBar
-    
-    
+    _emailField.userInteractionEnabled = NO;
+    _userNameField.userInteractionEnabled = NO;
+    _passWordField.userInteractionEnabled = NO;
+    // self.navigationController.navigationBar
     // Do any additional setup after loading the view.
 }
 
@@ -123,6 +136,29 @@
     }];
 }
 
+-(void) registButtonClick
+{
+//    NSLog(@"regist click here");
+    MTNetworkRegist * regist = [MTNetworkRegist new];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [regist registWithEmail:_emailAddress userName:_userName passWord:_passWord interests:nil rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            [SVProgressHUD showSuccessWithStatus:(NSString *)addInfo];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [SVProgressHUD showErrorWithStatus:(NSString *)addInfo];
+        }
+        ;
+    }];
+}
+
+-(BOOL) prefersStatusBarHidden
+{
+    return NO;
+}
 
 /*
 #pragma mark - Navigation
