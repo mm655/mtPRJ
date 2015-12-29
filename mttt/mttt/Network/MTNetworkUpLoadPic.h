@@ -8,9 +8,11 @@
 
 #import "MTNetworkBase.h"
 
+typedef void (^cccBlock)(CGFloat completion,NSObject * addInfo);
+
 @interface MTNetworkUpLoadPic : MTNetworkBase
 
--(void) uploadPic : (UIImage *) pic userID : (NSNumber *) userID description : (NSString *) description block : (MTNetworkUniversalBlock) block;
+-(void) uploadPic : (UIImage *) pic userID : (NSNumber *) userID description : (NSString *) description block : (MTNetworkUniversalBlock) block cccBlock : (cccBlock)cccblock;
 
 
 @end

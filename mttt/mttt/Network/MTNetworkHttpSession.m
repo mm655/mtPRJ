@@ -10,7 +10,7 @@
 #import "MTNetworkBase.h"
 @implementation MTNetworkHttpSession
 
--(void)postWithSubURL:(NSString *)subURL params:(NSDictionary *)params constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))cBlock success:(void (^)(NSObject *))sBlock failure:(void (^)(NSString *))fBlock
+-(void)postWithSubURL:(NSString *)subURL params:(NSDictionary *)params constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))cBlock success:(void (^)(NSObject *))sBlock failure:(void (^)(NSString *))fBlock completeBlock:(MTHttpCompleteBlock)ccBlock
 {
     AFHTTPSessionManager * session = [[AFHTTPSessionManager alloc] init];
     
@@ -18,6 +18,9 @@
         cBlock(formData);
         ;
     } progress:^(NSProgress * _Nonnull uploadProgress) {
+//        uploadProgress.totalUnitCount
+        NSLog(@"%zi    %zi",uploadProgress.totalUnitCount, uploadProgress.completedUnitCount);
+        ccBlock((float)uploadProgress.completedUnitCount / (float)uploadProgress.totalUnitCount);
         ;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         sBlock(responseObject);

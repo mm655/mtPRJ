@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^MTHttpCompleteBlock)(CGFloat completion);
+
 @interface MTNetworkHttpSession : NSObject
 
 /**
@@ -16,10 +18,10 @@
  *  @brief mutipart网络请求
  *
  */
--(void) postWithSubURL : (NSString *) subURL params : (NSDictionary *) params constructingBodyWithBlock : (void (^)(id <AFMultipartFormData> formData))cBlock success : (void (^)(NSObject * responseObj))sBlock failure : (void (^)(NSString * failString))fBlock;
+-(void) postWithSubURL : (NSString *) subURL params : (NSDictionary *) params constructingBodyWithBlock : (void (^)(id <AFMultipartFormData> formData))cBlock success : (void (^)(NSObject * responseObj))sBlock failure : (void (^)(NSString * failString))fBlock completeBlock : (MTHttpCompleteBlock) ccBlock;
 
 
--(void) oPostWithSubURL : (NSString *) subURL params : (NSDictionary *) params constructingBodyWithBlock : (void (^)(id <AFMultipartFormData> formData))cBlock success : (void (^)(NSObject * responseObj))sBlock failure : (void (^)(NSString * failString))fBlock;
+-(void) oPostWithSubURL : (NSString *) subURL params : (NSDictionary *) params constructingBodyWithBlock : (void (^)(id <AFMultipartFormData> formData))cBlock success : (void (^)(NSObject * responseObj))sBlock failure : (void (^)(NSString * failString))fBlock ;
 
 
 

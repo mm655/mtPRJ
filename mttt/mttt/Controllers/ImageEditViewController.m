@@ -10,6 +10,8 @@
 #import "MTFilterCollectionView.h"
 #import "MTFilterFlowLayout.h"
 #import "MTBlurProcessor.h"
+#import "MTDescriptionEidtorViewController.h"
+
 
 typedef NS_ENUM(NSInteger, MTBlurState)
 {
@@ -223,7 +225,9 @@ typedef NS_ENUM(NSInteger, MTBlurState)
 
 -(void) nextStepClick
 {
-    
+    MTDescriptionEidtorViewController * dC = [MTDescriptionEidtorViewController new];
+    dC.finalImage = _mainImageView.image;
+    [self presentViewController:dC animated:YES completion:nil];
 }
 
 #pragma mark mtFilterProtocol

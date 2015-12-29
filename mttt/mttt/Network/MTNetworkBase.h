@@ -11,7 +11,7 @@
 extern NSString * const MTNetworkBaseURL;
 extern NSString * const MTNetworkLoginURL;
 extern NSString * const MTNetworkRegistURL;
-
+extern NSString * const MTUpPicture;
 typedef NS_ENUM(NSInteger, MTNetworkResultType)
 {
     MTNetworkResultTypeSuccess,
