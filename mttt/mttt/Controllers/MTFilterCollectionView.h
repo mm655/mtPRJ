@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MTFilterProtocol <NSObject>
+
+-(void) didUpDateSelectImage : (UIImage *) image;
+
+@end
+
 @interface MTFilterCollectionView : UICollectionView <UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (strong, nonatomic) UIImage * orgImage;
+@property (assign, nonatomic) id <MTFilterProtocol> mtDelegate;
 
 @end

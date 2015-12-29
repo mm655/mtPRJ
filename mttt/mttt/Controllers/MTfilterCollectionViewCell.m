@@ -65,7 +65,14 @@
     int curNum = [imageNum intValue] % 14;
 //    int curNum = 0;
 //    CLDefaultEmptyFilter * defaultFilter = [CLDefaultEmptyFilter new];
-    UIImage * orgImage = [UIImage imageNamed:@"login_pic2"];
+    UIImage * orgImage; //= [UIImage imageNamed:@"login_pic2"];
+    if(self.orgImage)
+    {
+        orgImage = self.orgImage;
+    }else
+    {
+        orgImage = [UIImage imageNamed:@"login_pic2"];
+    }
     
     UIImage * resultImage;
     switch (curNum) {

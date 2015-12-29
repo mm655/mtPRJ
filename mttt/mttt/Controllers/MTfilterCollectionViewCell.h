@@ -28,6 +28,8 @@
 }
 @property (strong, nonatomic) NSNumber * imageNum;
 
+@property (strong, nonatomic) UIImage * orgImage;
+
 @property (strong, nonatomic) UIImageView * mainImageView;
 @property (strong, nonatomic) UILabel * filterNameLabel;
 

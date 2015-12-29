@@ -27,9 +27,9 @@
     _preViewView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, SCWidth, SCWidth)];
     [self.view addSubview:_preViewView];
     _captureSession = [[AVCaptureSession alloc] init];
-    if([_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720])
+    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetMedium])
     {
-        [_captureSession setSessionPreset:AVCaptureSessionPreset1280x720];
+        [_captureSession setSessionPreset:AVCaptureSessionPresetMedium];
     }
     
     NSArray * myDeivices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -149,6 +149,7 @@
 -(void) pickImageFromAlbum
 {
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.allowsEditing = YES;
     [picker.navigationBar setBackgroundImage:[UIImage imageNamed:@"bigShadow"] forBarMetrics:UIBarMetricsCompact];
     UIView * tV = [[UIView alloc] initWithFrame:CGRectMake(0, -20, SCWidth, 64)];
     picker.navigationBar.tintColor = MTWhite;
@@ -175,8 +176,12 @@
 #pragma mark image picker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    NSLog(@"dic we get is : %@",info);
+//    NSLog(@"dic we get is : %@",info);
+    
     UIImage * orgImage = info[UIImagePickerControllerOriginalImage];
+    
+    orgImage = info[UIImagePickerControllerEditedImage];
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_alaButton setImage:orgImage forState:UIControlStateNormal];
     });
@@ -202,9 +207,103 @@
         NSData * imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage * image = [[UIImage alloc] initWithData:imageData];
         [_alaButton setImage:image forState:UIControlStateNormal];
+        
+        NSLog(@"imageSize is : %@",NSStringFromCGSize(image.size));
+        
+        CGImageRef cgimage = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, 360, 360));
+        
+        NSData * data = UIImageJPEGRepresentation(image, 1.0f);
+        
+        data = UIImagePNGRepresentation(image);
+        
+//        image.imageOrientation
+//        NSLog(@"orientation : %zi",image.imageOrientation);
+//        NSLog(@"%@",data);
+//        UIImage * newImage = [[UIImage alloc] initWithData:data];
+        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:[self fixOrientation:image]];
+        [self presentViewController:editController animated:NO completion:nil];
         ;
     }];
 }
+
+
+- (UIImage *)fixOrientation:(UIImage *)aImage {
+    
+    // No-op if the orientation is already correct
+    if (aImage.imageOrientation == UIImageOrientationUp)
+        return aImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        default:
+            break;
+    }
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        default:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, aImage.size.width, aImage.size.height,
+                                             CGImageGetBitsPerComponent(aImage.CGImage), 0,
+                                             CGImageGetColorSpace(aImage.CGImage),
+                                             CGImageGetBitmapInfo(aImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.height,aImage.size.width), aImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.width,aImage.size.height), aImage.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+
 
 
 /*

@@ -82,6 +82,7 @@
 		6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4831C2D28D200805C8E /* MTMsgNavViewController.m */; };
 		6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */; };
 		6891C48A1C2D2E2800805C8E /* MTMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */; };
+		689EF7351C3232EA00397C92 /* MTBlurProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 689EF7341C3232EA00397C92 /* MTBlurProcessor.m */; };
 		68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C7061C2FB506003FE4BB /* MTTestViewController.m */; };
 		68A0C70B1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A0C70A1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m */; };
 		68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B36E091C315C81009A6A3E /* MTTableHeaderRefreshView.m */; };
@@ -255,6 +256,8 @@
 		6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingNavViewController.m; sourceTree = "<group>"; };
 		6891C4881C2D2E2800805C8E /* MTMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainTableViewCell.h; sourceTree = "<group>"; };
 		6891C4891C2D2E2800805C8E /* MTMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainTableViewCell.m; sourceTree = "<group>"; };
+		689EF7331C3232EA00397C92 /* MTBlurProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBlurProcessor.h; sourceTree = "<group>"; };
+		689EF7341C3232EA00397C92 /* MTBlurProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBlurProcessor.m; sourceTree = "<group>"; };
 		68A0C7051C2FB506003FE4BB /* MTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTestViewController.h; sourceTree = "<group>"; };
 		68A0C7061C2FB506003FE4BB /* MTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTestViewController.m; sourceTree = "<group>"; };
 		68A0C7091C2FDBF8003FE4BB /* MTNetworkUpLoadPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkUpLoadPic.h; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				687FDA0B1C2EA92900333CF2 /* MTFilterCollectionView.m */,
 				687FDA0D1C2EAA0200333CF2 /* MTfilterCollectionViewCell.h */,
 				687FDA0E1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m */,
+				689EF7331C3232EA00397C92 /* MTBlurProcessor.h */,
+				689EF7341C3232EA00397C92 /* MTBlurProcessor.m */,
 			);
 			name = ShotController;
 			sourceTree = "<group>";
@@ -1095,6 +1100,7 @@
 				687FDA7B1C2EC55100333CF2 /* CLEffectTool.m in Sources */,
 				687FDA781C2EC55100333CF2 /* CLPosterizeEffect.m in Sources */,
 				687FDA7F1C2EC55100333CF2 /* CLRotateTool.m in Sources */,
+				689EF7351C3232EA00397C92 /* MTBlurProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
