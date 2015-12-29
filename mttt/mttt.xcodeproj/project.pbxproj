@@ -18,7 +18,6 @@
 		685CD2271C278AD5008F0A8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2261C278AD5008F0A8A /* ViewController.m */; };
 		685CD22A1C278AD5008F0A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685CD2281C278AD5008F0A8A /* Main.storyboard */; };
 		685CD22C1C278AD5008F0A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 685CD22B1C278AD5008F0A8A /* Assets.xcassets */; };
-		685CD22F1C278AD5008F0A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685CD22D1C278AD5008F0A8A /* LaunchScreen.storyboard */; };
 		685CD24B1C278E2E008F0A8A /* ConstraintUtilities-Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD23B1C278E2E008F0A8A /* ConstraintUtilities-Description.m */; };
 		685CD24C1C278E2E008F0A8A /* NSObject-Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD23D1C278E2E008F0A8A /* NSObject-Description.m */; };
 		685CD24D1C278E2E008F0A8A /* ConstraintUtilities-Install.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2401C278E2E008F0A8A /* ConstraintUtilities-Install.m */; };
@@ -120,7 +119,7 @@
 		680251DA1C2BA1E700ECEF64 /* MTFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFindViewController.m; sourceTree = "<group>"; };
 		680251DC1C2BA1FE00ECEF64 /* MTMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMsgViewController.h; sourceTree = "<group>"; };
 		680251DD1C2BA1FE00ECEF64 /* MTMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMsgViewController.m; sourceTree = "<group>"; };
-		685CD21C1C278AD5008F0A8A /* mttt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mttt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		685CD21C1C278AD5008F0A8A /* 陌图.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "陌图.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		685CD2201C278AD5008F0A8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		685CD2221C278AD5008F0A8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		685CD2231C278AD5008F0A8A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,7 +127,6 @@
 		685CD2261C278AD5008F0A8A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		685CD2291C278AD5008F0A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		685CD22B1C278AD5008F0A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		685CD22E1C278AD5008F0A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		685CD2301C278AD5008F0A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		685CD2381C278E2E008F0A8A /* Constrain_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constrain_Utility.h; sourceTree = "<group>"; };
 		685CD23A1C278E2E008F0A8A /* ConstraintUtilities-Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ConstraintUtilities-Description.h"; sourceTree = "<group>"; };
@@ -419,7 +417,7 @@
 		685CD21D1C278AD5008F0A8A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				685CD21C1C278AD5008F0A8A /* mttt.app */,
+				685CD21C1C278AD5008F0A8A /* 陌图.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -441,7 +439,6 @@
 				685CD2261C278AD5008F0A8A /* ViewController.m */,
 				685CD2281C278AD5008F0A8A /* Main.storyboard */,
 				685CD22B1C278AD5008F0A8A /* Assets.xcassets */,
-				685CD22D1C278AD5008F0A8A /* LaunchScreen.storyboard */,
 				685CD2301C278AD5008F0A8A /* Info.plist */,
 				685CD21F1C278AD5008F0A8A /* Supporting Files */,
 			);
@@ -931,7 +928,7 @@
 			);
 			name = mttt;
 			productName = mttt;
-			productReference = 685CD21C1C278AD5008F0A8A /* mttt.app */;
+			productReference = 685CD21C1C278AD5008F0A8A /* 陌图.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -972,7 +969,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				687FDA6E1C2EC55100333CF2 /* Localizable.strings in Resources */,
-				685CD22F1C278AD5008F0A8A /* LaunchScreen.storyboard in Resources */,
 				687FDA8E1C2EC55100333CF2 /* _CLImageEditorViewController.xib in Resources */,
 				687FDA6A1C2EC55100333CF2 /* CLImageEditor.bundle in Resources */,
 				685CD22C1C278AD5008F0A8A /* Assets.xcassets in Resources */,
@@ -1141,14 +1137,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		685CD22D1C278AD5008F0A8A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				685CD22E1C278AD5008F0A8A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		687FDA191C2EC55100333CF2 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1245,13 +1233,14 @@
 			baseConfigurationReference = D95DDCC2A56CA0C68B2A7B8C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shenlin Zhan (58H2PDY64K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.motu.mttt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "陌图";
 				PROVISIONING_PROFILE = "4bd74f4f-3c5b-4494-b36b-9d5e532f206d";
 			};
 			name = Debug;
@@ -1261,13 +1250,14 @@
 			baseConfigurationReference = 5BAE9CF27CE537966CB247D4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shenlin Zhan (58H2PDY64K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mttt/mtttPCH.pch;
 				INFOPLIST_FILE = mttt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.motu.mttt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "陌图";
 				PROVISIONING_PROFILE = "4bd74f4f-3c5b-4494-b36b-9d5e532f206d";
 			};
 			name = Release;
