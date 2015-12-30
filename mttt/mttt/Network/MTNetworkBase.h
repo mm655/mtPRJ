@@ -16,6 +16,8 @@ extern NSString * const MTFindPass;
 extern NSString * const MTUpdateUserInfo;
 extern NSString * const MTGetUserInfo;
 extern NSString * const MTChangePassword;
+extern NSString * const MTGetMainList;
+extern NSString * const MTGetAllPictureList;
 
 typedef NS_ENUM(NSInteger, MTNetworkResultType)
 {

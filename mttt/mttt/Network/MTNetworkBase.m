@@ -16,7 +16,8 @@ NSString * const MTFindPass = @"user/findPWD";
 NSString * const MTUpdateUserInfo = @"user/updateUserInfo";
 NSString * const MTGetUserInfo = @"user/getUserInfoById";
 NSString * const MTChangePassword = @"user/changePassword";
-
+NSString * const MTGetMainList = @"picture/queryPictureListIFocus";
+NSString * const MTGetAllPictureList = @"picture/queryAllPictureList";
 
 
 @implementation MTNetworkBase

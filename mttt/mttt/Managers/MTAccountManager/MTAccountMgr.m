@@ -56,6 +56,12 @@
     return info.userName;
 }
 
++(NSNumber *) userID
+{
+    MTAccountInfo * info = [MTAccountMgr getLoginInfo];
+    return info.userID;
+}
+
 +(NSArray *)getMainPageItemArray
 {
     if([self isLogin])

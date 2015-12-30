@@ -32,5 +32,6 @@
 
 +(BOOL) isLogin;
 +(NSString *) userName;
++(NSNumber *) userID;
 
 @end

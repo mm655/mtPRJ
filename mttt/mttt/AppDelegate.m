@@ -39,7 +39,7 @@
     
 //    self.window.rootViewController = [[MTMainTabViewController alloc] init];
     
-    self.window.rootViewController = [MTTestViewController new];
+//    self.window.rootViewController = [MTTestViewController new];
     
     [self.window makeKeyAndVisible];
     

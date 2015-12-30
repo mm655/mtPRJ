@@ -9,19 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface MTMainTableViewCell : UITableViewCell
-{
-    UIImageView * _headImageView;
-    UILabel * _nameLabel;
-    UIButton * _focusButton;
-    UIImageView * _mainImageView;
-    UITextField * _zanField;
-    UITextField * _pingField;
-    UIButton * _jubaoButton;
+@property (strong, nonatomic)    UIImageView * headImageView;
+@property (strong, nonatomic)    UILabel * nameLabel;
+@property (strong, nonatomic)    UIButton * focusButton;
+@property (strong, nonatomic)    UIImageView * mainImageView;
+@property (strong, nonatomic)    UITextField * zanField;
+@property (strong, nonatomic)    UITextField * pingField;
+@property (strong, nonatomic)    UIButton * jubaoButton;
     
-    UILabel * _distanceLabel;
-    UILabel * _timeLabel;
-    
-}
+@property (strong, nonatomic)    UILabel * distanceLabel;
+@property (strong, nonatomic)    UILabel * timeLabel;
+
 @end
 
 

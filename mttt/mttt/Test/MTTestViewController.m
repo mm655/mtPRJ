@@ -13,6 +13,8 @@
 #import "MTNetworkUpdateUserInfo.h"
 #import "MTNetworkGetUserInfo.h"
 #import "MTNetworkChangePassword.h"
+#import "MTNetworkGetMainList.h"
+#import "MTNetworkGetAllPictureList.h"
 
 @interface MTTestViewController ()
 
@@ -33,7 +35,17 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
+    [getMainList getMainListByUserID:@(45) andBeginPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        ;
+    }];
+//    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+//    [getAll getAllPictureByPage:@(0) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+//        ;
+//    }];
 }
+
 
 
 - (void)didReceiveMemoryWarning {

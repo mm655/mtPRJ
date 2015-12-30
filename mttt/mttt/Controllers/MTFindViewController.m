@@ -72,8 +72,6 @@
     self.userTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
-    
-//    [self.view insertSubview:tableView belowSubview:self.userTableView];
     [self.view addSubview:tableView];
     
     // Do any additional setup after loading the view.

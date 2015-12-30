@@ -8,12 +8,16 @@
 
 #import "MTMainViewController.h"
 #import "MTMainTableViewCell.h"
+#import "MTNetworkGetMainList.h"
+#import "MTPicInfoPack.h"
+#import "MTTableHeaderRefreshView.h"
 
-@interface MTMainViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface MTMainViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     UITableView * _mainTableView;
     NSMutableArray * _mainItemArray;
     UIView * _nothingShadowView;
+    int _curPage;
 }
 @end
 
@@ -23,7 +27,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"陌图";
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
+//    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
+    
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44) style:UITableViewStyleGrouped];
+    _mainTableView.contentOffset = CGPointMake(0, 44);
     _mainTableView.backgroundColor = [UIColor orangeColor];
     _mainTableView.delegate   = self;
     _mainTableView.dataSource = self;
@@ -51,13 +58,26 @@
         [enterFindButton addTarget:self action:@selector(enterFindButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    
-
+    [self updateMainTable];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    
+    dispatch_async(queue, ^{
+        if(_mainItemArray.count != 0)
+        {
+            [MTAccountMgr setMainPageItemArray:[_mainItemArray copy]];
+        }
+        ;
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +95,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _mainItemArray ? _mainItemArray.count : 0;
 }
 
 -(BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,25 +108,74 @@
     return 130 + SCWidth;
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    MTTableHeaderRefreshView * tV = [[MTTableHeaderRefreshView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, 44)];
+    tV.backgroundColor = MTGray;
+    return tV;
+}
+
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MTMainTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MainCell"];
 
-    if(indexPath.row % 2)
-    {
-        cell.backgroundColor = [UIColor orangeColor];
-    }else{
-        cell.backgroundColor = [UIColor greenColor];
-    }
+    MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:indexPath.row];
+    
+    [cell.mainImageView sd_setImageWithURL:[NSURL URLWithString:infoPack.pictureUrl]];
+    
     return cell;
 }
 
-
+#pragma mark end
 -(void)enterFindButtonClick
 {
     [self.navigationController.tabBarController setSelectedIndex:1];
 }
 
+-(void) updateMainTable
+{
+    MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
+    [getMainList getMainListByUserID:[MTAccountMgr userID] andBeginPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        NSArray * tmpArray = (NSArray *)addInfo;
+        if(tmpArray.count != 0)
+        {
+            _curPage = 1;
+            if(_nothingShadowView)
+            {
+                [_nothingShadowView removeFromSuperview];
+                _nothingShadowView = nil;
+            }
+            _mainItemArray = [tmpArray mutableCopy];
+            
+            [_mainTableView reloadData];
+        }
+        ;
+    }];
+}
+
+#pragma mark scrollview delegate
+
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if(scrollView.contentOffset.y < 0)
+    {
+        targetContentOffset->y = 0;
+        [[NSNotificationCenter defaultCenter] postNotificationName:MTStartRefreshing object:nil];
+    }else if(scrollView.contentOffset.y > 44){
+        if(targetContentOffset->y < 44)
+        {
+            targetContentOffset->y = 44;
+        }
+    }else{
+        targetContentOffset->y = 44;
+    }
+//    NSLog(@"target y : %f",targetContentOffset->y);
+}
 /*
 #pragma mark - Navigation
 
