@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "685CD21B1C278AD5008F0A8A"
-               BuildableName = "mttt.app"
+               BuildableName = "&#x964c;&#x56fe;.app"
                BlueprintName = "mttt"
                ReferencedContainer = "container:mttt.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "685CD21B1C278AD5008F0A8A"
-            BuildableName = "mttt.app"
+            BuildableName = "&#x964c;&#x56fe;.app"
             BlueprintName = "mttt"
             ReferencedContainer = "container:mttt.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "685CD21B1C278AD5008F0A8A"
-            BuildableName = "mttt.app"
+            BuildableName = "&#x964c;&#x56fe;.app"
             BlueprintName = "mttt"
             ReferencedContainer = "container:mttt.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "685CD21B1C278AD5008F0A8A"
-            BuildableName = "mttt.app"
+            BuildableName = "&#x964c;&#x56fe;.app"
             BlueprintName = "mttt"
             ReferencedContainer = "container:mttt.xcodeproj">
          </BuildableReference>

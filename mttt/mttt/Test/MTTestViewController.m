@@ -10,7 +10,9 @@
 #import "CLBlurTool.h"
 #import "MTNetworkLogin.h"
 #import "MTTestEntity+CoreDataProperties.h"
-
+#import "MTNetworkUpdateUserInfo.h"
+#import "MTNetworkGetUserInfo.h"
+#import "MTNetworkChangePassword.h"
 
 @interface MTTestViewController ()
 
@@ -20,99 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    return;
-    UIImageView * orgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    orgImageView.image = [UIImage imageNamed:@"login_pic2"];
-    [self.view addSubview:orgImageView];
-    
-    UIImageView * rstImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 200, 200, 200)];
-    [self.view addSubview:rstImageView];
-    
-    CLBlurTool * tT = [CLBlurTool new];
-    tT.originalImage = orgImageView.image;
-    tT.blurSlider = [UISlider new];
-    tT.blurSlider.value = 0.8f;
-    tT.blurType = kCLBlurTypeCircle;
-    
-    CLBlurBand * bView = [[CLBlurBand alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    bView.color = MTBlack;
-    bView.scale = 1.0f;
-    bView.offset = 0;
-    tT.bandImageRect = CGRectMake(-100, -200, 400, 400);
-    tT.bandView = bView;
-    
-    
-    CLBlurCircle * cView = [[CLBlurCircle alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    tT.circleView = cView;
-    
-    [tT executeWithCompletionBlock:^(UIImage *image, NSError *error, NSDictionary *userInfo) {
-        rstImageView.image = image;
-        ;
-    }];
     // Do any additional setup after loading the view.
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    UIImage * orgImage = [UIImage imageNamed:@"login_pic1"];
-//    
-//    UIGraphicsBeginImageContext(CGSizeMake(100, 100));
-//    
-//    CGContextRef context =  UIGraphicsGetCurrentContext();
-//    
-//    [orgImage drawInRect:CGRectMake(-50, -50, 150, 150)];
-//    UIImage * resultIamge = UIGraphicsGetImageFromCurrentImageContext();
-//    
-//    CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
-//    CGContextFillRect(context, CGRectMake(0, 0, 20, 20));
-//    
-//    
-////    CGContextRestoreGState(context);
-//    
-//    UIGraphicsEndImageContext();
-
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
-
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"userID == %@",@(1)];
-    MTTestEntity * ttt = [MTTestEntity MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_rootSavingContext]].firstObject;
-    if(ttt)
-    {
-        NSArray * aaa = [NSKeyedUnarchiver unarchiveObjectWithData:ttt.testA];
-        NSLog(@"already have array : %@",aaa);
-        return;
-    }
-    
-    NSArray * tArray = @[@"1",@"2",@"3"];
-    MTTestEntity * entity = [MTTestEntity MR_createEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
-    entity.userID = @(1);
-    entity.testA = [NSKeyedArchiver archivedDataWithRootObject:tArray];
-    [[NSManagedObjectContext MR_rootSavingContext] save:nil];
-    
-    return;
-    
-    UIImage * image = [UIImage imageNamed:@"login_pic1"];
-    UIImage *mask = [CLImageEditorTheme imageNamed:[NSString stringWithFormat:@"%@/band.png", [self class]]];
-    
-    UIGraphicsBeginImageContext(image.size);
-    
-    
-    CGRect rct = CGRectMake(0, 0, 100, 100);
-    
-    
-    [mask drawInRect:rct];
-    
-    //        CGContextRestoreGState(context);
-    
-    mask = UIGraphicsGetImageFromCurrentImageContext();
-
-    UIGraphicsEndImageContext();
-
+    [super viewDidAppear:animated];
 }
 
 

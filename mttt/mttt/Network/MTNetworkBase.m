@@ -13,6 +13,11 @@ NSString * const MTNetworkLoginURL = @"user/login";
 NSString * const MTNetworkRegistURL = @"user/regist";
 NSString * const MTUpPicture = @"picture/addPicture";
 NSString * const MTFindPass = @"user/findPWD";
+NSString * const MTUpdateUserInfo = @"user/updateUserInfo";
+NSString * const MTGetUserInfo = @"user/getUserInfoById";
+NSString * const MTChangePassword = @"user/changePassword";
+
+
 
 @implementation MTNetworkBase
 

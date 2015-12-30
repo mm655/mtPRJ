@@ -27,8 +27,6 @@
         if([pack.status boolValue] == YES)
         {
             //restore storage here
-
-            
             MTNetworkLoginResultPack * resultPack = [[MTNetworkLoginResultPack alloc] initWithDictionary:pack.result error:nil];
             
             [MagicalRecord cleanUp];
