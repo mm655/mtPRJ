@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTTableHeaderRefreshView : UIView
+@interface MTTableHeaderRefreshView : UICollectionReusableView 
 
 @property (strong, nonatomic) UIActivityIndicatorView * indicateView;
 

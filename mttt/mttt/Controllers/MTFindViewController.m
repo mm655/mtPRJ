@@ -14,10 +14,17 @@
 #import "MTUserTableViewCell.h"
 #import "MTTableHeaderRefreshView.h"
 #import "MTPull2RefreshState.h"
-
+#import "MTNetworkGetAllPictureList.h"
 
 @interface MTFindViewController () <UICollectionViewDataSource, UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
-
+{
+    int _nearbyPage;
+    int _userPage;
+    BOOL _isAddingMoreUser;
+    BOOL _isAddingMoreNearby;
+    NSMutableArray * _nearbyArray;
+    NSMutableArray * _userArray;
+}
 @property (strong, nonatomic) UIView * whiteLineView;
 @property (strong, nonatomic) MTNearbyCollectionView * nearByCollectionView;
 @property (strong, nonatomic) MTUserTableView * userTableView;
@@ -31,6 +38,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITableView * fakeTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight) style:UITableViewStyleGrouped];
+    [self.view addSubview:fakeTable];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton * leftNearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCWidth / 2, 40)];
@@ -58,7 +69,7 @@
     [self.navigationController.view addSubview:self.whiteLineView];
     
     MTNearbyCollectionViewLayout * nearLayout = [MTNearbyCollectionViewLayout new];
-    MTNearbyCollectionView * nearView = [[MTNearbyCollectionView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44) collectionViewLayout:nearLayout];
+    MTNearbyCollectionView * nearView = [[MTNearbyCollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) collectionViewLayout:nearLayout];
     nearView.backgroundColor = [UIColor blueColor];
     nearView.delegate = self;
     nearView.dataSource = self;
@@ -74,7 +85,34 @@
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     
+    _nearbyArray = [[MTAccountMgr getNearbyItemArray] mutableCopy];
+    _userArray = [[MTAccountMgr getUserItemArray] mutableCopy];
+    if(!_nearbyArray)
+    {
+        _nearbyArray = [NSMutableArray array];
+    }
+    if(!_userArray)
+    {
+        _userArray = [NSMutableArray array];
+    }
+    
     // Do any additional setup after loading the view.
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [MTAccountMgr setNearbyItemArray:_nearbyArray];
+        [MTAccountMgr setUserItemArray:_userArray];
+        ;
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,16 +122,37 @@
 
 -(void) topButtonClick : (UIButton *)button
 {
-    NSLog(@"top button click here");
+    if(button.tag == 1000)
+    {
+        _whiteLineView.left = 10;
+        [UIView animateWithDuration:0.2 animations:^{
+            _userTableView.left = -SCWidth;
+            _nearByCollectionView.left = 0;
+        }];
+    }else{
+        _whiteLineView.right = SCWidth - 10;
+        [UIView animateWithDuration:0.2 animations:^{
+            _userTableView.left = 0;
+            _nearByCollectionView.left = SCWidth;
+        }];
+    }
+    
+    
 }
 
 
 #pragma mark collectionview datasource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    [collectionView registerClass:[MTTableHeaderRefreshView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeader"];
+    return 1;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     [collectionView registerClass:[MTNearbyCollectionViewCell class] forCellWithReuseIdentifier:@"myCollectionViewCell"];
-    return 10;
+    return 100;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -102,10 +161,17 @@
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    return 1;
+//    NSLog(@"kind is : %@",kind);
+//    MTTableHeaderRefreshView * tV = [MTTableHeaderRefreshView new];
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"collectionHeader" forIndexPath:indexPath];
 }
+
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+//{
+//    return 1;
+//}
 #pragma mark end
 
 #pragma mark tableview datasource
@@ -170,12 +236,79 @@
         targetContentOffset->y = 44;
     }
     
-//    NSLog(@"scroll view will end dragging");
-//    NSLog(@"cur offset : %f   target offset : %f",scrollView.contentOffset.y,targetContentOffset->y);
 }
 
+-(void) updateUserArray
+{
+    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            _userPage = 1;
+            _userArray = (NSMutableArray *)addInfo;
+            [_userTableView reloadData];
+            if(_userTableView.contentOffset.y < 44)
+            {
+                [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+            }
+        }
+        ;
+    }];
+}
 
+-(void) updateNearbyArray
+{
+    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            _nearbyPage = 1;
+            _nearbyArray = (NSMutableArray *)addInfo;
+            [_nearByCollectionView reloadData];
+            if(_nearByCollectionView.contentOffset.y < 44)
+            {
+                [_nearByCollectionView setContentOffset:CGPointMake(0, 44) animated:YES];
+            }
+        }
+        ;
+    }];
+}
 
+-(void) addMoreUser
+{
+    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+    [getAll getAllPictureByPage:@(_userPage + 1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            _userPage += 1;
+            [_userArray addObjectsFromArray:(NSMutableArray *)addInfo];
+            [_userTableView reloadData];
+            if(_userTableView.contentOffset.y < 44)
+            {
+                [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+            }
+        }
+        ;
+    }];
+}
+
+-(void) addMoreNearby
+{
+    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+    [getAll getAllPictureByPage:@(_nearbyPage + 1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            _nearbyPage += 1;
+            [_nearbyArray addObjectsFromArray:(NSMutableArray *)addInfo];
+            [_nearByCollectionView reloadData];
+            if(_nearByCollectionView.contentOffset.y < 44)
+            {
+                [_nearByCollectionView setContentOffset:CGPointMake(0, 44) animated:YES];
+            }
+        }
+        ;
+    }];
+}
 
 // The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
 //- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath

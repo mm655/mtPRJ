@@ -7,7 +7,7 @@
 //
 
 #import "MTNetworkGetAllPictureList.h"
-
+#import "MTPicInfoPack.h"
 @implementation MTNetworkGetAllPictureList
 
 
@@ -19,10 +19,24 @@
         ;
     } success:^(NSObject *responseObj) {
         MTNetworkResponseBasePack * pack = [[MTNetworkResponseBasePack alloc] initWithDictionary:(NSDictionary *)responseObj error:nil];
-        NSLog(@"%@",pack);
+//        NSLog(@"%@",pack);
+        if([pack.status boolValue] == YES)
+        {
+            NSMutableArray * rstArray = [NSMutableArray array];
+            for(NSDictionary * tmpDic in pack.result[@"picList"])
+            {
+                MTPicInfoPack * infoPack = [[MTPicInfoPack alloc] initWithDictionary:tmpDic error:nil];
+                [rstArray addObject:infoPack];
+            }
+            
+            block(MTNetworkResultTypeSuccess,rstArray);
+        }else{
+            block(MTNetworkResultTypeError, pack.message);
+        }
         ;
     } failure:^(NSString *failString) {
-        NSLog(@"failString : %@",failString);
+        block(MTNetworkResultTypeNetFail, failString);
+//        NSLog(@"failString : %@",failString);
     }];
 }
 

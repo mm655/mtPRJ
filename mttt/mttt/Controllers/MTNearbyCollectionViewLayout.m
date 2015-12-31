@@ -19,7 +19,7 @@ static float nearByMargin = 2;
     self.itemSize = CGSizeMake(width, width);
     self.minimumInteritemSpacing = 0;
     self.minimumLineSpacing = nearByMargin;
-    self.headerReferenceSize = CGSizeMake(SCWidth, 0);
+    self.headerReferenceSize = CGSizeMake(SCWidth, 44);
     self.footerReferenceSize = CGSizeMake(SCWidth, 0);
     return self;
 }

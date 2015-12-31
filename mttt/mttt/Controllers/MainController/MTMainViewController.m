@@ -18,6 +18,7 @@
     NSMutableArray * _mainItemArray;
     UIView * _nothingShadowView;
     int _curPage;
+    BOOL _isAddingMore;
 }
 @end
 
@@ -25,13 +26,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITableView * fakeTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight) style:UITableViewStyleGrouped];
+    [self.view addSubview:fakeTable];
+    
+    _isAddingMore = NO;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"陌图";
 //    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
     
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44) style:UITableViewStyleGrouped];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
     _mainTableView.contentOffset = CGPointMake(0, 44);
-    _mainTableView.backgroundColor = [UIColor orangeColor];
+    _mainTableView.backgroundColor = [UIColor lightGrayColor];
     _mainTableView.delegate   = self;
     _mainTableView.dataSource = self;
     _mainItemArray = [[MTAccountMgr getMainPageItemArray] mutableCopy];
@@ -127,6 +134,9 @@
     MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:indexPath.row];
     
     [cell.mainImageView sd_setImageWithURL:[NSURL URLWithString:infoPack.pictureUrl]];
+    cell.nameLabel.text = infoPack.user.userName;
+    cell.zanField.text = [NSString stringWithFormat:@"%zi",infoPack.praiseCount.intValue];
+    cell.pingField.text = [NSString stringWithFormat:@"%zi",infoPack.comment.count];
     
     return cell;
 }
@@ -141,6 +151,17 @@
 {
     MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
     [getMainList getMainListByUserID:[MTAccountMgr userID] andBeginPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MTEndRefreshing object:nil];
+        if(_mainTableView.contentOffset.y < 44)
+        {
+            //                [_mainTableView setContentOffset:CGPointMake(0, 44)];
+            [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+            
+        }
+        if(resultType != MTNetworkResultTypeSuccess)
+        {
+            return;
+        }
         NSArray * tmpArray = (NSArray *)addInfo;
         if(tmpArray.count != 0)
         {
@@ -151,12 +172,49 @@
                 _nothingShadowView = nil;
             }
             _mainItemArray = [tmpArray mutableCopy];
-            
             [_mainTableView reloadData];
         }
         ;
     }];
 }
+
+-(void) getMoreMainTable
+{
+    MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
+//    _curPage += 1;
+    [getMainList getMainListByUserID:[MTAccountMgr userID] andBeginPage: @(_curPage+1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MTEndRefreshing object:nil];
+        _isAddingMore = NO;
+        NSArray * tmpArray = (NSArray *)addInfo;
+        if(tmpArray.count != 0)
+        {
+            _curPage += 1;
+            if(_nothingShadowView)
+            {
+                [_nothingShadowView removeFromSuperview];
+                _nothingShadowView = nil;
+            }
+//            _mainItemArray = [tmpArray mutableCopy];
+            if(_mainItemArray)
+            {
+                [_mainItemArray addObjectsFromArray:tmpArray];
+            }
+            
+            [_mainTableView reloadData];
+            
+            if(_mainTableView.contentOffset.y < 44)
+            {
+                //                [_mainTableView setContentOffset:CGPointMake(0, 44)];
+                [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+                
+            }
+        }
+        ;
+    }];
+ 
+}
+
+
 
 #pragma mark scrollview delegate
 
@@ -166,6 +224,7 @@
     {
         targetContentOffset->y = 0;
         [[NSNotificationCenter defaultCenter] postNotificationName:MTStartRefreshing object:nil];
+        [self updateMainTable];
     }else if(scrollView.contentOffset.y > 44){
         if(targetContentOffset->y < 44)
         {
@@ -174,8 +233,18 @@
     }else{
         targetContentOffset->y = 44;
     }
+    
+    if(scrollView.contentOffset.y > scrollView.contentSize.height - 1000)
+    {
+        _isAddingMore = YES;
+        [self getMoreMainTable];
+    }
+    
+    
 //    NSLog(@"target y : %f",targetContentOffset->y);
 }
+
+
 /*
 #pragma mark - Navigation
 
