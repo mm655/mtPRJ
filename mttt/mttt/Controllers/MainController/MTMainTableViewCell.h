@@ -20,6 +20,13 @@
 @property (strong, nonatomic)    UILabel * distanceLabel;
 @property (strong, nonatomic)    UILabel * timeLabel;
 
+@property (strong, nonatomic) NSNumber * cellId;
+
+@property (strong, nonatomic) UITextView * pingView1;
+@property (strong, nonatomic) UITextView * pingView2;
+@property (strong, nonatomic) UITextView * pingView3;
+
+@property (strong, nonatomic) NSArray * commentArray;
 @end
 
 

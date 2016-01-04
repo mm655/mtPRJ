@@ -39,6 +39,15 @@
 #define MTStartRefreshing @"addByZM_MTStartRefreshing"
 #define MTEndRefreshing @"addByZM_MTEndRefreshing"
 
+#define MTMainCellFocusNotification @"addByZM_MTMainCellFocusNotification"
+#define MTMainCellZanNotification @"addByZM_MTMainCellZanNotification"
+#define MTMainCellDetailNotification @"addByZM_MTMainCellDetailNotification"
+#define MTMainCellUserNotification @"addByZM_MTMainCellDetailNotification"
+#define MTMainCellJubaoNotification @"addByZM_MTMainCellJubaoNotification"
+
+
+
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

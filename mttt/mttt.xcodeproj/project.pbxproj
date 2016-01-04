@@ -105,6 +105,7 @@
 		68B222081C33B7D5005D7C9D /* MTNetworkGetMainListResponseTopPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B222071C33B7D5005D7C9D /* MTNetworkGetMainListResponseTopPack.m */; };
 		68B2220B1C33B806005D7C9D /* MTNetworkGetMainListResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B2220A1C33B806005D7C9D /* MTNetworkGetMainListResultPack.m */; };
 		68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B36E091C315C81009A6A3E /* MTTableHeaderRefreshView.m */; };
+		68BAD40E1C3A8AE700257D8D /* MTCommentPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BAD40D1C3A8AE700257D8D /* MTCommentPack.m */; };
 		68BB64E51C30D98200E7DA04 /* MTNetworkLoginResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */; };
 		68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E71C30DAF400E7DA04 /* MTUserInfoPack.m */; };
 		68BB64EB1C30DCE100E7DA04 /* MTMainModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68BB64E91C30DCE100E7DA04 /* MTMainModel.xcdatamodeld */; };
@@ -322,6 +323,8 @@
 		68B2220A1C33B806005D7C9D /* MTNetworkGetMainListResultPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetMainListResultPack.m; sourceTree = "<group>"; };
 		68B36E081C315C81009A6A3E /* MTTableHeaderRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTableHeaderRefreshView.h; sourceTree = "<group>"; };
 		68B36E091C315C81009A6A3E /* MTTableHeaderRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTableHeaderRefreshView.m; sourceTree = "<group>"; };
+		68BAD40C1C3A8AE700257D8D /* MTCommentPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCommentPack.h; sourceTree = "<group>"; };
+		68BAD40D1C3A8AE700257D8D /* MTCommentPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCommentPack.m; sourceTree = "<group>"; };
 		68BB64E31C30D98200E7DA04 /* MTNetworkLoginResultPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkLoginResultPack.h; sourceTree = "<group>"; };
 		68BB64E41C30D98200E7DA04 /* MTNetworkLoginResultPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkLoginResultPack.m; sourceTree = "<group>"; };
 		68BB64E61C30DAF400E7DA04 /* MTUserInfoPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserInfoPack.h; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 			children = (
 				6873E5251C3A519B00ECF1FE /* MTNetworkAddComment.h */,
 				6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */,
+				68BAD40C1C3A8AE700257D8D /* MTCommentPack.h */,
+				68BAD40D1C3A8AE700257D8D /* MTCommentPack.m */,
 			);
 			name = AddComment;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 				68BB64EB1C30DCE100E7DA04 /* MTMainModel.xcdatamodeld in Sources */,
 				6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */,
 				687F5F651C312AD500B97BE6 /* MTNearbyCollectionView.m in Sources */,
+				68BAD40E1C3A8AE700257D8D /* MTCommentPack.m in Sources */,
 				680251D81C2BA1DB00ECEF64 /* MTShotViewController.m in Sources */,
 				68B2220B1C33B806005D7C9D /* MTNetworkGetMainListResultPack.m in Sources */,
 				687FDA771C2EC55100333CF2 /* CLPixellateEffect.m in Sources */,

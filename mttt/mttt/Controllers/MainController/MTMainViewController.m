@@ -11,6 +11,11 @@
 #import "MTNetworkGetMainList.h"
 #import "MTPicInfoPack.h"
 #import "MTTableHeaderRefreshView.h"
+#import "MTNetworkZan.h"
+#import "MTNetworkJubao.h"
+#import "MTNetworkAddFocus.h"
+#import "MTNetworkAddComment.h"
+#import "MTCommentPack.h"
 
 @interface MTMainViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -19,6 +24,7 @@
     UIView * _nothingShadowView;
     int _curPage;
     BOOL _isAddingMore;
+    dispatch_semaphore_t mySemaphore;
 }
 @end
 
@@ -31,10 +37,9 @@
     [self.view addSubview:fakeTable];
     
     _isAddingMore = NO;
-    
+    mySemaphore = dispatch_semaphore_create(1);
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"陌图";
-//    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight - 44)];
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
     _mainTableView.contentOffset = CGPointMake(0, 44);
@@ -66,6 +71,13 @@
     }
     
     [self updateMainTable];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detailRequest:) name:MTMainCellDetailNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusRequest:) name:MTMainCellFocusNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDetailRequest:) name:MTMainCellUserNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(zanRequest:) name:MTMainCellZanNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(jubaoRequest:) name:MTMainCellJubaoNotification object:nil];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -112,7 +124,26 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130 + SCWidth;
+    MTPicInfoPack * picInfo = [_mainItemArray objectAtIndex:indexPath.row];
+    CGFloat commentHeight = 0;
+    for(NSDictionary * tmpDic in picInfo.comment)
+    {
+        MTCommentPack * pack = [[MTCommentPack alloc] initWithDictionary:tmpDic error:nil];
+//        NSLog(@"%@",pack);
+        NSString * finalString = @"";
+        if(pack.user.nickName.length != 0)
+        {
+            finalString = [pack.user.nickName stringByAppendingString:[NSString stringWithFormat:@":%@",pack.comments]];
+            CGRect rect = [finalString boundingRectWithSize:CGSizeMake(SCWidth - 20, SCHeight) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12.0f]} context:NULL];
+            commentHeight += rect.size.height + 5;
+        }else{
+            finalString = [@"无名氏" stringByAppendingString:[NSString stringWithFormat:@":%@",pack.comments]];
+            CGRect rect = [finalString boundingRectWithSize:CGSizeMake(SCWidth - 20, SCHeight) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12.0f]} context:NULL];
+            commentHeight += rect.size.height + 5;
+        }
+    }
+    
+    return 130 + SCWidth + commentHeight;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -137,7 +168,10 @@
     cell.nameLabel.text = infoPack.user.userName;
     cell.zanField.text = [NSString stringWithFormat:@"%zi",infoPack.praiseCount.intValue];
     cell.pingField.text = [NSString stringWithFormat:@"%zi",infoPack.comment.count];
-    
+    cell.cellId = @(indexPath.row);
+  
+    cell.commentArray = infoPack.comment;
+    [cell setNeedsDisplay];
     return cell;
 }
 
@@ -154,7 +188,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:MTEndRefreshing object:nil];
         if(_mainTableView.contentOffset.y < 44)
         {
-            //                [_mainTableView setContentOffset:CGPointMake(0, 44)];
             [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
             
         }
@@ -174,14 +207,12 @@
             _mainItemArray = [tmpArray mutableCopy];
             [_mainTableView reloadData];
         }
-        ;
     }];
 }
 
 -(void) getMoreMainTable
 {
     MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
-//    _curPage += 1;
     [getMainList getMainListByUserID:[MTAccountMgr userID] andBeginPage: @(_curPage+1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
         [[NSNotificationCenter defaultCenter] postNotificationName:MTEndRefreshing object:nil];
         _isAddingMore = NO;
@@ -194,27 +225,18 @@
                 [_nothingShadowView removeFromSuperview];
                 _nothingShadowView = nil;
             }
-//            _mainItemArray = [tmpArray mutableCopy];
             if(_mainItemArray)
             {
                 [_mainItemArray addObjectsFromArray:tmpArray];
             }
-            
             [_mainTableView reloadData];
-            
             if(_mainTableView.contentOffset.y < 44)
             {
-                //                [_mainTableView setContentOffset:CGPointMake(0, 44)];
                 [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
-                
             }
         }
-        ;
     }];
- 
 }
-
-
 
 #pragma mark scrollview delegate
 
@@ -239,12 +261,132 @@
         _isAddingMore = YES;
         [self getMoreMainTable];
     }
+}
+
+-(void) detailRequest : (NSNotification *) notif
+{
+    NSDictionary * infoDic = notif.userInfo;
+    NSNumber * cellId = infoDic[@"cellId"];
+    NSLog(@"id is : %zi",[cellId intValue]);
+}
+
+-(void) userDetailRequest : (NSNotification *) notif
+{
+    NSDictionary * infoDic = notif.userInfo;
+    NSNumber * cellId = infoDic[@"cellId"];
+    NSLog(@"id is : %zi",[cellId intValue]);
+}
+
+-(void) focusRequest : (NSNotification *) notif
+{
+    NSDictionary * infoDic = notif.userInfo;
+    NSNumber * cellId = infoDic[@"cellId"];
+    MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:[cellId intValue]];
+
+    if(dispatch_semaphore_wait(mySemaphore, 0) != 0)
+    {
+        return;
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MTNetworkAddFocus * focus = [MTNetworkAddFocus new];
+    [focus addFocusUser:infoPack.user.userID byUser:[MTAccountMgr getLoginInfo].userID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
+        }else{
+            [SVProgressHUD showErrorWithStatus:(NSString *)addInfo];
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        dispatch_semaphore_signal(mySemaphore);
+    }];
+}
+
+-(void) zanRequest : (NSNotification *) notif
+{
+    NSDictionary * infoDic = notif.userInfo;
+    NSNumber * cellId = infoDic[@"cellId"];
+    MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:[cellId intValue]];
     
+    if(dispatch_semaphore_wait(mySemaphore, 0) != 0)
+    {
+        return;
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MTNetworkZan * zan = [MTNetworkZan new];
     
-//    NSLog(@"target y : %f",targetContentOffset->y);
+    [zan zanByUserId:[MTAccountMgr getLoginInfo].userID picId:infoPack.picID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            NSLog(@"zan success");
+        }else{
+            [SVProgressHUD showErrorWithStatus:(NSString *)addInfo];
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        dispatch_semaphore_signal(mySemaphore);
+        ;
+    }];
 }
 
 
+-(void) jubaoRequest : (NSNotification *) notif
+{
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"举报" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self realJubao:notif];
+    }];
+    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        ;
+    }];
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [self presentViewController:alert animated:YES completion:^{
+        ;
+    }];
+}
+
+-(void) realJubao : (NSNotification *) notif
+{
+    NSDictionary * infoDic = notif.userInfo;
+    NSNumber * cellId = infoDic[@"cellId"];
+    
+    MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:[cellId intValue]];
+    
+    NSLog(@"info pack : %@",infoPack);
+    
+    
+    if(dispatch_semaphore_wait(mySemaphore, 0) != 0)
+    {
+        return;
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    MTNetworkJubao * jubao = [MTNetworkJubao new];
+    [jubao jubaoByUserId:[MTAccountMgr getLoginInfo].userID picId:infoPack.picID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess || resultType == MTNetworkResultTypeError)
+        {
+            [SVProgressHUD showSuccessWithStatus:@"举报成功"];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:(NSString *)addInfo];
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        dispatch_semaphore_signal(mySemaphore);
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        MTNetworkAddComment * comment = [MTNetworkAddComment new];
+        [comment commentByUserID:[MTAccountMgr getLoginInfo].userID picID:infoPack.picID comments:@"测试评论一下,测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下测试评论一下" rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+            if(resultType == MTNetworkResultTypeSuccess)
+            {
+                NSLog(@"评论成功");
+            }else{
+                NSLog(@"评论Error : %@",addInfo);
+            }
+            ;
+        }];
+        ;
+    });
+    
+}
 /*
 #pragma mark - Navigation
 
