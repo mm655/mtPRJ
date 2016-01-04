@@ -18,6 +18,13 @@ extern NSString * const MTGetUserInfo;
 extern NSString * const MTChangePassword;
 extern NSString * const MTGetMainList;
 extern NSString * const MTGetAllPictureList;
+extern NSString * const MTAddComments;
+extern NSString * const MTAddFocus;
+extern NSString * const MTDelFocus;
+extern NSString * const MTNetworkZanURL;
+extern NSString * const MTNetworkDelZanURL;
+extern NSString * const MTNetworkJubaoURL;
+
 
 typedef NS_ENUM(NSInteger, MTNetworkResultType)
 {

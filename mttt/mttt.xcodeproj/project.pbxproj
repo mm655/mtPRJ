@@ -24,6 +24,12 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */; };
+		6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E52A1C3A539400ECF1FE /* MTNetworkAddFocus.m */; };
+		6873E52E1C3A548800ECF1FE /* MTNetworkDelFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E52D1C3A548800ECF1FE /* MTNetworkDelFocus.m */; };
+		6873E5321C3A553A00ECF1FE /* MTNetworkZan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5311C3A553A00ECF1FE /* MTNetworkZan.m */; };
+		6873E5351C3A55F600ECF1FE /* MTNetworkDelZan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5341C3A55F600ECF1FE /* MTNetworkDelZan.m */; };
+		6873E5391C3A56D100ECF1FE /* MTNetworkJubao.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5381C3A56D100ECF1FE /* MTNetworkJubao.m */; };
 		687527611C3378A600BB53E2 /* MTNetworkUpdateUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 687527601C3378A600BB53E2 /* MTNetworkUpdateUserInfo.m */; };
 		687527651C337ECD00BB53E2 /* MTNetworkGetUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 687527641C337ECD00BB53E2 /* MTNetworkGetUserInfo.m */; };
 		6875276B1C33808000BB53E2 /* MTNetworkGetUserInfoResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6875276A1C33808000BB53E2 /* MTNetworkGetUserInfoResultPack.m */; };
@@ -155,6 +161,18 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		6873E5251C3A519B00ECF1FE /* MTNetworkAddComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkAddComment.h; sourceTree = "<group>"; };
+		6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkAddComment.m; sourceTree = "<group>"; };
+		6873E5291C3A539400ECF1FE /* MTNetworkAddFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkAddFocus.h; sourceTree = "<group>"; };
+		6873E52A1C3A539400ECF1FE /* MTNetworkAddFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkAddFocus.m; sourceTree = "<group>"; };
+		6873E52C1C3A548800ECF1FE /* MTNetworkDelFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkDelFocus.h; sourceTree = "<group>"; };
+		6873E52D1C3A548800ECF1FE /* MTNetworkDelFocus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkDelFocus.m; sourceTree = "<group>"; };
+		6873E5301C3A553A00ECF1FE /* MTNetworkZan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkZan.h; sourceTree = "<group>"; };
+		6873E5311C3A553A00ECF1FE /* MTNetworkZan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkZan.m; sourceTree = "<group>"; };
+		6873E5331C3A55F600ECF1FE /* MTNetworkDelZan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkDelZan.h; sourceTree = "<group>"; };
+		6873E5341C3A55F600ECF1FE /* MTNetworkDelZan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkDelZan.m; sourceTree = "<group>"; };
+		6873E5371C3A56D100ECF1FE /* MTNetworkJubao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkJubao.h; sourceTree = "<group>"; };
+		6873E5381C3A56D100ECF1FE /* MTNetworkJubao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkJubao.m; sourceTree = "<group>"; };
 		6875275F1C3378A600BB53E2 /* MTNetworkUpdateUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkUpdateUserInfo.h; sourceTree = "<group>"; };
 		687527601C3378A600BB53E2 /* MTNetworkUpdateUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkUpdateUserInfo.m; sourceTree = "<group>"; };
 		687527631C337ECD00BB53E2 /* MTNetworkGetUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetUserInfo.h; sourceTree = "<group>"; };
@@ -597,6 +615,53 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		6873E5231C3A4FB900ECF1FE /* GetFocusMe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GetFocusMe;
+			sourceTree = "<group>";
+		};
+		6873E5241C3A517800ECF1FE /* AddComment */ = {
+			isa = PBXGroup;
+			children = (
+				6873E5251C3A519B00ECF1FE /* MTNetworkAddComment.h */,
+				6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */,
+			);
+			name = AddComment;
+			sourceTree = "<group>";
+		};
+		6873E5281C3A535A00ECF1FE /* AddFocus */ = {
+			isa = PBXGroup;
+			children = (
+				6873E5291C3A539400ECF1FE /* MTNetworkAddFocus.h */,
+				6873E52A1C3A539400ECF1FE /* MTNetworkAddFocus.m */,
+				6873E52C1C3A548800ECF1FE /* MTNetworkDelFocus.h */,
+				6873E52D1C3A548800ECF1FE /* MTNetworkDelFocus.m */,
+			);
+			name = AddFocus;
+			sourceTree = "<group>";
+		};
+		6873E52F1C3A552600ECF1FE /* Zan */ = {
+			isa = PBXGroup;
+			children = (
+				6873E5301C3A553A00ECF1FE /* MTNetworkZan.h */,
+				6873E5311C3A553A00ECF1FE /* MTNetworkZan.m */,
+				6873E5331C3A55F600ECF1FE /* MTNetworkDelZan.h */,
+				6873E5341C3A55F600ECF1FE /* MTNetworkDelZan.m */,
+			);
+			name = Zan;
+			sourceTree = "<group>";
+		};
+		6873E5361C3A56B600ECF1FE /* Jubao */ = {
+			isa = PBXGroup;
+			children = (
+				6873E5371C3A56D100ECF1FE /* MTNetworkJubao.h */,
+				6873E5381C3A56D100ECF1FE /* MTNetworkJubao.m */,
+			);
+			name = Jubao;
+			sourceTree = "<group>";
+		};
 		6875275E1C33783A00BB53E2 /* UpdateUserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +988,11 @@
 		68CC1ABB1C2BCE8C001104FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6873E5361C3A56B600ECF1FE /* Jubao */,
+				6873E52F1C3A552600ECF1FE /* Zan */,
+				6873E5281C3A535A00ECF1FE /* AddFocus */,
+				6873E5241C3A517800ECF1FE /* AddComment */,
+				6873E5231C3A4FB900ECF1FE /* GetFocusMe */,
 				68B221FC1C33ABE7005D7C9D /* GetAllPictureList */,
 				68B221F81C33A6DD005D7C9D /* GetMainList */,
 				6875276F1C33845E00BB53E2 /* ChangePassword */,
@@ -1131,6 +1201,7 @@
 				685CD2271C278AD5008F0A8A /* ViewController.m in Sources */,
 				687FDA821C2EC55100333CF2 /* CLCircleView.m in Sources */,
 				687527721C33847600BB53E2 /* MTNetworkChangePassword.m in Sources */,
+				6873E5321C3A553A00ECF1FE /* MTNetworkZan.m in Sources */,
 				68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */,
 				680251DB1C2BA1E700ECEF64 /* MTFindViewController.m in Sources */,
 				680251D51C2BA1C100ECEF64 /* MTSettingViewController.m in Sources */,
@@ -1145,10 +1216,13 @@
 				68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */,
 				68B221FB1C33A6F3005D7C9D /* MTNetworkGetMainList.m in Sources */,
 				687F5F771C31345300B97BE6 /* MTUserTableViewCell.m in Sources */,
+				6873E5391C3A56D100ECF1FE /* MTNetworkJubao.m in Sources */,
 				687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */,
+				6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */,
 				687FDA701C2EC55100333CF2 /* CLBrightnessTool.m in Sources */,
 				687FDA801C2EC55100333CF2 /* CLSaturationTool.m in Sources */,
 				68BB64F01C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m in Sources */,
+				6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */,
 				68B222051C33B3EF005D7C9D /* MTPicInfoPack.m in Sources */,
 				687FDA851C2EC55100333CF2 /* CLImageToolInfo+Private.m in Sources */,
 				687FDA6D1C2EC55100333CF2 /* CLImageToolInfo.m in Sources */,
@@ -1164,6 +1238,7 @@
 				687FDA791C2EC55100333CF2 /* CLSpotEffect.m in Sources */,
 				685CD2241C278AD5008F0A8A /* AppDelegate.m in Sources */,
 				685CD24B1C278E2E008F0A8A /* ConstraintUtilities-Description.m in Sources */,
+				6873E5351C3A55F600ECF1FE /* MTNetworkDelZan.m in Sources */,
 				687FDA861C2EC55100333CF2 /* CLToolbarMenuItem.m in Sources */,
 				687FDA8B1C2EC55100333CF2 /* UIImage+Utility.m in Sources */,
 				687FDA7E1C2EC55100333CF2 /* CLImageToolBase.m in Sources */,
@@ -1174,6 +1249,7 @@
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
 				68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */,
 				687F5F6D1C312B5600B97BE6 /* MTPull2RefreshState.m in Sources */,
+				6873E52E1C3A548800ECF1FE /* MTNetworkDelFocus.m in Sources */,
 				687FDA7A1C2EC55100333CF2 /* CLEffectBase.m in Sources */,
 				685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */,
 				687FDA891C2EC55100333CF2 /* CLSplineInterpolator.m in Sources */,

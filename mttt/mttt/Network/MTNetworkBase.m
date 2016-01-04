@@ -18,6 +18,13 @@ NSString * const MTGetUserInfo = @"user/getUserInfoById";
 NSString * const MTChangePassword = @"user/changePassword";
 NSString * const MTGetMainList = @"picture/queryPictureListIFocus";
 NSString * const MTGetAllPictureList = @"picture/queryAllPictureList";
+//NSString * const MTGetFocusMe = @"";
+NSString * const MTAddComments = @"comment/addComment";
+NSString * const MTAddFocus = @"focus/addFocus";
+NSString * const MTDelFocus = @"focus/delFocus";
+NSString * const MTNetworkZanURL = @"praise/addPraise";
+NSString * const MTNetworkDelZanURL = @"praise/delPraise";
+NSString * const MTNetworkJubaoURL = @"report/addReport";
 
 
 @implementation MTNetworkBase

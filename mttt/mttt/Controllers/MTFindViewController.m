@@ -306,7 +306,6 @@
                 [_nearByCollectionView setContentOffset:CGPointMake(0, 44) animated:YES];
             }
         }
-        ;
     }];
 }
 
