@@ -170,6 +170,9 @@
     NSLog(@"run draw rect here");
     [super drawRect:rect];
     int count = 0;
+    _pingView1.height = 0;
+    _pingView2.height = 0;
+    _pingView3.height = 0;
     if(self.commentArray.count != 0)
     {
         for(NSDictionary * tmpDic in self.commentArray)
