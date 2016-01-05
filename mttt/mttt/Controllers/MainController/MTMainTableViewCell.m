@@ -50,7 +50,7 @@
     _focusButton.right = SCWidth - 5;
     _focusButton.y = _nameLabel.y;
     _focusButton.layer.cornerRadius = 6;
-    _focusButton.backgroundColor = [UIColor clearColor];
+    _focusButton.backgroundColor = MTGreen;
     [_focusButton setImage:[UIImage imageNamed:@"back_array_left"] forState:UIControlStateNormal];
     [_focusButton setTitle:@"关注" forState:UIControlStateNormal];
     [_focusButton setTitleColor:MTWhite forState:UIControlStateNormal];
@@ -167,7 +167,7 @@
 
 -(void)drawRect:(CGRect)rect
 {
-    NSLog(@"run draw rect here");
+//    NSLog(@"run draw rect here");
     [super drawRect:rect];
     int count = 0;
     _pingView1.height = 0;

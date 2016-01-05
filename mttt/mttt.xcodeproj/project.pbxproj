@@ -24,6 +24,7 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		6865E7FF1C3B6CC000EA1CC7 /* MTItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6865E7FE1C3B6CC000EA1CC7 /* MTItemDetailViewController.m */; };
 		6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */; };
 		6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E52A1C3A539400ECF1FE /* MTNetworkAddFocus.m */; };
 		6873E52E1C3A548800ECF1FE /* MTNetworkDelFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E52D1C3A548800ECF1FE /* MTNetworkDelFocus.m */; };
@@ -162,6 +163,8 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		6865E7FD1C3B6CC000EA1CC7 /* MTItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTItemDetailViewController.h; sourceTree = "<group>"; };
+		6865E7FE1C3B6CC000EA1CC7 /* MTItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTItemDetailViewController.m; sourceTree = "<group>"; };
 		6873E5251C3A519B00ECF1FE /* MTNetworkAddComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkAddComment.h; sourceTree = "<group>"; };
 		6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkAddComment.m; sourceTree = "<group>"; };
 		6873E5291C3A539400ECF1FE /* MTNetworkAddFocus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkAddFocus.h; sourceTree = "<group>"; };
@@ -582,6 +585,7 @@
 		685CD2521C278EF2008F0A8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6865E8001C3B6CC600EA1CC7 /* ItemDetailController */,
 				680251CF1C2B9FA700ECEF64 /* MainTabController */,
 				680251CE1C2B9F8F00ECEF64 /* SettingController */,
 				680251CD1C2B9F8400ECEF64 /* MsgController */,
@@ -616,6 +620,15 @@
 				68FCD38E1C283D3A00228CBB /* MTAccountManager */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		6865E8001C3B6CC600EA1CC7 /* ItemDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				6865E7FD1C3B6CC000EA1CC7 /* MTItemDetailViewController.h */,
+				6865E7FE1C3B6CC000EA1CC7 /* MTItemDetailViewController.m */,
+			);
+			name = ItemDetailController;
 			sourceTree = "<group>";
 		};
 		6873E5231C3A4FB900ECF1FE /* GetFocusMe */ = {
@@ -1253,6 +1266,7 @@
 				687FDA8A1C2EC55100333CF2 /* UIDevice+SystemVersion.m in Sources */,
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
 				68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */,
+				6865E7FF1C3B6CC000EA1CC7 /* MTItemDetailViewController.m in Sources */,
 				687F5F6D1C312B5600B97BE6 /* MTPull2RefreshState.m in Sources */,
 				6873E52E1C3A548800ECF1FE /* MTNetworkDelFocus.m in Sources */,
 				687FDA7A1C2EC55100333CF2 /* CLEffectBase.m in Sources */,

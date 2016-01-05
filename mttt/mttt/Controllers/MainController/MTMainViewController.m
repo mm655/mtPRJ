@@ -16,6 +16,7 @@
 #import "MTNetworkAddFocus.h"
 #import "MTNetworkAddComment.h"
 #import "MTCommentPack.h"
+#import "MTItemDetailViewController.h"
 
 @interface MTMainViewController () <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -83,7 +84,16 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    if(_mainTableView)
+    {
+        [_mainTableView reloadData];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -267,7 +277,12 @@
 {
     NSDictionary * infoDic = notif.userInfo;
     NSNumber * cellId = infoDic[@"cellId"];
-    NSLog(@"id is : %zi",[cellId intValue]);
+    MTPicInfoPack * infoPack = [_mainItemArray objectAtIndex:[cellId intValue]];
+   
+    MTItemDetailViewController * detailVC = [MTItemDetailViewController new];
+    detailVC.infoPack = infoPack;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 -(void) userDetailRequest : (NSNotification *) notif
