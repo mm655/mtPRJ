@@ -18,6 +18,8 @@
 #import "MTNetworkGetMyFocusUser.h"
 #import "MTUserInfoPack.h"
 #import "MTNetworkGetUserPic.h"
+#import "MTPicInfoPack.h"
+
 
 @interface MTFindViewController () <UICollectionViewDataSource, UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
@@ -26,9 +28,13 @@
     BOOL _isAddingMoreUser;
     BOOL _isAddingMoreNearby;
     NSMutableArray * _nearbyArray;
+    NSMutableArray * _userInfoArray;
     NSMutableArray * _userArray;
     NSMutableArray * _focusArray;
     dispatch_semaphore_t mySemaphore;
+    
+    UIButton * _leftNearButton;
+    UIButton * _rightUserButton;
 }
 @property (strong, nonatomic) UIView * whiteLineView;
 @property (strong, nonatomic) MTNearbyCollectionView * nearByCollectionView;
@@ -55,6 +61,7 @@
     leftNearButton.left = 0;
     leftNearButton.top = 20;
     leftNearButton.tag = 1000;
+    _leftNearButton = leftNearButton;
     [leftNearButton addTarget:self action:@selector(topButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.view addSubview:leftNearButton];
     
@@ -65,6 +72,7 @@
     rightUserButton.tag = 1001;
     rightUserButton.right = SCWidth;
     rightUserButton.top = 20;
+    _rightUserButton = rightUserButton;
     [self.navigationController.view addSubview:rightUserButton];
     
     self.whiteLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCWidth / 2 - 20, 2)];
@@ -118,6 +126,11 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateUser];
     });
+    
+    _leftNearButton.hidden  = NO;
+    _rightUserButton.hidden = NO;
+    _whiteLineView.hidden   = NO;
+    self.tabBarController.tabBar.hidden = NO;
 //    [self updateUser];
 }
 
@@ -125,7 +138,19 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self updateUserArray];
+    [self getUserInfoArray];
+    
+    [self updateNearbyArray];
+    
+//    [self updateUserArray];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    _leftNearButton.hidden = YES;
+    _rightUserButton.hidden = YES;
+    _whiteLineView.hidden = YES;
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -186,12 +211,16 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     [collectionView registerClass:[MTNearbyCollectionViewCell class] forCellWithReuseIdentifier:@"myCollectionViewCell"];
-    return 100;
+    if(_nearbyArray)
+    {
+        return _nearbyArray.count;
+    }
+    return 0;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MTNearbyCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCollectionViewCell" forIndexPath:indexPath];
-    cell.mainImage = [UIImage imageNamed:@"login_pic1"];
+    cell.picInfo = [_nearbyArray objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -227,13 +256,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MTUserTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MTUserTableViewCell"];
+    cell.backgroundColor = MTWhite;
     
-    if(indexPath.row % 2)
-    {
-        cell.backgroundColor = MTGray;
-    }else{
-        cell.backgroundColor = MTBlue;
-    }
+    cell.infoDic = [_userArray objectAtIndex:indexPath.row];
+    
+//    if(indexPath.row % 2)
+//    {
+//        cell.backgroundColor = MTGray;
+//    }else{
+//        cell.backgroundColor = MTBlue;
+//    }
     
     return cell;
     
@@ -255,6 +287,11 @@
 {
     return 64 + SCWidth / 3;
 }
+
+-(BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 #pragma mark end
 
 #pragma mark scrollView delegate
@@ -265,6 +302,13 @@
     {
         targetContentOffset->y = 0;
         [[NSNotificationCenter defaultCenter] postNotificationName:MTStartRefreshing object:nil];
+        if(scrollView.tag == 1011)
+        {
+            [self updateNearbyArray];
+        }else if(scrollView.tag == 1022)
+        {
+            [self getUserInfoArray];
+        }
     }else if(scrollView.contentOffset.y > 44){
         if(targetContentOffset->y < 44)
         {
@@ -278,13 +322,14 @@
 
 -(void) updateUserArray
 {
-    if(_focusArray.count > 0)
+    if(_userInfoArray.count > 0)
     {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_group_t group = dispatch_group_create();
         
-        [_userArray removeAllObjects];
-        for(MTUserInfoPack * userInfo in _focusArray)
+//        [_userArray removeAllObjects];
+        __block NSMutableArray * newArray = [NSMutableArray array];
+        for(MTUserInfoPack * userInfo in _userInfoArray)
         {
             dispatch_group_async(group, queue, ^{
                 dispatch_semaphore_wait(mySemaphore, DISPATCH_TIME_FOREVER);
@@ -296,21 +341,30 @@
                         if(rArray.count > 0)
                         {
                             NSDictionary * rDic = @{@"userInfo":userInfo,@"picArray":rArray};
-                            [_userArray addObject:rDic];
+                            [newArray addObject:rDic];
                         }
                     }
                     dispatch_semaphore_signal(mySemaphore);
                 }];
                 dispatch_semaphore_wait(mySemaphore, DISPATCH_TIME_FOREVER);
+                dispatch_semaphore_signal(mySemaphore);
                 ;
             });
         }
         dispatch_group_notify(group, queue, ^{
-            [_userTableView reloadData];
-            if(_userTableView.contentOffset.y < 44)
+            while (newArray.count > 0 && newArray.count < 5)
             {
-                [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+                newArray = [[newArray arrayByAddingObjectsFromArray:newArray] mutableCopy];
             }
+            _userArray = newArray;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_userTableView reloadData];
+                if(_userTableView.contentOffset.y < 44)
+                {
+                    [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+                }
+            });
         });
     }
     
@@ -332,20 +386,57 @@
 
 -(void) updateNearbyArray
 {
-    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
-    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
-        if(resultType == MTNetworkResultTypeSuccess)
+    dispatch_semaphore_t tmpSemaphore = dispatch_semaphore_create(1);
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+        __block int page = 1;
+        __block BOOL continueWhile = YES;
+        __block NSMutableArray * rNArray = [NSMutableArray array];
+        
+        while(continueWhile)
         {
-            _nearbyPage = 1;
-            _nearbyArray = (NSMutableArray *)addInfo;
+            dispatch_semaphore_wait(tmpSemaphore, DISPATCH_TIME_FOREVER);
+            [getAll getAllPictureByPage:@(page) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+                if(resultType == MTNetworkResultTypeSuccess)
+                {
+                    NSArray * tmpArr = (NSArray *)addInfo;
+                    if(tmpArr.count == 0)
+                    {
+                        continueWhile = NO;
+                    }
+                    _nearbyPage = page++;
+                    rNArray = [[rNArray arrayByAddingObjectsFromArray:(NSArray *)addInfo] mutableCopy];
+    //                _nearbyArray = (NSMutableArray *)addInfo;
+//                    [_nearByCollectionView reloadData];
+//                    if(_nearByCollectionView.contentOffset.y < 44)
+//                    {
+//                        [_nearByCollectionView setContentOffset:CGPointMake(0, 44) animated:YES];
+//                    }
+                }
+                dispatch_semaphore_signal(tmpSemaphore);
+                ;
+            }];
+            dispatch_semaphore_wait(tmpSemaphore, DISPATCH_TIME_FOREVER);
+            dispatch_semaphore_signal(tmpSemaphore);
+        }
+        
+        _nearbyArray = rNArray;
+        
+        while(_nearbyArray.count > 0 && _nearbyArray.count < 50)
+        {
+            _nearbyArray = [[_nearbyArray arrayByAddingObjectsFromArray:_nearbyArray] mutableCopy];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
             [_nearByCollectionView reloadData];
             if(_nearByCollectionView.contentOffset.y < 44)
             {
                 [_nearByCollectionView setContentOffset:CGPointMake(0, 44) animated:YES];
             }
-        }
-        ;
-    }];
+        });
+
+    });
 }
 
 -(void) addMoreUser
@@ -387,7 +478,59 @@
 {
 }
 
-
+-(void) getUserInfoArray
+{
+    __block BOOL continueWhile = YES;
+    __block int page = 1;
+    NSMutableArray * userArray = [NSMutableArray new];
+    dispatch_semaphore_t tmpSemephore = dispatch_semaphore_create(1);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        ;
+        while (continueWhile) {
+            dispatch_semaphore_wait(tmpSemephore, DISPATCH_TIME_FOREVER);
+            MTNetworkGetAllPictureList * getList = [MTNetworkGetAllPictureList new];
+            [getList getAllPictureByPage:@(page) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+                BOOL shot = NO;
+                
+                if(resultType != MTNetworkResultTypeSuccess)
+                {
+                    dispatch_semaphore_signal(tmpSemephore);
+                    return;
+                }
+                
+                for(MTPicInfoPack * pInfoPack in (NSMutableArray *)addInfo)
+                {
+                    for(MTUserInfoPack * aPInfoPack in userArray)
+                    {
+                        if([pInfoPack.user.userID intValue] == [aPInfoPack.userID intValue])
+                        {
+                            shot = YES;
+                            break;
+                        }
+                    }
+                    if(!shot)
+                    {
+                        [userArray addObject:pInfoPack.user];
+                    }
+                    shot = NO;
+                }
+                NSMutableArray * rArray = (NSMutableArray *)addInfo;
+                if(!(rArray.count > 0))
+                {
+                    continueWhile = NO;
+                }else{
+                    page += 1;
+                }
+                dispatch_semaphore_signal(tmpSemephore);
+                ;
+            }];
+            dispatch_semaphore_wait(tmpSemephore, DISPATCH_TIME_FOREVER);
+            dispatch_semaphore_signal(tmpSemephore);
+        }
+        _userInfoArray = userArray;
+        [self updateUserArray];
+    });
+}
 // The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
 //- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 //{

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MTPicInfoPack.h"
 @interface MTUserTableViewCell : UITableViewCell
 @property (strong, nonatomic) UIImage * tImage;
+
+@property (strong, nonatomic) NSDictionary * infoDic;
+
 @end

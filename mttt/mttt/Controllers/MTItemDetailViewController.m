@@ -79,7 +79,8 @@
     
     _mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCWidth)];
     _mainImageView.top = 64;
-    _mainImageView.image = [UIImage imageNamed:@"login_pic2"];
+//    _mainImageView.image = [UIImage imageNamed:@"login_pic2"];
+    [_mainImageView sd_setImageWithURL:[NSURL URLWithString:self.infoPack.pictureUrl]];
     
     
     [self.mainScrollView addSubview:_mainImageView];
