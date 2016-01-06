@@ -15,6 +15,9 @@
 #import "MTNetworkChangePassword.h"
 #import "MTNetworkGetMainList.h"
 #import "MTNetworkGetAllPictureList.h"
+#import "MTNetworkGetMyFocusUser.h"
+
+
 
 @interface MTTestViewController ()
 
@@ -36,12 +39,8 @@
 {
     [super viewDidAppear:animated];
     
-//    MTNetworkGetMainList * getMainList = [MTNetworkGetMainList new];
-//    [getMainList getMainListByUserID:@(45) andBeginPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
-//        ;
-//    }];
-    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
-    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+    MTNetworkGetMyFocusUser * getFocus = [MTNetworkGetMyFocusUser new];
+    [getFocus getMyFocusUserByID:GetMyUserID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
         ;
     }];
 }

@@ -15,6 +15,9 @@
 #import "MTTableHeaderRefreshView.h"
 #import "MTPull2RefreshState.h"
 #import "MTNetworkGetAllPictureList.h"
+#import "MTNetworkGetMyFocusUser.h"
+#import "MTUserInfoPack.h"
+#import "MTNetworkGetUserPic.h"
 
 @interface MTFindViewController () <UICollectionViewDataSource, UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
@@ -24,6 +27,8 @@
     BOOL _isAddingMoreNearby;
     NSMutableArray * _nearbyArray;
     NSMutableArray * _userArray;
+    NSMutableArray * _focusArray;
+    dispatch_semaphore_t mySemaphore;
 }
 @property (strong, nonatomic) UIView * whiteLineView;
 @property (strong, nonatomic) MTNearbyCollectionView * nearByCollectionView;
@@ -38,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    mySemaphore = dispatch_semaphore_create(1);
     UITableView * fakeTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight) style:UITableViewStyleGrouped];
     [self.view addSubview:fakeTable];
     
@@ -75,6 +80,9 @@
     nearView.dataSource = self;
     [self.view addSubview:nearView];
     self.nearByCollectionView = nearView;
+    self.nearByCollectionView.tag = 1011;
+    self.nearByCollectionView.contentOffset = CGPointMake(0, 44);
+    
     
     MTUserTableView * tableView;
     tableView = [[MTUserTableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
@@ -83,7 +91,11 @@
     self.userTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
-    [self.view addSubview:tableView];
+//    [self.view addSubview:tableView];
+    tableView.tag = 1022;
+    tableView.contentOffset = CGPointMake(0, 44);
+    [self.view insertSubview:tableView belowSubview:self.nearByCollectionView];
+    
     
     _nearbyArray = [[MTAccountMgr getNearbyItemArray] mutableCopy];
     _userArray = [[MTAccountMgr getUserItemArray] mutableCopy];
@@ -102,6 +114,18 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _focusArray = [[MTAccountMgr getMyFocusUser] mutableCopy];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateUser];
+    });
+//    [self updateUser];
+}
+
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self updateUserArray];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -111,8 +135,20 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [MTAccountMgr setNearbyItemArray:_nearbyArray];
         [MTAccountMgr setUserItemArray:_userArray];
-        ;
     });
+    
+    MTNetworkGetMyFocusUser * getFocus = [MTNetworkGetMyFocusUser new];
+    [getFocus getMyFocusUserByID:GetMyUserID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            NSArray * rArray = (NSArray *) addInfo;
+            if(rArray.count > 0)
+            {
+                [MTAccountMgr setMyFocusUser:rArray];
+            }
+        }
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,8 +172,6 @@
             _nearByCollectionView.left = SCWidth;
         }];
     }
-    
-    
 }
 
 
@@ -178,7 +212,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     [tableView registerClass:[MTUserTableViewCell class] forCellReuseIdentifier:@"MTUserTableViewCell"];
-    return 20;
+    if(_userArray)
+    {
+        return _userArray.count;
+    }
+    return 0;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -215,7 +253,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 64;
+    return 64 + SCWidth / 3;
 }
 #pragma mark end
 
@@ -240,20 +278,56 @@
 
 -(void) updateUserArray
 {
-    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
-    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
-        if(resultType == MTNetworkResultTypeSuccess)
+    if(_focusArray.count > 0)
+    {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_group_t group = dispatch_group_create();
+        
+        [_userArray removeAllObjects];
+        for(MTUserInfoPack * userInfo in _focusArray)
         {
-            _userPage = 1;
-            _userArray = (NSMutableArray *)addInfo;
+            dispatch_group_async(group, queue, ^{
+                dispatch_semaphore_wait(mySemaphore, DISPATCH_TIME_FOREVER);
+                MTNetworkGetUserPic * getPic = [MTNetworkGetUserPic new];
+                [getPic getUserPicByUserID:userInfo.userID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+                    if(resultType == MTNetworkResultTypeSuccess)
+                    {
+                        NSArray * rArray = (NSArray *)addInfo;
+                        if(rArray.count > 0)
+                        {
+                            NSDictionary * rDic = @{@"userInfo":userInfo,@"picArray":rArray};
+                            [_userArray addObject:rDic];
+                        }
+                    }
+                    dispatch_semaphore_signal(mySemaphore);
+                }];
+                dispatch_semaphore_wait(mySemaphore, DISPATCH_TIME_FOREVER);
+                ;
+            });
+        }
+        dispatch_group_notify(group, queue, ^{
             [_userTableView reloadData];
             if(_userTableView.contentOffset.y < 44)
             {
                 [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
             }
-        }
-        ;
-    }];
+        });
+    }
+    
+//    MTNetworkGetAllPictureList * getAll = [MTNetworkGetAllPictureList new];
+//    [getAll getAllPictureByPage:@(1) resultBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+//        if(resultType == MTNetworkResultTypeSuccess)
+//        {
+//            _userPage = 1;
+//            _userArray = (NSMutableArray *)addInfo;
+//            [_userTableView reloadData];
+//            if(_userTableView.contentOffset.y < 44)
+//            {
+//                [_userTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+//            }
+//        }
+//        ;
+//    }];
 }
 
 -(void) updateNearbyArray
@@ -308,6 +382,11 @@
         }
     }];
 }
+
+-(void) updateUser
+{
+}
+
 
 // The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
 //- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath

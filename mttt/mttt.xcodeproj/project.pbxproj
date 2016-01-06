@@ -24,6 +24,12 @@
 		685CD24E1C278E2E008F0A8A /* ConstraintUtilities-Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2431C278E2E008F0A8A /* ConstraintUtilities-Layout.m */; };
 		685CD24F1C278E2E008F0A8A /* ConstraintUtilities-Matching.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2461C278E2E008F0A8A /* ConstraintUtilities-Matching.m */; };
 		685CD2501C278E2E008F0A8A /* NSObject-Nametag.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2481C278E2E008F0A8A /* NSObject-Nametag.m */; };
+		6860290B1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860290A1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m */; };
+		6860290E1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860290D1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.m */; };
+		686029111C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 686029101C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m */; };
+		686029151C3CB1F200A03427 /* MTNetworkGetUserPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 686029141C3CB1F200A03427 /* MTNetworkGetUserPic.m */; };
+		686029181C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 686029171C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.m */; };
+		6860291B1C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6860291A1C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.m */; };
 		6865E7FF1C3B6CC000EA1CC7 /* MTItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6865E7FE1C3B6CC000EA1CC7 /* MTItemDetailViewController.m */; };
 		6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E5261C3A519B00ECF1FE /* MTNetworkAddComment.m */; };
 		6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */ = {isa = PBXBuildFile; fileRef = 6873E52A1C3A539400ECF1FE /* MTNetworkAddFocus.m */; };
@@ -163,6 +169,18 @@
 		685CD2491C278E2E008F0A8A /* Constraints-CreationMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Constraints-CreationMacros.h"; sourceTree = "<group>"; };
 		685CD24A1C278E2E008F0A8A /* Constraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constraints.h; sourceTree = "<group>"; };
 		685CD2551C278F6F008F0A8A /* mtttPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mtttPCH.pch; sourceTree = "<group>"; };
+		686029091C3CA16C00A03427 /* MTNetworkGetMyFocusUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetMyFocusUser.h; sourceTree = "<group>"; };
+		6860290A1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetMyFocusUser.m; sourceTree = "<group>"; };
+		6860290C1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetMyFocusUserResultPack.h; sourceTree = "<group>"; };
+		6860290D1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetMyFocusUserResultPack.m; sourceTree = "<group>"; };
+		6860290F1C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetMyFocusResponsePack.h; sourceTree = "<group>"; };
+		686029101C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetMyFocusResponsePack.m; sourceTree = "<group>"; };
+		686029131C3CB1F200A03427 /* MTNetworkGetUserPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetUserPic.h; sourceTree = "<group>"; };
+		686029141C3CB1F200A03427 /* MTNetworkGetUserPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetUserPic.m; sourceTree = "<group>"; };
+		686029161C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetUserPicResultPack.h; sourceTree = "<group>"; };
+		686029171C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetUserPicResultPack.m; sourceTree = "<group>"; };
+		686029191C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkGetUserPicResponseTopPack.h; sourceTree = "<group>"; };
+		6860291A1C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetUserPicResponseTopPack.m; sourceTree = "<group>"; };
 		6865E7FD1C3B6CC000EA1CC7 /* MTItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTItemDetailViewController.h; sourceTree = "<group>"; };
 		6865E7FE1C3B6CC000EA1CC7 /* MTItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTItemDetailViewController.m; sourceTree = "<group>"; };
 		6873E5251C3A519B00ECF1FE /* MTNetworkAddComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkAddComment.h; sourceTree = "<group>"; };
@@ -622,6 +640,32 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		686029081C3CA11400A03427 /* GetMyFocusUser */ = {
+			isa = PBXGroup;
+			children = (
+				686029091C3CA16C00A03427 /* MTNetworkGetMyFocusUser.h */,
+				6860290A1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m */,
+				6860290C1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.h */,
+				6860290D1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.m */,
+				6860290F1C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.h */,
+				686029101C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m */,
+			);
+			name = GetMyFocusUser;
+			sourceTree = "<group>";
+		};
+		686029121C3CB1DB00A03427 /* GetUsrPic */ = {
+			isa = PBXGroup;
+			children = (
+				686029131C3CB1F200A03427 /* MTNetworkGetUserPic.h */,
+				686029141C3CB1F200A03427 /* MTNetworkGetUserPic.m */,
+				686029161C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.h */,
+				686029171C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.m */,
+				686029191C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.h */,
+				6860291A1C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.m */,
+			);
+			name = GetUsrPic;
+			sourceTree = "<group>";
+		};
 		6865E8001C3B6CC600EA1CC7 /* ItemDetailController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,6 +1050,8 @@
 		68CC1ABB1C2BCE8C001104FC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				686029121C3CB1DB00A03427 /* GetUsrPic */,
+				686029081C3CA11400A03427 /* GetMyFocusUser */,
 				6873E5361C3A56B600ECF1FE /* Jubao */,
 				6873E52F1C3A552600ECF1FE /* Zan */,
 				6873E5281C3A535A00ECF1FE /* AddFocus */,
@@ -1234,12 +1280,14 @@
 				68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */,
 				68B221FB1C33A6F3005D7C9D /* MTNetworkGetMainList.m in Sources */,
 				687F5F771C31345300B97BE6 /* MTUserTableViewCell.m in Sources */,
+				6860290B1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m in Sources */,
 				6873E5391C3A56D100ECF1FE /* MTNetworkJubao.m in Sources */,
 				687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */,
 				6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */,
 				687FDA701C2EC55100333CF2 /* CLBrightnessTool.m in Sources */,
 				687FDA801C2EC55100333CF2 /* CLSaturationTool.m in Sources */,
 				68BB64F01C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m in Sources */,
+				686029111C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m in Sources */,
 				6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */,
 				68B222051C33B3EF005D7C9D /* MTPicInfoPack.m in Sources */,
 				687FDA851C2EC55100333CF2 /* CLImageToolInfo+Private.m in Sources */,
@@ -1249,6 +1297,7 @@
 				687FDA841C2EC55100333CF2 /* CLImageEditorTheme+Private.m in Sources */,
 				687FDA6B1C2EC55100333CF2 /* CLImageEditor.m in Sources */,
 				68BB64F11C30DD6500E7DA04 /* UserInfo.m in Sources */,
+				6860290E1C3CA37D00A03427 /* MTNetworkGetMyFocusUserResultPack.m in Sources */,
 				68CC1ABE1C2BCE9D001104FC /* MTNetworkBase.m in Sources */,
 				687FDA731C2EC55100333CF2 /* CLBloomEffect.m in Sources */,
 				68A0C70B1C2FDBF8003FE4BB /* MTNetworkUpLoadPic.m in Sources */,
@@ -1262,6 +1311,7 @@
 				687FDA7E1C2EC55100333CF2 /* CLImageToolBase.m in Sources */,
 				68A0C7071C2FB506003FE4BB /* MTTestViewController.m in Sources */,
 				687FDA811C2EC55100333CF2 /* CLToneCurveTool.m in Sources */,
+				686029151C3CB1F200A03427 /* MTNetworkGetUserPic.m in Sources */,
 				68BB64F51C30DDAF00E7DA04 /* MTUserInfoStorageManager.m in Sources */,
 				687FDA8A1C2EC55100333CF2 /* UIDevice+SystemVersion.m in Sources */,
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
@@ -1291,11 +1341,13 @@
 				687FDA061C2EA76C00333CF2 /* MTFilterFlowLayout.m in Sources */,
 				687FDA751C2EC55100333CF2 /* CLHighlightShadowEffect.m in Sources */,
 				687FDA0F1C2EAA0200333CF2 /* MTfilterCollectionViewCell.m in Sources */,
+				6860291B1C3CB41D00A03427 /* MTNetworkGetUserPicResponseTopPack.m in Sources */,
 				68B221FF1C33AC2F005D7C9D /* MTNetworkGetAllPictureList.m in Sources */,
 				687F5F751C31345300B97BE6 /* MTTableViewHeader.m in Sources */,
 				687FDA8C1C2EC55100333CF2 /* UIView+Frame.m in Sources */,
 				687F5F661C312AD500B97BE6 /* MTNearbyCollectionViewCell.m in Sources */,
 				680251D21C2B9FC300ECEF64 /* MTMainTabViewController.m in Sources */,
+				686029181C3CB3CB00A03427 /* MTNetworkGetUserPicResultPack.m in Sources */,
 				687527611C3378A600BB53E2 /* MTNetworkUpdateUserInfo.m in Sources */,
 				68FCD3911C283D6E00228CBB /* MTAccountInfo.m in Sources */,
 				687FDA7C1C2EC55100333CF2 /* CLFilterBase.m in Sources */,

@@ -24,6 +24,8 @@ extern NSString * const MTDelFocus;
 extern NSString * const MTNetworkZanURL;
 extern NSString * const MTNetworkDelZanURL;
 extern NSString * const MTNetworkJubaoURL;
+extern NSString * const MTNetworkGetMyFocus;
+extern NSString * const MTNetworkGetUserPicURL;
 
 
 typedef NS_ENUM(NSInteger, MTNetworkResultType)
