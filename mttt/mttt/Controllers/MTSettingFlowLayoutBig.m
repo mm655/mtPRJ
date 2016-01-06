@@ -14,7 +14,7 @@
 {
     self = [super init];
     self.itemSize = CGSizeMake(SCWidth, SCWidth);
-    self.headerReferenceSize = CGSizeMake(SCWidth, 100);
+    self.headerReferenceSize = CGSizeMake(SCWidth, 300);
     self.minimumInteritemSpacing = 1;
     self.minimumLineSpacing = 1;
     return self;
