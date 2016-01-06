@@ -7,9 +7,16 @@
 //
 
 #import "MTSettingViewController.h"
+#import "MTSettingFlowLayoutBig.h"
+#import "MTSettingFlowLayoutSmall.h"
+#import "MTSettingHeaderView.h"
+#import "MTSettingCollectionViewCell.h"
+#import "MTSettingTableViewController.h"
+#import "MTEditViewController.h"
 
-@interface MTSettingViewController ()
+@interface MTSettingViewController () <UICollectionViewDataSource>
 {
+    UICollectionView * _mainCollectionView;
     UIImageView * _headImageView;
     UILabel * _photoLabel;
     UILabel * _photoNumLabel;
@@ -28,96 +35,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITableView * fakeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight)];
+    [self.view addSubview:fakeView];
+    
+    self.view.backgroundColor = MTWhite;
+    UIBarButtonItem * rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"tab_set_icon_l"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick)];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"设置";
     
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5 + 64, 64, 64)];
-    _headImageView.layer.masksToBounds = YES;
-    _headImageView.layer.cornerRadius = 32;
-    _headImageView.image = [UIImage imageNamed:@"login_pic1"];
-    [self.view addSubview:_headImageView];
+    _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 64 - 44) collectionViewLayout:[[MTSettingFlowLayoutBig alloc] init]];
+    _mainCollectionView.dataSource = self;
+    [self.view addSubview:_mainCollectionView];
     
-    _photoLabel = [[UILabel alloc] init];
-    [self.view addSubview:_photoLabel];
-    PREPCONSTRAINTS(_photoLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_photoLabel, _headImageView, 10)];
-    [self.view addConstraint:CONSTRAINT_SETTING_HEIGHT(_photoLabel, 30)];
-    ALIGN_TOP(_photoLabel, 104);
-    _photoLabel.textAlignment = NSTextAlignmentCenter;
-    _photoLabel.text = @"照片";
-    _photoLabel.backgroundColor = MTBlue;
-    
-    _focusLabel = [[UILabel alloc] init];
-    [self.view addSubview:_focusLabel];
-    PREPCONSTRAINTS(_focusLabel);
-    MATCH_HEIGHT(_focusLabel, _photoLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_focusLabel, _photoLabel, 0)];
-    _focusLabel.textAlignment = NSTextAlignmentCenter;
-    MATCH_WIDTH(_focusLabel, _photoLabel);
-    MATCH_CENTERV(_focusLabel, _photoLabel);
-    _focusLabel.text = @"关注";
-    _focusLabel.backgroundColor = MTGreen;
-    
-    _fansLabel = [[UILabel alloc] init];
-    [self.view addSubview:_fansLabel];
-    PREPCONSTRAINTS(_fansLabel);
-    MATCH_HEIGHT(_fansLabel, _photoLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_fansLabel, _focusLabel, 0)];
-    MATCH_CENTERV(_fansLabel, _photoLabel);
-    ALIGN_RIGHT(_fansLabel, 10);
-    MATCH_WIDTH(_fansLabel, _photoLabel);
-    _fansLabel.textAlignment = NSTextAlignmentCenter;
-    _fansLabel.text = @"粉丝";
-    _fansLabel.backgroundColor = MTGray;
-    
-    
-    
-    
-    _photoNumLabel = [[UILabel alloc] init];
-    [self.view addSubview:_photoNumLabel];
-    PREPCONSTRAINTS(_photoNumLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_photoNumLabel, _headImageView, 10)];
-    [self.view addConstraint:CONSTRAINT_SETTING_HEIGHT(_photoNumLabel, 30)];
-    ALIGN_TOP(_photoNumLabel, 74);
-    _photoNumLabel.textAlignment = NSTextAlignmentCenter;
-    _photoNumLabel.text = @"74";
-    _photoNumLabel.backgroundColor = MTBlue;
-    
-    _focusNumLabel = [[UILabel alloc] init];
-    [self.view addSubview:_focusNumLabel];
-    PREPCONSTRAINTS(_focusNumLabel);
-    MATCH_HEIGHT(_focusNumLabel, _photoNumLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_focusNumLabel, _photoNumLabel, 0)];
-    _focusNumLabel.textAlignment = NSTextAlignmentCenter;
-    MATCH_WIDTH(_focusNumLabel, _photoNumLabel);
-    MATCH_CENTERV(_focusNumLabel, _photoNumLabel);
-    _focusNumLabel.text = @"104";
-    _focusNumLabel.backgroundColor = MTGreen;
-    
-    _fansNumLabel = [[UILabel alloc] init];
-    [self.view addSubview:_fansNumLabel];
-    PREPCONSTRAINTS(_fansNumLabel);
-    MATCH_HEIGHT(_fansNumLabel, _photoNumLabel);
-    [self.view addConstraint:CONSTRAINT_LEFT2RIGHT(_fansNumLabel, _focusNumLabel, 0)];
-    MATCH_CENTERV(_fansNumLabel, _photoNumLabel);
-    ALIGN_RIGHT(_fansNumLabel, 10);
-    MATCH_WIDTH(_fansNumLabel, _photoNumLabel);
-    _fansNumLabel.textAlignment = NSTextAlignmentCenter;
-    _fansNumLabel.text = @"224";
-    _fansNumLabel.backgroundColor = MTGray;
 
     
-    
-    
-    
-    
-    
     // Do any additional setup after loading the view.
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+#pragma mark collectionView dataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 100;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MTSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"testa" forIndexPath:indexPath];
+    cell.backgroundColor = MTGray;
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    [collectionView registerClass:[MTSettingCollectionViewCell class] forCellWithReuseIdentifier:@"testa"];
+    [collectionView registerClass:[MTSettingHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MTSettingCollectionViewHeader"];
+    return 1;
+}
+
+// The view that is returned must be retrieved from a call to -dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    MTSettingHeaderView * header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"MTSettingCollectionViewHeader" forIndexPath:indexPath];
+    header.backgroundColor = MTWhite;
+    return header;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) rightItemClick
+{
+    self.tabBarController.tabBar.hidden = YES;
+    MTSettingTableViewController * vC = [MTSettingTableViewController new];
+    [self.navigationController pushViewController:vC animated:YES];
 }
 
 /*

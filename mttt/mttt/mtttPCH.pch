@@ -29,12 +29,14 @@
 #define SCWidth [UIScreen mainScreen].bounds.size.width
 #define SCHeight [UIScreen mainScreen].bounds.size.height
 #define MTRGBColor(R,G,B) [UIColor colorWithRed:R / 255.0f green:G / 255.0f blue:B / 255.0f alpha:1.0f]
-
+#define MTRGBAColor(R,G,B,A) [UIColor colorWithRed:R / 255.0f green:G / 255.0f blue:B / 255.0f alpha:A]
 #define MTBlue [UIColor colorWithRed:9 / 255.0f green:109 / 255.0f blue:187 / 255.0f alpha:1.0f]
 #define MTGreen [UIColor colorWithRed:44 / 255.0f green:206 / 255.0f blue:117 / 255.0f alpha:1.0f]
 #define MTWhite [UIColor colorWithRed:255 / 255.0f green:255 / 255.0f blue:255 / 255.0f alpha:1.0f]
 #define MTGray [UIColor colorWithRed:0xa6 / 255.0f green:0xa6 / 255.0f blue:0xa6 / 255.0f alpha:1.0f]
 #define MTBlack [UIColor colorWithRed:0 / 255.0f green:0 / 255.0f blue:0 / 255.0f alpha:1.0f]
+#define MTClear [UIColor clearColor];
+
 #define GetMyUserID [MTAccountMgr getLoginInfo].userID
 
 

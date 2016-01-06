@@ -28,7 +28,8 @@
 +(NSArray *) getNearbyItemArray;
 +(void) setNearbyItemArray : (NSArray *) array;
 
-
++(NSArray *) getMyFocusUser;
++(void) setMyFocusUser : (NSArray *) array;
 
 +(BOOL) isLogin;
 +(NSString *) userName;

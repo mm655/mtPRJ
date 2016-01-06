@@ -25,6 +25,9 @@ NSString * const MTDelFocus = @"focus/delFocus";
 NSString * const MTNetworkZanURL = @"praise/addPraise";
 NSString * const MTNetworkDelZanURL = @"praise/delPraise";
 NSString * const MTNetworkJubaoURL = @"report/addReport";
+NSString * const MTNetworkGetMyFocus = @"user/queryUserListIFocuse";
+NSString * const MTNetworkGetUserPicURL = @"picture/queryPictureListByUserId";
+
 
 
 @implementation MTNetworkBase

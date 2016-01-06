@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MTPicInfoPack.h"
+
 
 @interface MTNearbyCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic) MTPicInfoPack * picInfo;
 @property (strong, nonatomic) NSString * picURL;
 @property (strong, nonatomic) UIImageView * mainImageView;
 @property (strong, nonatomic) UIImage * mainImage;
