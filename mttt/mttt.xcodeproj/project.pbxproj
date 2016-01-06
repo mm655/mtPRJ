@@ -42,6 +42,10 @@
 		6875276B1C33808000BB53E2 /* MTNetworkGetUserInfoResultPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6875276A1C33808000BB53E2 /* MTNetworkGetUserInfoResultPack.m */; };
 		6875276E1C33812E00BB53E2 /* MTNetworkGetUserInfoResponseTopPack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6875276D1C33812E00BB53E2 /* MTNetworkGetUserInfoResponseTopPack.m */; };
 		687527721C33847600BB53E2 /* MTNetworkChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 687527711C33847600BB53E2 /* MTNetworkChangePassword.m */; };
+		687D51741C3D033300679B1E /* MTSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D51731C3D033300679B1E /* MTSettingHeaderView.m */; };
+		687D51771C3D035800679B1E /* MTSettingFlowLayoutSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D51761C3D035800679B1E /* MTSettingFlowLayoutSmall.m */; };
+		687D517A1C3D03A700679B1E /* MTSettingFlowLayoutBig.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D51791C3D03A700679B1E /* MTSettingFlowLayoutBig.m */; };
+		687D517D1C3D06AB00679B1E /* MTSettingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 687D517C1C3D06AB00679B1E /* MTSettingCollectionViewCell.m */; };
 		687F5F511C310C8100B97BE6 /* MTStorageManagerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F501C310C8100B97BE6 /* MTStorageManagerBase.m */; };
 		687F5F5C1C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F591C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.m */; };
 		687F5F5D1C3117C900B97BE6 /* MTTestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 687F5F5B1C3117C900B97BE6 /* MTTestEntity.m */; };
@@ -205,6 +209,14 @@
 		6875276D1C33812E00BB53E2 /* MTNetworkGetUserInfoResponseTopPack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkGetUserInfoResponseTopPack.m; sourceTree = "<group>"; };
 		687527701C33847600BB53E2 /* MTNetworkChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTNetworkChangePassword.h; sourceTree = "<group>"; };
 		687527711C33847600BB53E2 /* MTNetworkChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTNetworkChangePassword.m; sourceTree = "<group>"; };
+		687D51721C3D033300679B1E /* MTSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingHeaderView.h; sourceTree = "<group>"; };
+		687D51731C3D033300679B1E /* MTSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingHeaderView.m; sourceTree = "<group>"; };
+		687D51751C3D035800679B1E /* MTSettingFlowLayoutSmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingFlowLayoutSmall.h; sourceTree = "<group>"; };
+		687D51761C3D035800679B1E /* MTSettingFlowLayoutSmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingFlowLayoutSmall.m; sourceTree = "<group>"; };
+		687D51781C3D03A700679B1E /* MTSettingFlowLayoutBig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingFlowLayoutBig.h; sourceTree = "<group>"; };
+		687D51791C3D03A700679B1E /* MTSettingFlowLayoutBig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingFlowLayoutBig.m; sourceTree = "<group>"; };
+		687D517B1C3D06AB00679B1E /* MTSettingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingCollectionViewCell.h; sourceTree = "<group>"; };
+		687D517C1C3D06AB00679B1E /* MTSettingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingCollectionViewCell.m; sourceTree = "<group>"; };
 		687F5F4F1C310C8100B97BE6 /* MTStorageManagerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStorageManagerBase.h; sourceTree = "<group>"; };
 		687F5F501C310C8100B97BE6 /* MTStorageManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStorageManagerBase.m; sourceTree = "<group>"; };
 		687F5F581C3117C900B97BE6 /* MTTestEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTTestEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -466,6 +478,14 @@
 				680251D41C2BA1C100ECEF64 /* MTSettingViewController.m */,
 				6891C4851C2D28F100805C8E /* MTSettingNavViewController.h */,
 				6891C4861C2D28F100805C8E /* MTSettingNavViewController.m */,
+				687D51721C3D033300679B1E /* MTSettingHeaderView.h */,
+				687D51731C3D033300679B1E /* MTSettingHeaderView.m */,
+				687D51751C3D035800679B1E /* MTSettingFlowLayoutSmall.h */,
+				687D51761C3D035800679B1E /* MTSettingFlowLayoutSmall.m */,
+				687D51781C3D03A700679B1E /* MTSettingFlowLayoutBig.h */,
+				687D51791C3D03A700679B1E /* MTSettingFlowLayoutBig.m */,
+				687D517B1C3D06AB00679B1E /* MTSettingCollectionViewCell.h */,
+				687D517C1C3D06AB00679B1E /* MTSettingCollectionViewCell.m */,
 			);
 			name = SettingController;
 			sourceTree = "<group>";
@@ -1280,12 +1300,14 @@
 				68FCD3941C283DBF00228CBB /* MTAccountMgr.m in Sources */,
 				68B221FB1C33A6F3005D7C9D /* MTNetworkGetMainList.m in Sources */,
 				687F5F771C31345300B97BE6 /* MTUserTableViewCell.m in Sources */,
+				687D517D1C3D06AB00679B1E /* MTSettingCollectionViewCell.m in Sources */,
 				6860290B1C3CA16C00A03427 /* MTNetworkGetMyFocusUser.m in Sources */,
 				6873E5391C3A56D100ECF1FE /* MTNetworkJubao.m in Sources */,
 				687FDA0C1C2EA92900333CF2 /* MTFilterCollectionView.m in Sources */,
 				6873E52B1C3A539400ECF1FE /* MTNetworkAddFocus.m in Sources */,
 				687FDA701C2EC55100333CF2 /* CLBrightnessTool.m in Sources */,
 				687FDA801C2EC55100333CF2 /* CLSaturationTool.m in Sources */,
+				687D517A1C3D03A700679B1E /* MTSettingFlowLayoutBig.m in Sources */,
 				68BB64F01C30DD6500E7DA04 /* UserInfo+CoreDataProperties.m in Sources */,
 				686029111C3CA3DA00A03427 /* MTNetworkGetMyFocusResponsePack.m in Sources */,
 				6873E5271C3A519B00ECF1FE /* MTNetworkAddComment.m in Sources */,
@@ -1317,6 +1339,7 @@
 				6891C4811C2D28A600805C8E /* MTFindNavViewController.m in Sources */,
 				68B36E0A1C315C81009A6A3E /* MTTableHeaderRefreshView.m in Sources */,
 				6865E7FF1C3B6CC000EA1CC7 /* MTItemDetailViewController.m in Sources */,
+				687D51771C3D035800679B1E /* MTSettingFlowLayoutSmall.m in Sources */,
 				687F5F6D1C312B5600B97BE6 /* MTPull2RefreshState.m in Sources */,
 				6873E52E1C3A548800ECF1FE /* MTNetworkDelFocus.m in Sources */,
 				687FDA7A1C2EC55100333CF2 /* CLEffectBase.m in Sources */,
@@ -1357,6 +1380,7 @@
 				687F5F511C310C8100B97BE6 /* MTStorageManagerBase.m in Sources */,
 				68B222021C33B28C005D7C9D /* MTNetworkTimePack.m in Sources */,
 				68B222081C33B7D5005D7C9D /* MTNetworkGetMainListResponseTopPack.m in Sources */,
+				687D51741C3D033300679B1E /* MTSettingHeaderView.m in Sources */,
 				68CC1AC41C2BD954001104FC /* MTNetworkLogin.m in Sources */,
 				6891C4841C2D28D200805C8E /* MTMsgNavViewController.m in Sources */,
 				68FCD3991C28415000228CBB /* MTMainViewController.m in Sources */,

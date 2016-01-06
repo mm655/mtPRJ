@@ -7,9 +7,14 @@
 //
 
 #import "MTSettingViewController.h"
+#import "MTSettingFlowLayoutBig.h"
+#import "MTSettingFlowLayoutSmall.h"
+#import "MTSettingHeaderView.h"
+
 
 @interface MTSettingViewController ()
 {
+    UICollectionView * _mainCollectionView;
     UIImageView * _headImageView;
     UILabel * _photoLabel;
     UILabel * _photoNumLabel;
@@ -28,8 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UITableView * fakeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight)];
+    [self.view addSubview:fakeView];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"设置";
+    
+    _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 64 - 44) collectionViewLayout:[[MTSettingFlowLayoutBig alloc] init]];
+    
     
     _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5 + 64, 64, 64)];
     _headImageView.layer.masksToBounds = YES;
@@ -70,9 +82,6 @@
     _fansLabel.text = @"粉丝";
     _fansLabel.backgroundColor = MTGray;
     
-    
-    
-    
     _photoNumLabel = [[UILabel alloc] init];
     [self.view addSubview:_photoNumLabel];
     PREPCONSTRAINTS(_photoNumLabel);
@@ -105,12 +114,6 @@
     _fansNumLabel.textAlignment = NSTextAlignmentCenter;
     _fansNumLabel.text = @"224";
     _fansNumLabel.backgroundColor = MTGray;
-
-    
-    
-    
-    
-    
     
     // Do any additional setup after loading the view.
 }
