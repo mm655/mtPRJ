@@ -97,6 +97,8 @@
 		687FDA8C1C2EC55100333CF2 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA651C2EC55100333CF2 /* UIView+Frame.m */; };
 		687FDA8D1C2EC55100333CF2 /* _CLImageEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 687FDA681C2EC55100333CF2 /* _CLImageEditorViewController.m */; };
 		687FDA8E1C2EC55100333CF2 /* _CLImageEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 687FDA691C2EC55100333CF2 /* _CLImageEditorViewController.xib */; };
+		688113311C3E147500A02755 /* userXieyi.txt in Resources */ = {isa = PBXBuildFile; fileRef = 688113301C3E147500A02755 /* userXieyi.txt */; };
+		688113341C3E14BF00A02755 /* MTUserXieyiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 688113331C3E14BF00A02755 /* MTUserXieyiViewController.m */; };
 		6885A1BC1C3D2DF80089CFCD /* MTSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6885A1BB1C3D2DF80089CFCD /* MTSettingTableViewController.m */; };
 		6885A1C01C3D36AF0089CFCD /* MTEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6885A1BF1C3D36AF0089CFCD /* MTEditViewController.m */; };
 		6885A1C31C3D377D0089CFCD /* MTResetPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6885A1C21C3D377D0089CFCD /* MTResetPassViewController.m */; };
@@ -321,6 +323,9 @@
 		687FDA671C2EC55100333CF2 /* _CLImageEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CLImageEditorViewController.h; sourceTree = "<group>"; };
 		687FDA681C2EC55100333CF2 /* _CLImageEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CLImageEditorViewController.m; sourceTree = "<group>"; };
 		687FDA691C2EC55100333CF2 /* _CLImageEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _CLImageEditorViewController.xib; sourceTree = "<group>"; };
+		688113301C3E147500A02755 /* userXieyi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userXieyi.txt; sourceTree = "<group>"; };
+		688113321C3E14BF00A02755 /* MTUserXieyiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserXieyiViewController.h; sourceTree = "<group>"; };
+		688113331C3E14BF00A02755 /* MTUserXieyiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserXieyiViewController.m; sourceTree = "<group>"; };
 		6885A1BA1C3D2DF80089CFCD /* MTSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingTableViewController.h; sourceTree = "<group>"; };
 		6885A1BB1C3D2DF80089CFCD /* MTSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingTableViewController.m; sourceTree = "<group>"; };
 		6885A1BE1C3D36AF0089CFCD /* MTEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTEditViewController.h; sourceTree = "<group>"; };
@@ -555,6 +560,7 @@
 		685CD21F1C278AD5008F0A8A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				688113301C3E147500A02755 /* userXieyi.txt */,
 				685CD2201C278AD5008F0A8A /* main.m */,
 				685CD2551C278F6F008F0A8A /* mtttPCH.pch */,
 			);
@@ -1024,6 +1030,8 @@
 				6885A1BF1C3D36AF0089CFCD /* MTEditViewController.m */,
 				6885A1C11C3D377D0089CFCD /* MTResetPassViewController.h */,
 				6885A1C21C3D377D0089CFCD /* MTResetPassViewController.m */,
+				688113321C3E14BF00A02755 /* MTUserXieyiViewController.h */,
+				688113331C3E14BF00A02755 /* MTUserXieyiViewController.m */,
 			);
 			name = editController;
 			sourceTree = "<group>";
@@ -1240,6 +1248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688113311C3E147500A02755 /* userXieyi.txt in Resources */,
 				687FDA6E1C2EC55100333CF2 /* Localizable.strings in Resources */,
 				687FDA8E1C2EC55100333CF2 /* _CLImageEditorViewController.xib in Resources */,
 				687FDA6A1C2EC55100333CF2 /* CLImageEditor.bundle in Resources */,
@@ -1371,6 +1380,7 @@
 				687FDA891C2EC55100333CF2 /* CLSplineInterpolator.m in Sources */,
 				68BB64E51C30D98200E7DA04 /* MTNetworkLoginResultPack.m in Sources */,
 				687F5F761C31345300B97BE6 /* MTUserTableView.m in Sources */,
+				688113341C3E14BF00A02755 /* MTUserXieyiViewController.m in Sources */,
 				6885A1C31C3D377D0089CFCD /* MTResetPassViewController.m in Sources */,
 				68BB64EB1C30DCE100E7DA04 /* MTMainModel.xcdatamodeld in Sources */,
 				6891C4871C2D28F100805C8E /* MTSettingNavViewController.m in Sources */,

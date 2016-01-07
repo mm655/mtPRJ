@@ -52,7 +52,7 @@
     button.backgroundColor = MTGreen;
     [button setAttributedTitle:[[NSAttributedString alloc] initWithString:@"确定" attributes:@{NSForegroundColorAttributeName : MTWhite, NSFontAttributeName : [UIFont systemFontOfSize:16.0f]}] forState:UIControlStateNormal];
     
-    
+    self.navigationItem.title = @"隐私政策";
     
     
     

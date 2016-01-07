@@ -91,6 +91,35 @@
     }
 }
 
++(NSArray *)getMyItemArray
+{
+    if([self isLogin])
+    {
+        NSString * basePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        NSString * finalPath = [NSString stringWithFormat:@"%@/%@_myItemArray",basePath,[self userName]];
+        
+        NSArray * myArray = [NSKeyedUnarchiver unarchiveObjectWithFile:finalPath];
+        return myArray;
+    }else{
+        NSLog(@"you can't call this method while not login");
+        exit(1);
+    }
+    return nil;
+}
+
++(void)setMyItemArray:(NSArray *)array
+{
+    if([self isLogin])
+    {
+        NSString * basePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        NSString * finalPath = [NSString stringWithFormat:@"%@/%@_myItemArray",basePath,[self userName]];
+        [NSKeyedArchiver archiveRootObject:array toFile:finalPath];
+    }else{
+        NSLog(@"you can't call this method while not login");
+        exit(1);
+    }
+}
+
 +(NSArray *)getUserItemArray
 {
     if([self isLogin])
