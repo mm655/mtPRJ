@@ -32,7 +32,7 @@
 {
     self = [super initWithFrame:frame];
     
-    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 64, 64)];
+    _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 20, 64, 64)];
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.cornerRadius = 32;
     _headImageView.image = [UIImage imageNamed:@"login_pic1"];
@@ -112,7 +112,7 @@
     [settingButton setAttributedTitle:[[NSAttributedString alloc] initWithString:@"修改个人信息" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20.0f],NSForegroundColorAttributeName : MTWhite}] forState:UIControlStateNormal];
     [settingButton addTarget:self action:@selector(settingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     PREPCONSTRAINTS(settingButton);
-    ALIGN_BOTTOM(settingButton, 170);
+    ALIGN_BOTTOM(settingButton, 75);
     
     [self addConstraint:CONSTRAINT_SETTING_WIDTH(settingButton, SCWidth / 2)];
     [self addConstraint:CONSTRAINT_SETTING_HEIGHT(settingButton, 30)];
@@ -120,7 +120,7 @@
     MATCH_CENTERH(settingButton, _focusLabel);
     
     UIButton * bigButton = [[UIButton alloc] initWithFrame:CGRectMake(-1, 0, SCWidth / 2 + 2, 60)];
-    bigButton.bottom = 300;
+    bigButton.bottom = 200;
     _bigButton = bigButton;
     [bigButton setImage:[UIImage imageNamed:@"bigImageImageS"] forState:UIControlStateNormal];
     [self addSubview:bigButton];

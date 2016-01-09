@@ -23,6 +23,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - SVProgressHUD-0.8.1 (0.8)
   - ViewUtils (1.1.2)
+  - WeixinSDK (1.4.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.3)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7.3)
   - SVProgressHUD-0.8.1 (~> 0.8)
   - ViewUtils (~> 1.1.2)
+  - WeixinSDK (~> 1.4.3)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -43,5 +45,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
   ViewUtils: 68e42c708a4b3912e39691cef5080282dc5013fb
+  WeixinSDK: 012c72fbaf8cef68afa7b0d0bb81c67a7a5c9136
 
 COCOAPODS: 0.39.0

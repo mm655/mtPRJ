@@ -539,7 +539,6 @@
 			children = (
 				68A0C7041C2FB4F6003FE4BB /* Test */,
 				687FDA101C2EC53900333CF2 /* ThirdParty */,
-				68CC1ABB1C2BCE8C001104FC /* Network */,
 				685CD2521C278EF2008F0A8A /* Controllers */,
 				685CD2511C278EED008F0A8A /* Views */,
 				685CD2361C278E0B008F0A8A /* UICommon */,
@@ -552,6 +551,7 @@
 				685CD2281C278AD5008F0A8A /* Main.storyboard */,
 				685CD22B1C278AD5008F0A8A /* Assets.xcassets */,
 				685CD2301C278AD5008F0A8A /* Info.plist */,
+				68CC1ABB1C2BCE8C001104FC /* Network */,
 				685CD21F1C278AD5008F0A8A /* Supporting Files */,
 			);
 			path = mttt;

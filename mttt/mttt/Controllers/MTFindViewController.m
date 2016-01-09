@@ -90,17 +90,18 @@
     self.nearByCollectionView = nearView;
     self.nearByCollectionView.tag = 1011;
     self.nearByCollectionView.contentOffset = CGPointMake(0, 44);
-    
+    self.nearByCollectionView.backgroundColor = MTWhite;
     
     MTUserTableView * tableView;
     tableView = [[MTUserTableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
     tableView.contentOffset = CGPointMake(0, 0);
-    tableView.backgroundColor = [UIColor redColor];
+    tableView.backgroundColor = MTWhite;
     self.userTableView = tableView;
     tableView.delegate = self;
     tableView.dataSource = self;
 //    [self.view addSubview:tableView];
     tableView.tag = 1022;
+    tableView.right = 0;
     tableView.contentOffset = CGPointMake(0, 44);
     [self.view insertSubview:tableView belowSubview:self.nearByCollectionView];
     

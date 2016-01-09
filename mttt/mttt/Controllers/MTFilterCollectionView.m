@@ -30,7 +30,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     [collectionView registerClass:[MTfilterCollectionViewCell class] forCellWithReuseIdentifier:@"MTFilterCell"];
-    return 10;
+    return 14;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:

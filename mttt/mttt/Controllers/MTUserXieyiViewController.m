@@ -25,7 +25,11 @@
     
     UITextView * xyView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 64)];
     xyView.text = _xieyiString;
+//    xyView.userInteractionEnabled = NO;
+    xyView.editable = NO;
     [self.view addSubview:xyView];
+    
+    self.navigationItem.title = @"用户协议";
     
     UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_array_left"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick)];
     self.navigationItem.leftBarButtonItem = leftItem;
