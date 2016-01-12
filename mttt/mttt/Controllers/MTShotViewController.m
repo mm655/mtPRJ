@@ -187,7 +187,6 @@
     }];
 }
 
-
 #pragma mark image picker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
@@ -227,15 +226,27 @@
         
 //        CGImageRef cgimage = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, 360, 360));
         
-        NSData * data = UIImageJPEGRepresentation(image, 1.0f);
-        
-        data = UIImagePNGRepresentation(image);
+//        NSData * data = UIImageJPEGRepresentation(image, 1.0f);
+//        
+//        data = UIImagePNGRepresentation(image);
         
 //        image.imageOrientation
 //        NSLog(@"orientation : %zi",image.imageOrientation);
 //        NSLog(@"%@",data);
 //        UIImage * newImage = [[UIImage alloc] initWithData:data];
-        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:[self fixOrientation:image]];
+        
+        CGImageRef imageRef = [[self fixOrientation:image] CGImage];
+        CGRect rect = CGRectMake(0, (image.size.height - image.size.width)/2, image.size.width,image.size.width);
+        CGImageRef rImage = CGImageCreateWithImageInRect(imageRef, rect);
+        UIImage * resultImage = [[UIImage alloc] initWithCGImage:rImage];
+        
+        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:[self fixOrientation:resultImage]];
+        NSLog(@"image size is : %@",NSStringFromCGSize(image.size));
+        NSLog(@"result image size : %@",NSStringFromCGSize(resultImage.size));
+        
+//        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:resultImage];
+        
+        
         [self presentViewController:editController animated:NO completion:nil];
         ;
     }];

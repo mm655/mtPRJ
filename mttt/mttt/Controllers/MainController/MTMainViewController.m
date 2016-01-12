@@ -47,6 +47,7 @@
     _mainTableView.backgroundColor = [UIColor lightGrayColor];
     _mainTableView.delegate   = self;
     _mainTableView.dataSource = self;
+    _mainTableView.showsVerticalScrollIndicator = NO;
     _mainItemArray = [[MTAccountMgr getMainPageItemArray] mutableCopy];
     [self.view addSubview:_mainTableView];
     
@@ -136,8 +137,14 @@
 {
     MTPicInfoPack * picInfo = [_mainItemArray objectAtIndex:indexPath.row];
     CGFloat commentHeight = 0;
+    int cnt = 0;
     for(NSDictionary * tmpDic in picInfo.comment)
     {
+        cnt += 1;
+        if(cnt++ > 3)
+        {
+            break;
+        }
         MTCommentPack * pack = [[MTCommentPack alloc] initWithDictionary:tmpDic error:nil];
 //        NSLog(@"%@",pack);
         NSString * finalString = @"";
@@ -181,6 +188,14 @@
     cell.cellId = @(indexPath.row);
   
     cell.commentArray = infoPack.comment;
+    
+    if(indexPath.row == 0)
+    {
+        NSLog(@"cArray : %@",infoPack.comment);
+        
+    }
+    
+    
     [cell setNeedsDisplay];
     return cell;
 }
@@ -227,22 +242,25 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:MTEndRefreshing object:nil];
         _isAddingMore = NO;
         NSArray * tmpArray = (NSArray *)addInfo;
-        if(tmpArray.count != 0)
+        if(resultType == MTNetworkResultTypeSuccess)
         {
-            _curPage += 1;
-            if(_nothingShadowView)
+            if(tmpArray.count != 0)
             {
-                [_nothingShadowView removeFromSuperview];
-                _nothingShadowView = nil;
-            }
-            if(_mainItemArray)
-            {
-                [_mainItemArray addObjectsFromArray:tmpArray];
-            }
-            [_mainTableView reloadData];
-            if(_mainTableView.contentOffset.y < 44)
-            {
-                [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+                _curPage += 1;
+                if(_nothingShadowView)
+                {
+                    [_nothingShadowView removeFromSuperview];
+                    _nothingShadowView = nil;
+                }
+                if(_mainItemArray)
+                {
+                    [_mainItemArray addObjectsFromArray:tmpArray];
+                }
+                [_mainTableView reloadData];
+                if(_mainTableView.contentOffset.y < 44)
+                {
+                    [_mainTableView setContentOffset:CGPointMake(0, 44) animated:YES];
+                }
             }
         }
     }];
@@ -333,6 +351,8 @@
         if(resultType == MTNetworkResultTypeSuccess)
         {
             NSLog(@"zan success");
+            infoPack.praiseCount = @([infoPack.praiseCount intValue] + 1);
+            [_mainTableView reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:(NSString *)addInfo];
         }

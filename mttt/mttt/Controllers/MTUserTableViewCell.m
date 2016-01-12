@@ -12,6 +12,8 @@
 #import "MTItemDetailViewController.h"
 #import "MTMainTabViewController.h"
 #import "MTFindNavViewController.h"
+#import "MTNetworkAddFocus.h"
+
 
 static CGFloat const mtUserTableMargin = 2;
 
@@ -225,6 +227,24 @@ static CGFloat const mtUserTableMargin = 2;
 
 -(void) focusButtonClick : (UIButton *) button
 {
+    NSArray * picArray = self.infoDic[@"picArray"];
+    MTPicInfoPack * infoPack = [picArray objectAtIndex:0];
+    
+    MTMainTabViewController * rootVC = (MTMainTabViewController *)[[UIApplication sharedApplication].delegate window].rootViewController;
+    __block MTFindNavViewController * findVC = rootVC.selectedViewController;
+    
+//    __weak typeof(self) weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:findVC.view animated:YES];
+    MTNetworkAddFocus * focus = [MTNetworkAddFocus new];
+    [focus addFocusUser:infoPack.user.userID byUser:GetMyUserID rBlock:^(MTNetworkResultType resultType, NSObject *addInfo) {
+        [MBProgressHUD hideAllHUDsForView:findVC.view animated:YES];
+        if(resultType == MTNetworkResultTypeSuccess)
+        {
+            [SVProgressHUD showSuccessWithStatus:@"已关注"];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:(NSString *) addInfo];
+        }
+    }];
     
 }
 

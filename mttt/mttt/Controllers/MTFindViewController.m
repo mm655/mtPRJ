@@ -51,9 +51,10 @@
     [super viewDidLoad];
     mySemaphore = dispatch_semaphore_create(1);
     UITableView * fakeTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight) style:UITableViewStyleGrouped];
+    fakeTable.backgroundColor = MTClear;
     [self.view addSubview:fakeTable];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton * leftNearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCWidth / 2, 40)];
     NSAttributedString * lAString = [[NSAttributedString alloc] initWithString:@"附近" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20.0f], NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -64,6 +65,8 @@
     _leftNearButton = leftNearButton;
     [leftNearButton addTarget:self action:@selector(topButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.view addSubview:leftNearButton];
+    
+    self.view.backgroundColor = MTGray;
     
     UIButton * rightUserButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, SCWidth / 2, 40)];
     NSAttributedString * rAString = [[NSAttributedString alloc] initWithString:@"用户" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20.0f], NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -83,6 +86,7 @@
     
     MTNearbyCollectionViewLayout * nearLayout = [MTNearbyCollectionViewLayout new];
     MTNearbyCollectionView * nearView = [[MTNearbyCollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) collectionViewLayout:nearLayout];
+    nearView.showsVerticalScrollIndicator = NO;
     nearView.backgroundColor = [UIColor blueColor];
     nearView.delegate = self;
     nearView.dataSource = self;
@@ -90,15 +94,17 @@
     self.nearByCollectionView = nearView;
     self.nearByCollectionView.tag = 1011;
     self.nearByCollectionView.contentOffset = CGPointMake(0, 44);
-    self.nearByCollectionView.backgroundColor = MTWhite;
+    self.nearByCollectionView.backgroundColor = MTGray;
     
     MTUserTableView * tableView;
     tableView = [[MTUserTableView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 44 - 64) style:UITableViewStyleGrouped];
     tableView.contentOffset = CGPointMake(0, 0);
-    tableView.backgroundColor = MTWhite;
+    tableView.backgroundColor = MTGray;
     self.userTableView = tableView;
+    tableView.showsVerticalScrollIndicator = NO;
     tableView.delegate = self;
     tableView.dataSource = self;
+    
 //    [self.view addSubview:tableView];
     tableView.tag = 1022;
     tableView.right = 0;
@@ -229,7 +235,10 @@
 {
 //    NSLog(@"kind is : %@",kind);
 //    MTTableHeaderRefreshView * tV = [MTTableHeaderRefreshView new];
-    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"collectionHeader" forIndexPath:indexPath];
+//    return
+    MTTableHeaderRefreshView * view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"collectionHeader" forIndexPath:indexPath];
+    view.backgroundColor = MTGray;
+    return view;
 }
 
 //- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
