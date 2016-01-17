@@ -16,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     _mainButton = [[UIButton alloc] init];
+    _mainButton.userInteractionEnabled = NO;
     [self addSubview:_mainButton];
     PREPCONSTRAINTS(_mainButton);
     ALIGN_LEFT(_mainButton, 0);

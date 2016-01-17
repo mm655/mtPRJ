@@ -31,6 +31,10 @@
 +(NSArray *) getMyFocusUser;
 +(void) setMyFocusUser : (NSArray *) array;
 
++(NSArray *) getMyItemArray;
++(void) setMyItemArray : (NSArray *)array;
+
+
 +(BOOL) isLogin;
 +(NSString *) userName;
 +(NSNumber *) userID;

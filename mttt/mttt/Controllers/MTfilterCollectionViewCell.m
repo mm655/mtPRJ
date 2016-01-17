@@ -19,6 +19,7 @@
     mainImageView.backgroundColor = MTWhite;
     mainImageView.x = frame.size.width / 2;
     mainImageView.y = frame.size.width / 2;
+    mainImageView.contentMode = UIViewContentModeScaleAspectFill;
     _mainImageView = mainImageView;
     [self addSubview:mainImageView];
     

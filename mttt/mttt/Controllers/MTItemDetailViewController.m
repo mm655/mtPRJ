@@ -36,6 +36,7 @@
     UIBarButtonItem * leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back_array_left"] style:UIBarButtonItemStylePlain target:self action:@selector(backBarButtonItemClick)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
+    self.navigationItem.title = @"陌图";
     mySemaphore = dispatch_semaphore_create(1);
     self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCHeight)];
     self.mainScrollView.backgroundColor = MTWhite;
@@ -100,6 +101,9 @@
     _zanField.leftView = ZLImageView;
     _zanField.leftViewMode = UITextFieldViewModeAlways;
     _zanField.text = @" 100";
+    
+    _zanField.text = [NSString stringWithFormat:@"%zi",[_infoPack.praiseCount intValue]];
+    
     [self.mainScrollView addSubview:_zanField];
     UIButton * zanButton = [[UIButton alloc] initWithFrame:_zanField.frame];
     [self.mainScrollView addSubview:zanButton];
@@ -117,6 +121,7 @@
     _pingField.leftView = PLImageView;
     _pingField.leftViewMode = UITextFieldViewModeAlways;
     _pingField.text = @" 100";
+    _pingField.text = [NSString stringWithFormat:@"%zi",_infoPack.comment.count];
     [self.mainScrollView addSubview:_pingField];
     
     _jubaoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
@@ -222,6 +227,8 @@
         if(resultType != MTNetworkResultTypeNetFail)
         {
             [SVProgressHUD showSuccessWithStatus:@"已赞"];
+            _infoPack.praiseCount = @([_infoPack.praiseCount intValue] + 1);
+            _zanField.text = [NSString stringWithFormat:@"%zi",[_infoPack.praiseCount intValue]];
         }else{
             [SVProgressHUD showErrorWithStatus:(NSString *)addInfo];
         }
@@ -289,6 +296,8 @@
         if(resultType == MTNetworkResultTypeSuccess)
         {
             [SVProgressHUD showSuccessWithStatus:@"评论成功"];
+            [self.ptView resignFirstResponder];
+//            self.ptView.text = @"";
             NSMutableArray * cMArray = [NSMutableArray array];
             if(self.infoPack.comment)
             {
@@ -298,19 +307,20 @@
             MTCommentPack * newPack = [MTCommentPack new];
             newPack.user = [MTUserInfoPack new];
             newPack.comments = self.ptView.text;
-            
-            [cMArray addObject:newPack];
+            newPack.user.userID = GetMyUserID;
+//            self.ptView.text = @"";
+            [cMArray addObject:[newPack toDictionary]];
             self.infoPack.comment = [cMArray copy];
             
             NSString * commentString = [@"me:" stringByAppendingString:[NSString stringWithFormat:@"%@",self.ptView.text]];
-            
+            self.ptView.text = @"";
             CGRect cRect = [commentString boundingRectWithSize:CGSizeMake(SCWidth - 20, SCHeight) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12.0f]} context:NULL];
             UITextView * ctView = [[UITextView alloc] initWithFrame:CGRectMake(10, pingBaseTop, SCWidth - 20, cRect.size.height)];
             ctView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
             ctView.font = [UIFont systemFontOfSize:12.0f];
             ctView.text = commentString;
             ctView.userInteractionEnabled = NO;
-            
+            _pingField.text = [NSString stringWithFormat:@"%zi",_infoPack.comment.count];
             [self.mainScrollView addSubview:ctView];
             pingBaseTop = ctView.bottom + 5;
             self.mainScrollView.contentSize = CGSizeMake(SCWidth, pingBaseTop);
@@ -319,7 +329,6 @@
         }
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         dispatch_semaphore_signal(mySemaphore);
-        ;
     }];
 }
 

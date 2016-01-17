@@ -104,7 +104,7 @@
     [_jubaoButton addTarget:self action:@selector(jubaoButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     _pingView1 = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    _pingView1.backgroundColor = MTGreen;
+    _pingView1.backgroundColor = MTClear;
     _pingView1.top = _jubaoButton.bottom + 5;
     [self addSubview:_pingView1];
     

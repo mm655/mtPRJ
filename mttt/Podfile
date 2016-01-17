@@ -6,9 +6,7 @@ pod 'ViewUtils', '~> 1.1.2'
 pod 'IQKeyboardManager', '~> 3.3.4'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'SVProgressHUD-0.8.1', '~> 0.8'
-
-
-
+pod 'WeixinSDK', '~> 1.4.3'
 
 
 

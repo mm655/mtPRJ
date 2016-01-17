@@ -10,6 +10,9 @@
 
 @interface MTNetworkGetUserPic : MTNetworkBase
 
--(void) getUserPicByUserID : (NSNumber *) userID rBlock : (MTNetworkUniversalBlock)block;
+-(void) getUserPicByUserID : (NSNumber *) userID page:(NSNumber *) page rBlock : (MTNetworkUniversalBlock)block;
+
+-(void) getUserPicByUserID : (NSNumber *) userID  rBlock : (MTNetworkUniversalBlock)block;
+
 
 @end

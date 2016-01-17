@@ -9,7 +9,8 @@
 #import "MTSettingTableViewController.h"
 #import "MTEditViewController.h"
 #import "MTResetPassViewController.h"
-
+#import "MTUserXieyiViewController.h"
+#import "MTLoginViewController.h"
 @interface MTSettingTableViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -196,7 +197,8 @@
 
 -(void) secureClick
 {
-    
+    MTUserXieyiViewController * xVC = [MTUserXieyiViewController new];
+    [self.navigationController pushViewController:xVC animated:YES];
 }
 
 -(void) fankuiClick
@@ -209,6 +211,13 @@
     UIAlertController * aC = [UIAlertController alertControllerWithTitle:@"退出登录？" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction * a1 = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        MTAccountInfo * info = [MTAccountMgr getLoginInfo];
+        info.loginState = @(0);
+        [MTAccountMgr setAccountInfo:info];
+        
+        [[UIApplication sharedApplication].delegate window].rootViewController = [MTLoginViewController new];
+        [[[UIApplication sharedApplication].delegate window] makeKeyAndVisible];
         ;
     }];
     

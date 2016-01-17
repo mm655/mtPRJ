@@ -19,7 +19,9 @@
 @end
 
 @implementation MTShotViewController
-
+{
+    AVCaptureDevicePosition _curPositon;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -27,17 +29,24 @@
     _preViewView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, SCWidth, SCWidth)];
     [self.view addSubview:_preViewView];
     _captureSession = [[AVCaptureSession alloc] init];
-    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetMedium])
+    if([_captureSession canSetSessionPreset:AVCaptureSessionPreset640x480])
     {
-        [_captureSession setSessionPreset:AVCaptureSessionPresetMedium];
+        [_captureSession setSessionPreset:AVCaptureSessionPreset640x480];
     }
     
     NSArray * myDeivices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+//    [myDeivices]
     for(AVCaptureDevice * myDevice in myDeivices)
     {
+        
         if([myDevice position] == AVCaptureDevicePositionBack)
         {
+            [myDevice lockForConfiguration:nil];
+//            myDevice.flashMode = AVCaptureFlashModeOn;
+            _captureDevice = myDevice;
+            [myDevice unlockForConfiguration];
             _deviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:myDevice error:nil];
+//            _deviceInput.
         }
     }
     
@@ -77,6 +86,8 @@
     ALIGN_TOP(linesButton, 0);
     ALIGN_BOTTOM(linesButton, 0);
     linesButton.backgroundColor = MTGreen;
+    [linesButton setImage:[UIImage imageNamed:@"shot_grid_ds"] forState:UIControlStateNormal];
+    [linesButton addTarget:self action:@selector(linesButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * camsSButton = [[UIButton alloc] init];
     [actionView addSubview:camsSButton];
@@ -86,6 +97,8 @@
     ALIGN_BOTTOM(camsSButton, 0);
     MATCH_WIDTH(camsSButton, linesButton);
     camsSButton.backgroundColor = MTBlue;
+    [camsSButton setImage:[UIImage imageNamed:@"shot_rear_ds"] forState:UIControlStateNormal];
+    [camsSButton addTarget:self action:@selector(camsSButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * flashButton = [[UIButton alloc] init];
     [actionView addSubview:flashButton];
@@ -95,7 +108,9 @@
     ALIGN_BOTTOM(flashButton, 0);
     ALIGN_RIGHT(flashButton, 0);
     MATCH_WIDTH(flashButton, camsSButton);
-    flashButton.backgroundColor = MTWhite;
+    flashButton.backgroundColor = MTGreen;
+    [flashButton setImage:[UIImage imageNamed:@"shot_flash_ds"] forState:UIControlStateNormal];
+    [flashButton addTarget:self action:@selector(flashButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * shotButton = [[UIButton alloc] init];
     CGFloat spaceLeft = SCHeight - SCWidth - 88;
@@ -172,7 +187,6 @@
     }];
 }
 
-
 #pragma mark image picker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
@@ -210,17 +224,29 @@
         
         NSLog(@"imageSize is : %@",NSStringFromCGSize(image.size));
         
-        CGImageRef cgimage = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, 360, 360));
+//        CGImageRef cgimage = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, 360, 360));
         
-        NSData * data = UIImageJPEGRepresentation(image, 1.0f);
-        
-        data = UIImagePNGRepresentation(image);
+//        NSData * data = UIImageJPEGRepresentation(image, 1.0f);
+//        
+//        data = UIImagePNGRepresentation(image);
         
 //        image.imageOrientation
 //        NSLog(@"orientation : %zi",image.imageOrientation);
 //        NSLog(@"%@",data);
 //        UIImage * newImage = [[UIImage alloc] initWithData:data];
-        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:[self fixOrientation:image]];
+        
+        CGImageRef imageRef = [[self fixOrientation:image] CGImage];
+        CGRect rect = CGRectMake(0, (image.size.height - image.size.width)/2, image.size.width,image.size.width);
+        CGImageRef rImage = CGImageCreateWithImageInRect(imageRef, rect);
+        UIImage * resultImage = [[UIImage alloc] initWithCGImage:rImage];
+        
+        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:[self fixOrientation:resultImage]];
+        NSLog(@"image size is : %@",NSStringFromCGSize(image.size));
+        NSLog(@"result image size : %@",NSStringFromCGSize(resultImage.size));
+        
+//        ImageEditViewController * editController = [[ImageEditViewController alloc] initWithOrgImage:resultImage];
+        
+        
         [self presentViewController:editController animated:NO completion:nil];
         ;
     }];
@@ -304,6 +330,120 @@
     return img;
 }
 
+-(void) linesButtonClick : (UIButton *) button
+{
+    if(!button.selected)
+    {
+        button.selected = YES;
+        [button setImage:[UIImage imageNamed:@"shot_grid_s"] forState:UIControlStateNormal];
+        
+        UIView * heng1 = [[UIView alloc] initWithFrame:CGRectMake(0, SCWidth / 3, SCWidth, 1)];
+        heng1.backgroundColor = MTWhite;
+        [_preViewView addSubview:heng1];
+        heng1.tag = 666;
+        
+        UIView * heng2 = [[UIView alloc] initWithFrame:CGRectMake(0, SCWidth / 1.5f, SCWidth, 1)];
+        heng2.backgroundColor = MTWhite;
+        [_preViewView addSubview:heng2];
+        heng2.tag = 666;
+ 
+        UIView * shu1 = [[UIView alloc] initWithFrame:CGRectMake(SCWidth / 3, 0, 1, SCWidth)];
+        shu1.backgroundColor = MTWhite;
+        [_preViewView addSubview:shu1];
+        shu1.tag = 666;
+        
+        UIView * shu2 = [[UIView alloc] initWithFrame:CGRectMake(SCWidth / 1.5f, 0, 1, SCWidth)];
+        shu2.backgroundColor = MTWhite;
+        [_preViewView addSubview : shu2];
+        shu2.tag = 666;
+        
+    }else{
+        button.selected = NO;
+        [button setImage:[UIImage imageNamed:@"shot_grid_ds"] forState:UIControlStateNormal];
+        for(UIView * tmpView in [_preViewView subviews])
+        {
+            if(tmpView.tag == 666)
+            {
+                [tmpView removeFromSuperview];
+            }
+        }
+    }
+}
+
+-(void) camsSButtonClick : (UIButton *) button
+{
+    if(button.selected)
+    {
+        button.selected = NO;
+        [button setImage:[UIImage imageNamed:@"shot_rear_ds"] forState:UIControlStateNormal];
+        
+        [_captureSession stopRunning];
+        NSArray * myDeivices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+        [_captureSession removeInput:_deviceInput];
+        for(AVCaptureDevice * myDevice in myDeivices)
+        {
+            if([myDevice position] == AVCaptureDevicePositionBack)
+            {
+                [myDevice lockForConfiguration:nil];
+                myDevice.flashMode = AVCaptureFlashModeOn;
+                _captureDevice = myDevice;
+                [myDevice unlockForConfiguration];
+                _deviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:myDevice error:nil];
+            }
+        }
+        if([_captureSession canAddInput:_deviceInput])
+        {
+            [_captureSession addInput:_deviceInput];
+        }
+        [_captureSession startRunning];
+    }else{
+        button.selected = YES;
+        [button setImage:[UIImage imageNamed:@"shot_rear_s"] forState:UIControlStateNormal];
+        
+        [_captureSession stopRunning];
+        NSArray * myDeivices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+        [_captureSession removeInput:_deviceInput];
+        for(AVCaptureDevice * myDevice in myDeivices)
+        {
+            if([myDevice position] == AVCaptureDevicePositionFront)
+            {
+//                [myDevice lockForConfiguration:nil];
+//                myDevice.flashMode = AVCaptureFlashModeOn;
+//                _captureDevice = myDevice;
+//                [myDevice unlockForConfiguration];
+                _deviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:myDevice error:nil];
+            }
+        }
+        if([_captureSession canAddInput:_deviceInput])
+        {
+            [_captureSession addInput:_deviceInput];
+        }
+        [_captureSession startRunning];
+    }
+}
+
+-(void) flashButtonClick : (UIButton *) button
+{
+    if(button.selected)
+    {
+        button.selected = NO;
+        [button setImage:[UIImage imageNamed:@"shot_flash_ds"] forState:UIControlStateNormal];
+        if(_captureDevice.flashAvailable)
+        {
+            [_captureDevice lockForConfiguration:nil];
+            _captureDevice.flashMode = AVCaptureFlashModeOff;
+        }
+    }else{
+        button.selected = YES;
+        [button setImage:[UIImage imageNamed:@"shot_flash_s"] forState:UIControlStateNormal];
+        if(_captureDevice.flashAvailable)
+        {
+            [_captureDevice lockForConfiguration:nil];
+            _captureDevice.flashMode = AVCaptureFlashModeOn;
+        }
+    }
+ 
+}
 
 
 /*
