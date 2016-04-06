@@ -67,11 +67,11 @@ typedef NS_ENUM(NSInteger,MTLRState)
     _curState = MTLRStateRegistState1;
     _topImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCWidth, SCWidth * 0.75)];
     [self.view addSubview:_topImageView1];
-    _topImageView1.image = [UIImage imageNamed:@"login_pic1"];
+    _topImageView1.image = [UIImage imageNamed:@"login_pic1.jpg"];
     _topImageView1.contentMode = UIViewContentModeScaleAspectFill;
     
     _topImageView2 = [[UIImageView alloc] initWithFrame:_topImageView1.frame];
-    _topImageView2.image = [UIImage imageNamed:@"login_pic2"];
+    _topImageView2.image = [UIImage imageNamed:@"login_pic2.jpg"];
     _topImageView2.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:_topImageView2];
     _topImageView2.alpha = 0.0f;
