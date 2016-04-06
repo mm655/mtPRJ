@@ -118,26 +118,30 @@
     [self addConstraint:CONSTRAINT_SETTING_HEIGHT(settingButton, 30)];
     [settingButton addTarget:self action:@selector(settingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     MATCH_CENTERH(settingButton, _focusLabel);
+    // CGRectMake(-1, 0, SCWidth / 2 + 2, 60)
+    UIButton * smallButton = [[UIButton alloc] initWithFrame:CGRectMake(-1, 0, SCWidth / 2 + 2, 60)];
+//    smallButton.left = bigButton.right - 1;
+    smallButton.bottom = 200;
+    _smallButton = smallButton;
+    [smallButton setImage:[UIImage imageNamed:@"smallImageImgeS"] forState:UIControlStateNormal];
+    [self addSubview:smallButton];
+    smallButton.tag = 1002;
+    smallButton.layer.borderWidth = 1;
+    smallButton.layer.borderColor = MTBlack.CGColor;
+    [smallButton addTarget:self action:@selector(bsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * bigButton = [[UIButton alloc] initWithFrame:CGRectMake(-1, 0, SCWidth / 2 + 2, 60)];
-    bigButton.bottom = 200;
+    UIButton * bigButton = [[UIButton alloc] initWithFrame:smallButton.frame];
+//    bigButton.bottom = 200;
+    bigButton.left = smallButton.right - 1;
     _bigButton = bigButton;
-    [bigButton setImage:[UIImage imageNamed:@"bigImageImageS"] forState:UIControlStateNormal];
+    [bigButton setImage:[UIImage imageNamed:@"bigImageImageDS"] forState:UIControlStateNormal];
     [self addSubview:bigButton];
     bigButton.layer.borderColor = MTBlack.CGColor;
     bigButton.layer.borderWidth = 1;
     bigButton.tag = 1001;
     [bigButton addTarget:self action:@selector(bsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * smallButton = [[UIButton alloc] initWithFrame:bigButton.frame];
-    smallButton.left = bigButton.right - 1;
-    _smallButton = smallButton;
-    [smallButton setImage:[UIImage imageNamed:@"smallImageImgeDS"] forState:UIControlStateNormal];
-    [self addSubview:smallButton];
-    smallButton.tag = 1002;
-    smallButton.layer.borderWidth = 1;
-    smallButton.layer.borderColor = MTBlack.CGColor;
-    [smallButton addTarget:self action:@selector(bsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
     
     return self;
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DB06814A14C522DD9BCBCDC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1767FAEC292B87F6ACBACC /* libPods.a */; };
+		62B1F6791C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B1F6781C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.m */; };
+		62B1F67C1C4B9A67008BF7C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62B1F67B1C4B9A67008BF7C6 /* Assets.xcassets */; };
 		680251D21C2B9FC300ECEF64 /* MTMainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680251D11C2B9FC300ECEF64 /* MTMainTabViewController.m */; };
 		680251D51C2BA1C100ECEF64 /* MTSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680251D41C2BA1C100ECEF64 /* MTSettingViewController.m */; };
 		680251D81C2BA1DB00ECEF64 /* MTShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680251D71C2BA1DB00ECEF64 /* MTShotViewController.m */; };
@@ -17,7 +19,6 @@
 		685CD2241C278AD5008F0A8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2231C278AD5008F0A8A /* AppDelegate.m */; };
 		685CD2271C278AD5008F0A8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2261C278AD5008F0A8A /* ViewController.m */; };
 		685CD22A1C278AD5008F0A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 685CD2281C278AD5008F0A8A /* Main.storyboard */; };
-		685CD22C1C278AD5008F0A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 685CD22B1C278AD5008F0A8A /* Assets.xcassets */; };
 		685CD24B1C278E2E008F0A8A /* ConstraintUtilities-Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD23B1C278E2E008F0A8A /* ConstraintUtilities-Description.m */; };
 		685CD24C1C278E2E008F0A8A /* NSObject-Description.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD23D1C278E2E008F0A8A /* NSObject-Description.m */; };
 		685CD24D1C278E2E008F0A8A /* ConstraintUtilities-Install.m in Sources */ = {isa = PBXBuildFile; fileRef = 685CD2401C278E2E008F0A8A /* ConstraintUtilities-Install.m */; };
@@ -143,6 +144,10 @@
 
 /* Begin PBXFileReference section */
 		5BAE9CF27CE537966CB247D4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		62B1F6771C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPersonalInfoCollectionCell.h; sourceTree = "<group>"; };
+		62B1F6781C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPersonalInfoCollectionCell.m; sourceTree = "<group>"; };
+		62B1F67A1C4B8B4D008BF7C6 /* Font_HeadFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Font_HeadFile.h; sourceTree = "<group>"; };
+		62B1F67B1C4B9A67008BF7C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		680251D01C2B9FC300ECEF64 /* MTMainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainTabViewController.h; sourceTree = "<group>"; };
 		680251D11C2B9FC300ECEF64 /* MTMainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainTabViewController.m; sourceTree = "<group>"; };
 		680251D31C2BA1C100ECEF64 /* MTSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingViewController.h; sourceTree = "<group>"; };
@@ -160,7 +165,6 @@
 		685CD2251C278AD5008F0A8A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		685CD2261C278AD5008F0A8A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		685CD2291C278AD5008F0A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		685CD22B1C278AD5008F0A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		685CD2301C278AD5008F0A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		685CD2381C278E2E008F0A8A /* Constrain_Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constrain_Utility.h; sourceTree = "<group>"; };
 		685CD23A1C278E2E008F0A8A /* ConstraintUtilities-Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ConstraintUtilities-Description.h"; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 				687D51791C3D03A700679B1E /* MTSettingFlowLayoutBig.m */,
 				687D517B1C3D06AB00679B1E /* MTSettingCollectionViewCell.h */,
 				687D517C1C3D06AB00679B1E /* MTSettingCollectionViewCell.m */,
+				62B1F6771C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.h */,
+				62B1F6781C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.m */,
 				6885A1BA1C3D2DF80089CFCD /* MTSettingTableViewController.h */,
 				6885A1BB1C3D2DF80089CFCD /* MTSettingTableViewController.m */,
 			);
@@ -548,9 +554,10 @@
 				685CD2231C278AD5008F0A8A /* AppDelegate.m */,
 				685CD2251C278AD5008F0A8A /* ViewController.h */,
 				685CD2261C278AD5008F0A8A /* ViewController.m */,
+				62B1F67A1C4B8B4D008BF7C6 /* Font_HeadFile.h */,
 				685CD2281C278AD5008F0A8A /* Main.storyboard */,
-				685CD22B1C278AD5008F0A8A /* Assets.xcassets */,
 				685CD2301C278AD5008F0A8A /* Info.plist */,
+				62B1F67B1C4B9A67008BF7C6 /* Assets.xcassets */,
 				68CC1ABB1C2BCE8C001104FC /* Network */,
 				685CD21F1C278AD5008F0A8A /* Supporting Files */,
 			);
@@ -1252,7 +1259,7 @@
 				687FDA6E1C2EC55100333CF2 /* Localizable.strings in Resources */,
 				687FDA8E1C2EC55100333CF2 /* _CLImageEditorViewController.xib in Resources */,
 				687FDA6A1C2EC55100333CF2 /* CLImageEditor.bundle in Resources */,
-				685CD22C1C278AD5008F0A8A /* Assets.xcassets in Resources */,
+				62B1F67C1C4B9A67008BF7C6 /* Assets.xcassets in Resources */,
 				685CD22A1C278AD5008F0A8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1320,6 +1327,7 @@
 				6873E5321C3A553A00ECF1FE /* MTNetworkZan.m in Sources */,
 				68BB64E81C30DAF400E7DA04 /* MTUserInfoPack.m in Sources */,
 				680251DB1C2BA1E700ECEF64 /* MTFindViewController.m in Sources */,
+				62B1F6791C4B8888008BF7C6 /* MTPersonalInfoCollectionCell.m in Sources */,
 				680251D51C2BA1C100ECEF64 /* MTSettingViewController.m in Sources */,
 				687FDA831C2EC55100333CF2 /* CLColorPickerView.m in Sources */,
 				68CC1ACC1C2BE069001104FC /* MTNetworkRegist.m in Sources */,

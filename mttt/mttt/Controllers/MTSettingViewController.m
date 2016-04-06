@@ -1,4 +1,4 @@
-//
+ //
 //  MTSettingViewController.m
 //  mttt
 //
@@ -16,7 +16,7 @@
 #import "MTPicInfoPack.h"
 #import "MTNetworkGetUserPic.h"
 #import "MTItemDetailViewController.h"
-
+#import "MTPersonalInfoCollectionCell.h"
 
 @interface MTSettingViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 {
@@ -34,6 +34,7 @@
     
     NSMutableArray * _myItemArray;
     
+    BOOL _selectBigImgFlag;
 }
 @end
 
@@ -52,7 +53,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"设置";
     
-    _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 64 - 44) collectionViewLayout:[[MTSettingFlowLayoutBig alloc] init]];
+    _mainCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCWidth, SCHeight - 64 - 44) collectionViewLayout:[[MTSettingFlowLayoutSmall alloc] init]];
     _mainCollectionView.dataSource = self;
     _mainCollectionView.delegate = self;
     _mainCollectionView.backgroundColor = MTWhite;
@@ -87,20 +88,35 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    
     return _myItemArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MTSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"testa" forIndexPath:indexPath];
-    cell.backgroundColor = MTGray;
-    cell.infoPack = (MTPicInfoPack *) [_myItemArray objectAtIndex:indexPath.row];
-    return cell;
+    
+    if (_selectBigImgFlag) {
+        MTPersonalInfoCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"testa_Person" forIndexPath:indexPath];
+//        cell.backgroundColor = MTGray;
+        cell.infoPack = (MTPicInfoPack *) [_myItemArray objectAtIndex:indexPath.row];
+        return cell;
+    }else{
+        MTSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"testa" forIndexPath:indexPath];
+        cell.backgroundColor = MTGray;
+        cell.infoPack = (MTPicInfoPack *) [_myItemArray objectAtIndex:indexPath.row];
+        return cell;
+    }
+    
+//    MTSettingCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"testa" forIndexPath:indexPath];
+//    cell.backgroundColor = MTGray;
+//    cell.infoPack = (MTPicInfoPack *) [_myItemArray objectAtIndex:indexPath.row];
+//    return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     [collectionView registerClass:[MTSettingCollectionViewCell class] forCellWithReuseIdentifier:@"testa"];
+    [collectionView registerClass:[MTPersonalInfoCollectionCell class] forCellWithReuseIdentifier:@"testa_Person"];
     [collectionView registerClass:[MTSettingHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MTSettingCollectionViewHeader"];
     return 1;
 }
@@ -182,19 +198,28 @@
 
 -(void) changeBig
 {
+    _selectBigImgFlag = YES;
     [_mainCollectionView setCollectionViewLayout:[MTSettingFlowLayoutBig new] animated:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_mainCollectionView setContentOffset:CGPointMake(0, 0) animated:YES];
-    });
+     [_mainCollectionView reloadData];
+    
+    
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+////        [_mainCollectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+//        [_mainCollectionView reloadData];
+//    });
 }
 
 -(void) changeSmall
 {
+    _selectBigImgFlag = NO;
     [_mainCollectionView setCollectionViewLayout:[MTSettingFlowLayoutSmall new] animated:YES];
+     [_mainCollectionView reloadData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_mainCollectionView setContentOffset:CGPointMake(0, 0) animated:YES];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+////        [_mainCollectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+//        [_mainCollectionView reloadData];
+//    });
 }
 /*
 #pragma mark - Navigation
